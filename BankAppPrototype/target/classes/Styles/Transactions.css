@@ -1,0 +1,30 @@
+
+.transactions_container {
+    -fx-background-color: #EEEEEE;
+}
+
+.transactions_container Text {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 2.5em;
+    -fx-font-family: "Calibri Light";
+}
+
+.transactions_container .list-view {
+    -fx-background-color: #c2c2ed;
+    -fx-padding: 10;
+}
+
+.transactions_container .list-cell {
+    -fx-background-color: #c2c2ed;
+    -fx-pref-width: 800;
+}
+
+.transactions_container_header {
+    -fx-background-color: #202030;
+    -fx-alignment: center;
+}
+
+transactions_container_header Text {
+    -fx-font-size: 2.5em;
+    -fx-fill: #FFFFFF;
+}

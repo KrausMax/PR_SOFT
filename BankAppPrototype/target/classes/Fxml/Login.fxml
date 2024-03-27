@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.LoginController">
+   <VBox prefHeight="400.0" prefWidth="200.0" styleClass="login_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <FontAwesomeIconView fill="#cde5d7" glyphName="BANK" size="30" text="" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Test Bank" />
+   </VBox>
+   <VBox layoutX="236.0" layoutY="14.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <Label id="choice-prompt-text" text="Account-Typ" />
+      <ChoiceBox fx:id="acc_selector" prefWidth="150.0" styleClass="account_selector" />
+      <Label fx:id="payee_address_lbl" text="E-Mail Adresse" />
+      <TextField fx:id="payee_address_fld" styleClass="input_field" />
+      <Label fx:id="password_lbl" text="Passwort:" />
+      <TextField fx:id="password_fld" styleClass="input_field" />
+      <Button fx:id="login_btn" mnemonicParsing="false" text="Login" />
+      <Label fx:id="error_lbl" styleClass="error_lbl" />
+   </VBox>
+   <VBox layoutX="323.0" layoutY="356.0" prefHeight="80.0" prefWidth="275.0" styleClass="register_account" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="60.0">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Noch keinen Account?" />
+         <Label text="Klicken Sie hier um einen Account zu erstellen!" />
+         <Button fx:id="register_btn" mnemonicParsing="false" text="Account Registrieren" />
+      </children>
+   </VBox>
+</AnchorPane>
