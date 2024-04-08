@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="report_container" stylesheets="@../../Styles/Report.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.bankappprototype.Controllers.Client.ReportController">
+    <HBox layoutX="20.0" layoutY="20.0" prefHeight="100.0" prefWidth="850.0" styleClass="report_container_header"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Text fill="#fcf7f7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="friends_text" text="Report"/>
+    </HBox>
+    <TextArea fx:id="report_textarea" layoutX="35.0" layoutY="125.0" prefHeight="513.0" prefWidth="782.0"
+              text="Hello,&#10;&#10;this doesn't work....&#10;"/>
+    <Button fx:id="report_send_btn" layoutX="587.0" layoutY="695.0" mnemonicParsing="false" text="Senden"
+            AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="700.0"/>
+</AnchorPane>
