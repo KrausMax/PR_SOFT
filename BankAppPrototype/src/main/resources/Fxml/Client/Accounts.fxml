@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="accounts_view_container" stylesheets="@../../Styles/Accounts.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.AccountsController">
+   <Text layoutX="27.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hauptkonto" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+   <VBox layoutX="14.0" layoutY="31.0" prefHeight="300.0" prefWidth="225.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="31.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IBAN:" />
+      <Label fx:id="ch_acc_num" text="AT74 2032 0321 0222 1507" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Überweisungslimit:" />
+      <Label fx:id="transaction_limit" text="10" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Erstellt am:" />
+      <Label fx:id="ch_acc_date" text="28-03-2024" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand:" />
+      <Label fx:id="ch_acc_bal" text="€ 420,69" />
+   </VBox>
+   <Text layoutX="386.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Urlaubs-Space" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="14.0" />
+   <VBox layoutX="384.0" layoutY="31.0" prefHeight="300.0" prefWidth="225.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="31.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IBAN:" />
+      <Label fx:id="sv_acc_num" text="AT74 2032 0321 0222 1508" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Abhebungslimit:" />
+      <Label fx:id="withdrawal_limit" text="€ 20.000,00" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Erstellt am:" />
+      <Label fx:id="sv_acc_date" text="28-03-2024" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand:" />
+      <Label fx:id="sv_acc_bal" text="€ 420.666,56" />
+   </VBox>
+   <Text layoutX="14.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auf ein Space überweisen" AnchorPane.rightAnchor="662.0" />
+   <TextField fx:id="amount_from_space_to_main" layoutX="300.0" layoutY="383.0" prefHeight="25.0" prefWidth="218.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="383.0" />
+   <Button fx:id="trans_to_space_btn" layoutX="12.0" layoutY="464.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" text="Transfer" AnchorPane.rightAnchor="608.0" AnchorPane.topAnchor="464.0">
+      <graphic>
+         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_DOWN" size="20" />
+      </graphic>
+   </Button>
+   <Text layoutX="300.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auf das Hauptkonto überweisen:" AnchorPane.rightAnchor="328.0" AnchorPane.topAnchor="355.0" />
+   <TextField fx:id="amount_to_space" layoutX="12.0" layoutY="418.0" prefHeight="25.0" prefWidth="218.0" AnchorPane.rightAnchor="608.0" AnchorPane.topAnchor="418.0" />
+   <Button fx:id="trans_to_main_btn" layoutX="296.0" layoutY="430.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" text="Transfer" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="430.0">
+      <graphic>
+         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_UP" size="20" />
+      </graphic>
+   </Button>
+   <VBox layoutX="579.0" layoutY="31.0" prefHeight="300.0" prefWidth="225.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IBAN:" />
+      <Label fx:id="sv_acc_num1" text="AT74 2032 0321 0222 1509" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Abhebungslimit:" />
+      <Label fx:id="withdrawal_limit1" text="€ 10.000,00" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Erstellt am:" />
+      <Label fx:id="sv_acc_date1" text="28-03-2024" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand:" />
+      <Label fx:id="sv_acc_bal1" text="€ 35.000,74" />
+   </VBox>
+   <Text layoutX="579.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auto-Space" />
+   <Text layoutX="579.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auf das Hauptkonto überweisen:" />
+   <TextField fx:id="amount_from_spacetwo_to_main" layoutX="579.0" layoutY="383.0" prefHeight="25.0" prefWidth="218.0" />
+   <Button fx:id="trans_to_main_btn1" layoutX="579.0" layoutY="430.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" text="Transfer">
+      <graphic>
+         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_UP" size="20" />
+      </graphic>
+   </Button>
+   <ChoiceBox fx:id="space_choice_box" layoutX="19.0" layoutY="383.0" prefWidth="150.0" />
+</AnchorPane>

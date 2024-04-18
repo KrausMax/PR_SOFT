@@ -1,0 +1,40 @@
+
+.friends_container {
+    -fx-background-color: #EEEEEE;
+}
+
+.friends_container Text {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 1.5em;
+
+}
+
+.friends_container .list-view {
+    -fx-background-color: #c2c2ed;
+    -fx-padding: 10;
+}
+
+.friends_container .list-cell {
+    -fx-background-color: #c2c2ed;
+    -fx-pref-width: 800;
+}
+
+.friends_container_header {
+    -fx-background-color: #202030;
+    -fx-alignment: center;
+}
+
+.friends_container_header Text {
+    -fx-font-size: 2.5em;
+    -fx-fill: #FFFFFF;
+}
+
+.friends_container Text {
+    -fx-fill: #000000;
+    -fx-font-size: 2.5em;
+    -fx-font-family: "Calibri Light";
+}
+
+.friends_text {
+    -fx-fill: #FFFFFF;
+}
