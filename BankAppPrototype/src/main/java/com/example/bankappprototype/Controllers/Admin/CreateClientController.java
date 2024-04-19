@@ -79,9 +79,9 @@ public class CreateClientController implements Initializable {
         String accountNumber = firstSection + " " + lastSection;
         // Create the Checking or Savings Account
         if(accountType.equals("Checking")) {
-            Model.getInstance().getDatabaseDriver().createCheckingAccount(payeeAddress, accountNumber, 10, balance);
+            Model.getInstance().getDatabaseDriver().createMainAccount(payeeAddress, accountNumber, 10, balance);
         } else {
-            Model.getInstance().getDatabaseDriver().createSavingsAccount(payeeAddress, accountNumber, 2000, balance);
+            Model.getInstance().getDatabaseDriver().createSpace(payeeAddress, accountNumber, 2000, balance,"space_xyz", "img_xyz");
         }
     }
 
