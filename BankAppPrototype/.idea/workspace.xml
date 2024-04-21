@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Admin/CreateClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Admin/CreateClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/CreateClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/CreateClient.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="#11" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,12 +100,25 @@
       <workItem from="1712602564645" duration="1261000" />
       <workItem from="1713724933335" duration="2376000" />
       <workItem from="1713728015577" duration="42000" />
-      <workItem from="1713728101001" duration="2652000" />
+      <workItem from="1713728101001" duration="3056000" />
     </task>
+    <task id="LOCAL-00001" summary="#11">
+      <option name="closed" value="true" />
+      <created>1713730976267</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713730976267</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="#11" />
+    <option name="LAST_COMMIT_MESSAGE" value="#11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
