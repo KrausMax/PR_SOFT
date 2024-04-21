@@ -31,7 +31,6 @@ public class DatabaseDriver {
         return resultSet;
     }
 
-
     /*
     * Admin Section
     * */
@@ -53,32 +52,32 @@ public class DatabaseDriver {
         try {
             statement = this.conn.createStatement();
             statement.executeUpdate("INSERT INTO " +
-                    "Clients(FirstName, LastName, email, Password, Date)" +
+                    "Client(FirstName, LastName, email, Password, Date)" +
                     "VALUES ('"+fName+"', '"+lName+"','"+email+"','"+password+"', '"+date.toString()+"');");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void createMainAccount(String owner, String number, double tLimit, double balance) {
+    public void createMainAccount(String number, double tLimit, double balance) {
         Statement statement;
         try {
             statement = this.conn.createStatement();
             statement.executeUpdate("INSERT INTO " +
                     "Account(Owner, AccountNumber, TransactionLimit, Balance, MainAccount)" +
-                    "VALUES ('"+owner+"','"+number+"','"+tLimit+"','"+balance+"','"+1+"')");
+                    "VALUES ('"+(getLastClientsId()+1)+"','"+number+"','"+tLimit+"','"+balance+"','"+1+"')");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void createSpace(String owner, String number, double tLimit, double balance, String space_name, String space_image) {
+    public void createSpace(String number, double tLimit, double balance, String space_name, String space_image) {
         Statement statement;
         try {
             statement = this.conn.createStatement();
             statement.executeUpdate("INSERT INTO " +
                     "Account(Owner, AccountNumber, TransactionLimit, Balance, MainAccount, space_name, space_image)" +
-                    "VALUES ('"+owner+"','"+number+"','"+tLimit+"','"+balance+"','"+0+"','"+space_name+"','"+space_image+"')");
+                    "VALUES ('"+(getLastClientsId()+1)+"','"+number+"','"+tLimit+"','"+balance+"','"+0+"','"+space_name+"','"+space_image+"')");
         } catch (Exception e) {
             e.printStackTrace();
         }

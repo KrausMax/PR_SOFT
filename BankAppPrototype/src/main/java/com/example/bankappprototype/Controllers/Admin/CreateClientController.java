@@ -16,8 +16,7 @@ public class CreateClientController implements Initializable {
     public TextField fName_fld;
     public TextField lName_fld;
     public TextField password_fld;
-    public CheckBox pAddress_box;
-    public Label pAddress_lbl;
+    public TextField emailAddress_fld;
     public CheckBox ch_acc_box;
     public TextField ch_amount_fld;
     public CheckBox sv_acc_box;
@@ -25,19 +24,12 @@ public class CreateClientController implements Initializable {
     public Button create_client_btn;
     public Label error_lbl;
 
-    private String payeeAddress;
     private boolean createCheckingAccountFlag = false;
     private boolean createSavingsAccountFlag = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         create_client_btn.setOnAction(event -> createClient());
-        pAddress_box.selectedProperty().addListener((observable, oldVal, newVal) -> {
-            if(newVal) {
-                payeeAddress = createPayeeAddress();
-                onCreatePayeeAddress();
-            }
-        });
         ch_acc_box.selectedProperty().addListener((observable, oldVal, newVal) -> {
             if(newVal) {
                 createCheckingAccountFlag = true;
@@ -64,8 +56,9 @@ public class CreateClientController implements Initializable {
         // Create Client
         String fName = fName_fld.getText();
         String lName = lName_fld.getText();
+        String emailAddress = emailAddress_fld.getText();
         String password =password_fld.getText();
-        Model.getInstance().getDatabaseDriver().createClient(fName, lName, payeeAddress, password, LocalDate.now());
+        Model.getInstance().getDatabaseDriver().createClient(fName, lName, emailAddress, password, LocalDate.now());
         error_lbl.setStyle("-fx-text-fill: blue; -fx-font-size: 1.3em; -fx-font-weight: bold");
         error_lbl.setText("Client Created Successfully!");
         emptyFields();
@@ -79,30 +72,17 @@ public class CreateClientController implements Initializable {
         String accountNumber = firstSection + " " + lastSection;
         // Create the Checking or Savings Account
         if(accountType.equals("Checking")) {
-            Model.getInstance().getDatabaseDriver().createMainAccount(payeeAddress, accountNumber, 10, balance);
+            Model.getInstance().getDatabaseDriver().createMainAccount(accountNumber, 10, balance);
         } else {
-            Model.getInstance().getDatabaseDriver().createSpace(payeeAddress, accountNumber, 2000, balance,"space_xyz", "img_xyz");
+            Model.getInstance().getDatabaseDriver().createSpace(accountNumber, 2000, balance,"space_xyz", "img_xyz");
         }
-    }
-
-    private void onCreatePayeeAddress() {
-        if(fName_fld.getText() != null & lName_fld.getText() != null) {
-            pAddress_lbl.setText(payeeAddress);
-        }
-    }
-
-    private String createPayeeAddress() {
-        int id = Model.getInstance().getDatabaseDriver().getLastClientsId() + 1;
-        char fChar = Character.toLowerCase(fName_fld.getText().charAt(0));
-        return "@"+fChar+lName_fld.getText()+id;
     }
 
     private void emptyFields() {
         fName_fld.setText("");
         lName_fld.setText("");
         password_fld.setText("");
-        pAddress_box.setSelected(false);
-        pAddress_lbl.setText("");
+        emailAddress_fld.setText("");
         ch_acc_box.setSelected(false);
         ch_amount_fld.setText("");
         sv_acc_box.setSelected(false);
