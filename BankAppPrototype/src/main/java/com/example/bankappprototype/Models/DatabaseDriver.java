@@ -59,6 +59,18 @@ public class DatabaseDriver {
         }
     }
 
+    public void updateClient(String fName, String lName, String email, String password) {
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE " +
+                    "Client SET FirstName = '" + fName + "', LastName = '" + lName + "', Password = '" + password + "'" +
+                    "WHERE email = '" + email + "';");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void createMainAccount(String number, double tLimit, double balance) {
         Statement statement;
         try {
