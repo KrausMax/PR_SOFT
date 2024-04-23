@@ -18,7 +18,7 @@
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="dashboard" stylesheets="@../../Styles/Dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.DashboardController">
    <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="850.0" styleClass="dashboard_container">
       <children>
-         <Text fx:id="user_name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_name" text="Hallo Pascal" />
+         <Text fx:id="user_name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_name" text="Hallo" />
       </children>
    </HBox>
    <Label fx:id="login_date" styleClass="date_lbl" text="Heute, 27.03.2024" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="27.0" />

@@ -17,9 +17,8 @@
       <TextField fx:id="lName_fld" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort:" />
       <TextField fx:id="password_fld" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
-      <CheckBox fx:id="pAddress_box" mnemonicParsing="false" />
-      <Label fx:id="pAddress_lbl" styleClass="payee_address_lbl" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail:" />
+      <TextField fx:id="emailAddress_fld" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Accounts:" />
       <CheckBox fx:id="ch_acc_box" mnemonicParsing="false" text="Hauptkonto anlegen" />
       <Text layoutX="10.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hauptkonto Balance" />

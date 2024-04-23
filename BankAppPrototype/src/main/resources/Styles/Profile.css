@@ -77,3 +77,7 @@
     -fx-font-family: fantasy;
     -fx-font-weight: bold;;
 }
+
+.error_lbl {
+    -fx-text-fill: #04c70c;
+}
