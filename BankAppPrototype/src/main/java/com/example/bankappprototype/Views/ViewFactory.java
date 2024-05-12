@@ -19,6 +19,7 @@ public class ViewFactory {
     private AnchorPane accountsView;
 
     private AnchorPane profileView;
+    private AnchorPane createSpaceView;
 
     // Admin Views
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
@@ -27,6 +28,7 @@ public class ViewFactory {
     private AnchorPane depositView;
     private AnchorPane friendsView;
     private AnchorPane reportView;
+
 
     public ViewFactory(){
         this.loginAccountType = AccountType.CLIENT;
@@ -115,6 +117,17 @@ public class ViewFactory {
             }
         }
         return reportView;
+    }
+
+    public AnchorPane getCreateSpaceView() {
+        if(createSpaceView == null) {
+            try {
+                createSpaceView = new FXMLLoader(getClass().getResource("/Fxml/Client/CreateSpace.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return createSpaceView;
     }
 
 

@@ -18,6 +18,7 @@ public class ClientMenuController implements Initializable {
     public Button logout_btn;
     public Button report_btn;
     public Button friends_btn;
+    public Button create_space_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -31,6 +32,7 @@ public class ClientMenuController implements Initializable {
         profile_btn.setOnAction(Event -> onProfile());
         friends_btn.setOnAction(Event -> onFriends());
         report_btn.setOnAction(Event -> onReport());
+        create_space_btn.setOnAction(Event -> onCreateSpace());
         logout_btn.setOnAction(Event -> onLogout());
     }
 
@@ -56,6 +58,10 @@ public class ClientMenuController implements Initializable {
 
     private void onReport() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.REPORT);
+    }
+
+    private void onCreateSpace() {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.CREATE_SPACE);
     }
 
 

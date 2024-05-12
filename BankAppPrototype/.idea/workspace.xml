@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="#12 and #13">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/CreateSpaceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/CreateSpace.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/Max_Mustermann.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/CreateSpace.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ClientMenuOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ClientMenuOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Accounts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/ClientMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/ClientMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Client/Accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Client/Accounts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Client/ClientMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Client/ClientMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Views/ViewFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +32,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
         <option value="CSS File" />
       </list>
     </option>
@@ -54,7 +68,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "9-create-db-in-mysql",
+    "git-widget-placeholder": "15-create-productlist",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/SceneBuilder/SceneBuilder.exe",
@@ -112,6 +126,7 @@
       <workItem from="1713728101001" duration="4187000" />
       <workItem from="1713783356799" duration="443000" />
       <workItem from="1713788077932" duration="10175000" />
+      <workItem from="1715539560135" duration="13738000" />
     </task>
     <task id="LOCAL-00001" summary="#11">
       <option name="closed" value="true" />
