@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="#12 and #13">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Admin/CreateClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Admin/CreateClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/CreateSpaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/CreateSpaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/CreateSpace.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/CreateSpace.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
