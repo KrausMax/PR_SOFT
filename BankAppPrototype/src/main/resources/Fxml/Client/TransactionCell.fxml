@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-
-<AnchorPane prefHeight="60.0" prefWidth="550.0" styleClass="cell_container"
-            stylesheets="@../../Styles/TransactionCell.css" xmlns="http://javafx.com/javafx/"
-            xmlns:fx="http://javafx.com/fxml">
-   <VBox prefHeight="50.0" prefWidth="50.0" styleClass="trans_icon_container" AnchorPane.bottomAnchor="5.0"
-         AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
-      <FontAwesomeIconView fx:id="in_icon" glyphName="LONG_ARROW_RIGHT" size="17"/>
-      <FontAwesomeIconView fx:id="out_icon" glyphName="LONG_ARROW_LEFT" size="17"/>
+<AnchorPane fx:id="transaction_pane" prefHeight="60.0" prefWidth="822.0" styleClass="cell_container" stylesheets="@../../Styles/TransactionCell.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <VBox layoutX="7.0" layoutY="6.0" prefHeight="50.0" prefWidth="50.0" styleClass="trans_icon_container" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+      <FontAwesomeIconView fx:id="in_icon" fill="#00fc11" glyphName="LONG_ARROW_RIGHT" size="17" />
+      <FontAwesomeIconView fx:id="out_icon" fill="RED" glyphName="LONG_ARROW_LEFT" size="17" />
    </VBox>
-   <Label fx:id="trans_date_lbl" layoutX="71.0" layoutY="22.0" styleClass="trans_date_lbl" text="2022-07-08"
-          AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="22.0"/>
-   <Label fx:id="sender_lbl" layoutX="228.0" layoutY="22.0" styleClass="trans_pAddress_lbl" text="Pascal"
-          AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="22.0"/>
-   <Line endY="20.0" layoutX="262.0" layoutY="20.0" AnchorPane.bottomAnchor="21.5" AnchorPane.leftAnchor="300.0"/>
-   <Label fx:id="receiver_lbl" layoutX="350.0" layoutY="22.0" styleClass="trans_pAddress_lbl" text="Mislav"
-          AnchorPane.leftAnchor="358.0" AnchorPane.topAnchor="22.0"/>
-   <Label fx:id="amount_lbl" layoutX="467.0" layoutY="22.0" styleClass="trans_amount_lbl" text="€ 2.000,00"
-          AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="22.0"/>
+   <Label fx:id="trans_type_lbl" contentDisplay="CENTER" layoutX="153.0" layoutY="13.0" prefHeight="17.0" prefWidth="123.0" styleClass="trans_date_lbl" text="Karten zahlung" textAlignment="CENTER" />
+   <Label fx:id="trans_date_lbl" layoutX="172.0" layoutY="33.0" prefHeight="17.0" prefWidth="86.0" styleClass="trans_date_lbl" text="2022-07-08" textAlignment="CENTER" AnchorPane.leftAnchor="172.0" AnchorPane.topAnchor="33.0" />
+   <Label fx:id="sender_lbl" layoutX="432.0" layoutY="24.0" styleClass="trans_pAddress_lbl" text="Pascal" AnchorPane.leftAnchor="432.0" AnchorPane.topAnchor="24.0" />
+   <Line endY="20.0" layoutX="509.0" layoutY="22.0" AnchorPane.bottomAnchor="17.5" AnchorPane.leftAnchor="508.5" />
+   <Label fx:id="receiver_lbl" layoutX="553.0" layoutY="24.0" styleClass="trans_pAddress_lbl" text="Mislav" AnchorPane.leftAnchor="553.0" AnchorPane.topAnchor="24.0" />
+   <Label fx:id="amount_lbl" layoutX="567.0" layoutY="19.0" styleClass="trans_amount_lbl" text="€ 2.000,00" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="19.0" />
 </AnchorPane>

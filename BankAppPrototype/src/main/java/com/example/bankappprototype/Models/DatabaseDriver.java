@@ -42,6 +42,18 @@ public class DatabaseDriver {
         }
     }
 
+    public ResultSet getAllTransactionsOfClient(int clientID) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM 'Transaction' WHERE Sender ='"+clientID+"' or receiver ='"+clientID+"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
 
     /*
     * Admin Section
@@ -138,7 +150,7 @@ public class DatabaseDriver {
         return id;
     }
 
-    public ResultSet getCheckingAccountData(String owner) {
+    public ResultSet getCheckingAccountData(int owner) {
         Statement statement;
         ResultSet resultSet = null;
         try {
@@ -150,7 +162,7 @@ public class DatabaseDriver {
         return resultSet;
     }
 
-    public ResultSet getSavingsAccountData(String owner) {
+    public ResultSet getSavingsAccountData(int owner) {
         Statement statement;
         ResultSet resultSet = null;
         try {
@@ -161,4 +173,5 @@ public class DatabaseDriver {
         }
         return resultSet;
     }
+
 }
