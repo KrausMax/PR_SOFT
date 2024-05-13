@@ -72,7 +72,7 @@ public class CreateSpaceController implements Initializable {
 
         // Generate Account Number
         String firstSection = "AT74 2032 0321 0222";
-        String lastSection = Integer.toString((new Random()).nextInt(9999) + 1000);
+        String lastSection = Integer.toString((new Random()).nextInt(9000) + 1000);
         String accountNumber = firstSection + " " + lastSection;
 
         // Call the createSpace method of the DatabaseDriver instance
