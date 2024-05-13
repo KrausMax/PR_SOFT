@@ -7,6 +7,7 @@
     <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/TransactionTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/CreateSpace.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/CreateSpace.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" afterDir="false" />
@@ -30,8 +31,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
         <option value="CSS File" />
         <option value="Enum" />
       </list>
@@ -80,7 +83,7 @@
     "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.bankappprototype.App" />
@@ -125,6 +128,7 @@
       <workItem from="1713728101001" duration="4187000" />
       <workItem from="1713783356799" duration="443000" />
       <workItem from="1713788077932" duration="10175000" />
+      <workItem from="1715539560135" duration="13738000" />
     </task>
     <task id="LOCAL-00001" summary="#11">
       <option name="closed" value="true" />

@@ -31,6 +31,17 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    public void createCard(int accountID, String cardNumber, int sequenceNumber, int secretNumber, int cardLimit, int statusOnline, int statusTerminal) {
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("INSERT INTO Card (Account, CardNumber, SequenceNumber, SecretNumber, CardLimit, StatusOnline, StatusTerminal) " +
+                    "VALUES (" + accountID + ", '" + cardNumber + "', " + sequenceNumber + ", " + secretNumber + ", " + cardLimit + ", " + statusOnline + ", " + statusTerminal + ")");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public ResultSet getAllTransactionsOfClient(int clientID) {
         Statement statement;
         ResultSet resultSet = null;

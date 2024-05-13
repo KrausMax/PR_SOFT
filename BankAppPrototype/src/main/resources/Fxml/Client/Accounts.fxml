@@ -58,8 +58,8 @@
    </VBox>
    <Text layoutX="579.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auto-Space" />
    <Text layoutX="579.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auf das Hauptkonto überweisen:" />
-   <TextField fx:id="amount_from_spacetwo_to_main" layoutX="579.0" layoutY="383.0" prefHeight="25.0" prefWidth="218.0" />
-   <Button fx:id="trans_to_main_btn1" layoutX="579.0" layoutY="430.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" text="Transfer">
+   <TextField fx:id="amount_from_spacetwo_to_main" layoutX="579.0" layoutY="383.0" prefHeight="25.0" prefWidth="218.0" AnchorPane.rightAnchor="40.0" />
+   <Button fx:id="trans_to_main_btn1" layoutX="579.0" layoutY="430.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" text="Transfer" AnchorPane.rightAnchor="40.0">
       <graphic>
          <FontAwesomeIconView fill="WHITE" glyphName="ARROW_UP" size="20" />
       </graphic>
