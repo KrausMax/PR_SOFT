@@ -17,8 +17,9 @@ public class Model {
     // Client Data Section
     private final Client client;
     private boolean clientLoginSuccessFlag;
-
     private final ObservableList<Transaction> transactions;
+    private int activeAccount;
+
     // Admin Data Section
     private boolean adminLoginSuccessFlag;
     private final ObservableList<Client> clients;
@@ -84,8 +85,8 @@ public class Model {
                 String[] dateParts = resultSet.getString("Date").split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 this.client.dateProperty().set(date);
-                checkingAccount = getCheckingAccount(pAddress);
-                savingsAccount = getSavingsAccount(pAddress);
+                checkingAccount = getCheckingAccount(resultSet.getInt("ID"));
+                savingsAccount = getSavingsAccount(resultSet.getInt("ID"));
                 this.client.checkingAccountProperty().set(checkingAccount);
                 this.client.savingsAccountProperty().set(savingsAccount);
                 this.clientLoginSuccessFlag = true;
@@ -99,9 +100,10 @@ public class Model {
         return transactions;
     }
 
-    public void setTransactions() {
+    public void setTransactions(int account_id) {
+        transactions.clear();
 
-        ResultSet resultSet = databaseDriver.getAllTransactionsOfClient(client.idProperty().getValue());
+        ResultSet resultSet = databaseDriver.getAllTransactionsOfClient(account_id);
 
         try {
             while(resultSet.next()) {
@@ -159,8 +161,8 @@ public class Model {
                 int id = resultSet.getInt("ID");
                 String [] dateParts = resultSet.getString("Date").split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
-                checkingAccount = getCheckingAccount(pAddress);
-                savingsAccount = getSavingsAccount(pAddress);
+                checkingAccount = getCheckingAccount(resultSet.getInt("ID"));
+                savingsAccount = getSavingsAccount(resultSet.getInt("ID"));
                 clients.add(new Client(fName, lName, pAddress, pword, id, checkingAccount, savingsAccount, date));
             }
         } catch (Exception e) {
@@ -173,32 +175,42 @@ public class Model {
     * Utility Methods Sections
     * */
 
-    public CheckingAccount getCheckingAccount(String pAddress) {
+    public CheckingAccount getCheckingAccount(int owner) {
         CheckingAccount account = null;
-        ResultSet resultSet = databaseDriver.getCheckingAccountData(pAddress);
+        ResultSet resultSet = databaseDriver.getCheckingAccountData(owner);
         try {
             String num = resultSet.getString("AccountNumber");
             int tLimit = (int) resultSet.getDouble("TransactionLimit");
             double balance = resultSet.getDouble("Balance");
-            account = new CheckingAccount(pAddress, num, balance, tLimit);
+            int id = resultSet.getInt("ID");
+            account = new CheckingAccount(owner, num, balance, tLimit, id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return account;
     }
 
-    public SavingsAccount getSavingsAccount(String pAddress) {
+    public SavingsAccount getSavingsAccount(int owner) {
         SavingsAccount account = null;
-        ResultSet resultSet = databaseDriver.getSavingsAccountData(pAddress);
+        ResultSet resultSet = databaseDriver.getSavingsAccountData(owner);
         try {
             String num = resultSet.getString("AccountNumber");
             double wLimit = resultSet.getDouble("TransactionLimit");
             double balance = resultSet.getDouble("Balance");
-            account = new SavingsAccount(pAddress, num, wLimit, balance);
+            int id = resultSet.getInt("ID");
+            account = new SavingsAccount(owner, num, wLimit, balance, id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return account;
+    }
+
+    public int getActiveAccount() {
+        return activeAccount;
+    }
+
+    public void setActiveAccount(int activeAccount) {
+        this.activeAccount = activeAccount;
     }
 }
 

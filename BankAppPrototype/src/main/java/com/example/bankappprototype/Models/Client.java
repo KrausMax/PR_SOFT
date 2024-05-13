@@ -40,6 +40,7 @@ public class Client {
         return id;
     }
     public StringProperty pwordProperty() { return  password; }
+
     public ObjectProperty<Account> checkingAccountProperty() {
         return checkingAccount;
     }
