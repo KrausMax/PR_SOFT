@@ -1,54 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="transactions_container" stylesheets="@../../Styles/Transactions.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.TransactionsController">
-   <HBox prefHeight="100.0" prefWidth="850.0" styleClass="transactions_container_header" AnchorPane.leftAnchor="0.0"
-         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transaktionen"/>
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="transactions_container" stylesheets="@../../Styles/Transactions.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.TransactionsController">
+   <HBox prefHeight="100.0" prefWidth="850.0" styleClass="transactions_container_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transaktionen" />
    </HBox>
    <ListView fx:id="transactions_listview" layoutX="11.0" layoutY="79.0" prefHeight="640.0" prefWidth="800.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="125.0" />
-   <AnchorPane layoutX="25.0" layoutY="137.0" prefHeight="60.0" prefWidth="800.0" styleClass="cell_container"
-               stylesheets="@../../Styles/TransactionCell.css">
-      <VBox prefHeight="50.0" prefWidth="50.0" styleClass="trans_icon_container" AnchorPane.bottomAnchor="5.0"
-            AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
-         <FontAwesomeIconView fx:id="in_icon" glyphName="LONG_ARROW_RIGHT" size="17"/>
-         <FontAwesomeIconView fx:id="out_icon" glyphName="LONG_ARROW_LEFT" size="17"/>
-      </VBox>
-      <Label fx:id="trans_date_lbl" layoutX="71.0" layoutY="22.0" styleClass="trans_date_lbl" text="2022-07-08"
-             AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="22.0"/>
-      <Label fx:id="sender_lbl" layoutX="228.0" layoutY="22.0" styleClass="trans_pAddress_lbl" text="Pascal"
-             AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="22.0"/>
-      <Line endY="20.0" layoutX="262.0" layoutY="20.0" AnchorPane.bottomAnchor="21.5" AnchorPane.leftAnchor="300.0"/>
-      <Label fx:id="receiver_lbl" layoutX="350.0" layoutY="22.0" styleClass="trans_pAddress_lbl" text="Mislav"
-             AnchorPane.leftAnchor="358.0" AnchorPane.topAnchor="22.0"/>
-      <Label fx:id="amount_lbl" layoutX="467.0" layoutY="22.0" styleClass="trans_amount_lbl" text="€ 2.000,00"
-             AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
-   </AnchorPane>
-   <AnchorPane layoutX="25.0" layoutY="221.0" prefHeight="60.0" prefWidth="800.0" styleClass="cell_container"
-               stylesheets="@../../Styles/TransactionCell.css">
-      <VBox prefHeight="50.0" prefWidth="50.0" styleClass="trans_icon_container" AnchorPane.bottomAnchor="5.0"
-            AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
-         <FontAwesomeIconView fx:id="in_icon1" glyphName="LONG_ARROW_RIGHT" size="17"/>
-         <FontAwesomeIconView fx:id="out_icon1" glyphName="LONG_ARROW_LEFT" size="17"/>
-      </VBox>
-      <Label fx:id="trans_date_lbl1" layoutX="71.0" layoutY="22.0" styleClass="trans_date_lbl" text="2022-07-08"
-             AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="22.0"/>
-      <Label fx:id="sender_lbl1" layoutX="228.0" layoutY="22.0" styleClass="trans_pAddress_lbl" text="Mislav"
-             AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="22.0"/>
-      <Line endY="20.0" layoutX="262.0" layoutY="20.0" AnchorPane.bottomAnchor="21.5" AnchorPane.leftAnchor="300.0"/>
-      <Label fx:id="receiver_lbl1" layoutX="350.0" layoutY="22.0" styleClass="trans_pAddress_lbl" text="Pascal"
-             AnchorPane.leftAnchor="358.0" AnchorPane.topAnchor="22.0"/>
-      <Label fx:id="amount_lbl1" layoutX="467.0" layoutY="22.0" styleClass="trans_amount_lbl" text="€ 2.000,00"
-             AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
-   </AnchorPane>
    <Text layoutX="109.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datum" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="100.0" />
    <Text layoutX="207.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Absender" AnchorPane.leftAnchor="205.0" AnchorPane.topAnchor="100.0" />
    <Text layoutX="360.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empfänger" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="100.0" />

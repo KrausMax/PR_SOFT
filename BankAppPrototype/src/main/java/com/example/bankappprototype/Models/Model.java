@@ -1,6 +1,5 @@
 package com.example.bankappprototype.Models;
 
-import com.example.bankappprototype.Views.AccountType;
 import com.example.bankappprototype.Views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +17,8 @@ public class Model {
     // Client Data Section
     private final Client client;
     private boolean clientLoginSuccessFlag;
+
+    private final ObservableList<Transaction> transactions;
     // Admin Data Section
     private boolean adminLoginSuccessFlag;
     private final ObservableList<Client> clients;
@@ -28,7 +29,8 @@ public class Model {
 
         // Client Data Section
         this.clientLoginSuccessFlag = false;
-        this.client = new Client("","","",null,null,null, null);
+        this.client = new Client("","","","",1,null,null, null);
+        this.transactions = FXCollections.observableArrayList();
         // Admin Data Section
         this.adminLoginSuccessFlag = false;
         this.clients = FXCollections.observableArrayList();
@@ -78,6 +80,7 @@ public class Model {
                 this.client.lastNameProperty().set(resultSet.getString("LastName"));
                 this.client.pAddressProperty().set(resultSet.getString("email"));
                 this.client.pwordProperty().set(resultSet.getString("Password"));
+                this.client.idProperty().set(resultSet.getInt("ID"));
                 String[] dateParts = resultSet.getString("Date").split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 this.client.dateProperty().set(date);
@@ -86,6 +89,30 @@ public class Model {
                 this.client.checkingAccountProperty().set(checkingAccount);
                 this.client.savingsAccountProperty().set(savingsAccount);
                 this.clientLoginSuccessFlag = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions() {
+
+        ResultSet resultSet = databaseDriver.getAllTransactionsOfClient(client.idProperty().getValue());
+
+        try {
+            while(resultSet.next()) {
+                String sender = String.valueOf(resultSet.getInt("Sender"));
+                String receiver = String.valueOf(resultSet.getInt("Receiver"));
+                double amount = resultSet.getDouble("Amount");
+                String message = resultSet.getString("Message");
+                String type = resultSet.getString("transaction_type");
+                String [] dateParts = resultSet.getString("Date").split("-");
+                LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
+                transactions.add(new Transaction(sender, receiver, amount, date, message, type));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,11 +156,12 @@ public class Model {
                 String lName = resultSet.getString("LastName");
                 String pAddress = resultSet.getString("email");
                 String pword = resultSet.getString("Password");
+                int id = resultSet.getInt("ID");
                 String [] dateParts = resultSet.getString("Date").split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 checkingAccount = getCheckingAccount(pAddress);
                 savingsAccount = getSavingsAccount(pAddress);
-                clients.add(new Client(fName, lName, pAddress, pword, checkingAccount, savingsAccount, date));
+                clients.add(new Client(fName, lName, pAddress, pword, id, checkingAccount, savingsAccount, date));
             }
         } catch (Exception e) {
             e.printStackTrace();

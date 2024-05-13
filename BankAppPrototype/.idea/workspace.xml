@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="#12 and #13">
+    <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mazebank.sqbpro" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.sqbpro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/TransactionCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/TransactionCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transactions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transactions.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="9-create-db-in-mysql" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -49,12 +58,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Run",
+    "Application.App.executor": "Debug",
     "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "9-create-db-in-mysql",
+    "git-widget-placeholder": "19-transaktionen-anzeigen",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/SceneBuilder/SceneBuilder.exe",
@@ -80,7 +89,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-19.0.2-corretto-19.0.2-4caba194b151-48ba4555" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -130,7 +139,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#11" />
     <MESSAGE value="#12 and #13" />
-    <option name="LAST_COMMIT_MESSAGE" value="#12 and #13" />
+    <MESSAGE value="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use" />
+    <option name="LAST_COMMIT_MESSAGE" value="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

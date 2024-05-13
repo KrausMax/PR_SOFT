@@ -31,6 +31,19 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    public ResultSet getAllTransactionsOfClient(int clientID) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM 'Transaction' WHERE Sender ='"+clientID+"' or receiver ='"+clientID+"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
     /*
     * Admin Section
     * */
@@ -112,6 +125,19 @@ public class DatabaseDriver {
     * Utility Section
     * */
 
+    public ResultSet getClientID(String email) {
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT ID FROM Client WHERE email='"+email+"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
+    }
+
     public int getLastClientsId() {
         Statement statement;
         ResultSet resultSet;
@@ -149,4 +175,5 @@ public class DatabaseDriver {
         }
         return resultSet;
     }
+
 }
