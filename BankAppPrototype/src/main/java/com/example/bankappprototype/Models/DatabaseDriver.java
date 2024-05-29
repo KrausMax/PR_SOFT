@@ -2,6 +2,8 @@ package com.example.bankappprototype.Models;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DatabaseDriver {
     private Connection conn;
@@ -131,6 +133,19 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    public String getClientEmailByAccountID(int id) {
+        Statement statement;
+        ResultSet resultSet = null;
+        String name = "NameNotFound";
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("select email from Client join Account on client.ID = Account.Owner where Account.ID ="+ id +";");
+            name = resultSet.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
 
     /*
     * Utility Section
@@ -174,4 +189,84 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    public String verifyCard(String cardNumber, String sequenceNumber, String secretNumber) {
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("select Account from Card where Card.CardNumber='"+cardNumber+"' AND Card.SequenceNumber='"+sequenceNumber+"' AND card.SecretNumber='"+secretNumber+"';");
+            if (resultSet.isBeforeFirst() ) {
+                return resultSet.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean addToCardPayment(String accountID, String amount) {
+        PreparedStatement statement;
+        try {
+            statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
+
+            LocalDateTime ldt = LocalDateTime.now();
+
+            statement.setInt(1, 1);
+            statement.setFloat(2, Float.parseFloat(amount));
+            statement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
+            statement.setString(4,"Einzahlung");
+            statement.setString(5,TransactionTypes.BANKOMAT_EINZAHLUNG.toString());
+            statement.setInt(6,Integer.parseInt(accountID));
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean subtractFromCardPayment(String accountID, String amount) {
+        PreparedStatement statement;
+        try {
+            statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
+
+            LocalDateTime ldt = LocalDateTime.now();
+
+            statement.setInt(1, Integer.parseInt(accountID));
+            statement.setFloat(2, Float.parseFloat(amount));
+            statement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
+            statement.setString(4,"Abhebung");
+            statement.setString(5,TransactionTypes.BANKOMAT_BEHEBUNG.toString());
+            statement.setInt(6,1);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean payWithCard(String accountID, String amount, String message) {
+        PreparedStatement statement;
+        try {
+            statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
+
+            LocalDateTime ldt = LocalDateTime.now();
+
+            statement.setInt(1, Integer.parseInt(accountID));
+            statement.setFloat(2, Float.parseFloat(amount));
+            statement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
+            statement.setString(4, message);
+            statement.setString(5,TransactionTypes.KARTENZAHLUNG.toString());
+            statement.setInt(6,2);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

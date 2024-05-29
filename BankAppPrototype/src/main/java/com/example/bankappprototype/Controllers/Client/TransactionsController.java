@@ -4,13 +4,11 @@ import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Models.TransactionTypes;
 import com.example.bankappprototype.Views.TransactionCellFactory;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class TransactionsController implements Initializable {
@@ -20,6 +18,8 @@ public class TransactionsController implements Initializable {
 
     public ComboBox filter_box;
 
+    public TextField search_field;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initData();
@@ -28,7 +28,10 @@ public class TransactionsController implements Initializable {
 
         filter_box.getItems().add("");
         filter_box.getItems().addAll(TransactionTypes.values());
-        filter_box.setOnAction(actionEvent -> transactions_listview.setItems(Model.getInstance().getTransactions().filtered(transaction -> transaction.transactionTypeProperty().getValue().contains(filter_box.getValue().toString()))));
+        filter_box.getSelectionModel().select(0);
+        filter_box.setOnAction(actionEvent -> transactions_listview.setItems(Model.getInstance().getTransactions().filtered(transaction -> transaction.transactionTypeProperty().getValue().contains(filter_box.getValue().toString())).sorted()));
+
+        search_field.setOnAction(actionEvent -> transactions_listview.setItems(Model.getInstance().getTransactions().filtered(transaction -> transaction.messageProperty().getValue().contains(search_field.getText().toString()) && transaction.transactionTypeProperty().getValue().contains(filter_box.getValue().toString()))));
 
         ArrayList<Button> buttons = new ArrayList<>();
         Button button1 = new Button("Checking");

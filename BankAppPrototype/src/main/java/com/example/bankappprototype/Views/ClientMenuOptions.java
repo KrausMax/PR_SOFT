@@ -7,5 +7,6 @@ public enum ClientMenuOptions {
     PROFILE,
     FRIENDS,
     REPORT,
-    CREATE_SPACE
+    CREATE_SPACE,
+    BANKOMAT
 }
