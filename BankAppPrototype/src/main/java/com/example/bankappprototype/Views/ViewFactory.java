@@ -28,6 +28,7 @@ public class ViewFactory {
     private AnchorPane depositView;
     private AnchorPane friendsView;
     private AnchorPane reportView;
+    private AnchorPane bankomatView;
 
 
     public ViewFactory(){
@@ -128,6 +129,17 @@ public class ViewFactory {
             }
         }
         return createSpaceView;
+    }
+
+    public AnchorPane getBankomatView() {
+        if(bankomatView == null){
+            try {
+                bankomatView = new FXMLLoader(getClass().getResource("/Fxml/Client/Bankomat.fxml")).load();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return bankomatView;
     }
 
 

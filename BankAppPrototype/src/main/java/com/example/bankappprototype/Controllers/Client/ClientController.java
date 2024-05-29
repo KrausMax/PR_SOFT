@@ -21,6 +21,7 @@ public class ClientController implements Initializable {
                 case FRIENDS -> client_parent.setCenter(Model.getInstance().getViewFactory().getFriendsView());
                 case REPORT -> client_parent.setCenter(Model.getInstance().getViewFactory().getReportView());
                 case CREATE_SPACE -> client_parent.setCenter(Model.getInstance().getViewFactory().getCreateSpaceView());
+                case BANKOMAT -> client_parent.setCenter(Model.getInstance().getViewFactory().getBankomatView());
                 default -> client_parent.setCenter(Model.getInstance().getViewFactory().getDashboardView());
             }
         });

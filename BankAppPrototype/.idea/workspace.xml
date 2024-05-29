@@ -4,24 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/TransactionTypes.java" afterDir="false" />
+    <list default="true" id="d05e2029-86ba-4d7a-96b9-c07ca351aedc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/BankomatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Bankomat.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/CreateSpace.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/CreateSpace.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/CheckingAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/SavingsAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ClientMenuOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ClientMenuOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/ClientMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/ClientMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/TransactionCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/TransactionCell.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transactions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transactions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Client/ClientMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Client/ClientMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Client/Transactions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Client/Transactions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientMenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/TransactionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/TransactionsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Views/ViewFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,145 +36,59 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="CSS File" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2eGwW1AjNh07L79N2nk2x26oOTk" />
+  <component name="ProjectId" id="2h8RBzhMqIvCTQfGa5xSm964FvB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "19-transaktionen-anzeigen",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/SceneBuilder/SceneBuilder.exe",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+    "last_opened_file_path": "C:/Users/maxim/OneDrive/ASMDW/_Maximilian/Uni/PR_SOFT/PR_SOFT/BankAppPrototype/src/main/resources/Fxml/Client/Bankomat.fxml",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.bankappprototype.App" />
       <module name="BankAppPrototype" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.bankappprototype.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
-      </set>
-    </attachedChunks>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c9ffd359-9683-440c-97ea-6d1d3fda8a53" name="Changes" comment="" />
-      <created>1711544252521</created>
+      <changelist id="d05e2029-86ba-4d7a-96b9-c07ca351aedc" name="Changes" comment="" />
+      <created>1716973586804</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1711544252521</updated>
-      <workItem from="1711544253563" duration="4262000" />
-      <workItem from="1711551189261" duration="16917000" />
-      <workItem from="1711631173572" duration="610000" />
-      <workItem from="1712330432876" duration="339000" />
-      <workItem from="1712330784014" duration="35000" />
-      <workItem from="1712330829273" duration="804000" />
-      <workItem from="1712435205230" duration="16587000" />
-      <workItem from="1712482858149" duration="9760000" />
-      <workItem from="1712493956793" duration="3079000" />
-      <workItem from="1712502726852" duration="474000" />
-      <workItem from="1712507578404" duration="10436000" />
-      <workItem from="1712532084013" duration="3159000" />
-      <workItem from="1712570462102" duration="2532000" />
-      <workItem from="1712596276951" duration="2981000" />
-      <workItem from="1712602564645" duration="1261000" />
-      <workItem from="1713724933335" duration="2376000" />
-      <workItem from="1713728015577" duration="42000" />
-      <workItem from="1713728101001" duration="4187000" />
-      <workItem from="1713783356799" duration="443000" />
-      <workItem from="1713788077932" duration="10175000" />
-      <workItem from="1715539560135" duration="13738000" />
+      <updated>1716973586804</updated>
     </task>
-    <task id="LOCAL-00001" summary="#11">
-      <option name="closed" value="true" />
-      <created>1713730976267</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1713730976267</updated>
-    </task>
-    <task id="LOCAL-00002" summary="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use">
-      <option name="closed" value="true" />
-      <created>1715606991437</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1715606991437</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="#11" />
-    <MESSAGE value="#12 and #13" />
-    <MESSAGE value="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use" />
-    <option name="LAST_COMMIT_MESSAGE" value="#19 added Transactions Page and TransactionsCell factory, Client ID added for further use" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IllegalStateException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

@@ -69,7 +69,13 @@ public class Model {
         return client;
     }
 
+    public String getClientEmailByAccountID(int id){
+        return databaseDriver.getClientEmailByAccountID(id);
+    }
 
+    public String verifyCard(String cardNumber, String sequenceNumber, String secretNumber){
+        return databaseDriver.verifyCard(cardNumber,sequenceNumber,secretNumber);
+    }
 
     public void evaluateClientCred(String pAddress, String password) {
         CheckingAccount checkingAccount;
@@ -114,7 +120,7 @@ public class Model {
                 String type = resultSet.getString("transaction_type");
                 String [] dateParts = resultSet.getString("Date").split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
-                transactions.add(new Transaction(sender, receiver, amount, date, message, type));
+                transactions.add(0,new Transaction(sender, receiver, amount, date, message, type));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -211,6 +217,18 @@ public class Model {
 
     public void setActiveAccount(int activeAccount) {
         this.activeAccount = activeAccount;
+    }
+
+    public boolean addToCard(String accountID, String amount) {
+        return databaseDriver.addToCardPayment(accountID,amount);
+    }
+
+    public boolean subtractFromCard(String accountID, String amount) {
+        return databaseDriver.subtractFromCardPayment(accountID,amount);
+    }
+
+    public boolean payWithCard(String accountID, String amount, String message) {
+        return databaseDriver.payWithCard(accountID,amount,message);
     }
 }
 
