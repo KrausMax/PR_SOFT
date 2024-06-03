@@ -12,13 +12,6 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="450.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.LoginController">
-   <VBox prefHeight="150.0" prefWidth="221.0" styleClass="login_logo_container" AnchorPane.bottomAnchor="295.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-   <VBox layoutY="293.0" prefHeight="150.0" prefWidth="221.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-      <styleClass>
-         <String fx:value="login_logo_container" />
-         <String fx:value="login_logo_three" />
-      </styleClass>
-   </VBox>
    <VBox layoutX="236.0" layoutY="14.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
       <Label id="choice-prompt-text" text="Account-Typ" />
       <ChoiceBox fx:id="acc_selector" prefWidth="90.0" styleClass="account_selector" />
@@ -34,15 +27,18 @@
       <Label text="Kontaktieren sie uns!" />
       <Button fx:id="register_btn" mnemonicParsing="false" text="Kontakformular" />
    </VBox>
-   <VBox layoutX="9.0" layoutY="150.0" prefHeight="150.0" prefWidth="221.0" AnchorPane.leftAnchor="0.0">
+   <VBox layoutX="9.0" layoutY="-1.0" prefHeight="459.0" prefWidth="220.0" AnchorPane.leftAnchor="0.0">
       <children>
-         <FontAwesomeIconView fill="#cde5d7" glyphName="BANK" size="30" text="" />
-         <VBox prefHeight="200.0" prefWidth="100.0" />
-         <Text rotate="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Bank" />
+         <Text rotate="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elysia Bank" />
       </children>
       <styleClass>
          <String fx:value="login_logo_container" />
          <String fx:value="login_logo_two" />
       </styleClass>
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="125.0" prefWidth="220.0" styleClass="login_logo_container">
+      <children>
+         <FontAwesomeIconView fill="#cde5d7" glyphName="BANK" size="75" text="" />
+      </children>
    </VBox>
 </AnchorPane>

@@ -9,7 +9,7 @@
 }
 
 .report_container_header {
-    -fx-background-color: #202030;
+    -fx-background-color: #023020;
     -fx-alignment: center;
 }
 
@@ -19,12 +19,12 @@
 }
 
 .report_container_header Text {
-    -fx-font-size: 2.5em;
+    -fx-font-size: 4.0em;
     -fx-fill: #FFFFFF;
 }
 
 .report_container Button {
-    -fx-background-color: linear-gradient(to right, #202030, #c2c2ed);
+    -fx-background-color: linear-gradient(to right, #023020, #09dc92);
     -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
     -fx-pref-width: 230;
     -fx-font-size: 1.5em;

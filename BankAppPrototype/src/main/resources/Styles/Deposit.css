@@ -23,7 +23,7 @@ TextField {
 }
 
 Button {
-    -fx-background-color: linear-gradient(to right, #202030, #c2c2ed);
+    -fx-background-color: linear-gradient(to right, #023020, #09dc92);
     -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
     -fx-font-size: 1.6em;
     -fx-text-fill: #FFFFFF;

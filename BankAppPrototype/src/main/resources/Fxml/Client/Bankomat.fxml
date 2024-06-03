@@ -5,14 +5,17 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.BankomatController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="bankomat_container" stylesheets="@../../Styles/Bankomat.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.BankomatController">
    <children>
-      <Label alignment="TOP_CENTER" layoutX="330.0" layoutY="26.0" prefHeight="61.0" prefWidth="204.0" text="BANKOMAT" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <font>
-            <Font size="38.0" />
-         </font></Label>
+      <HBox layoutX="30.0" layoutY="30.0" prefHeight="100.0" prefWidth="850.0" styleClass="bankomat_container_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#fcf7f7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bankomat_text" text="Bankomat" />
+         </children>
+      </HBox>
       <SplitPane dividerPositions="0.44047619047619047" layoutY="328.0" orientation="VERTICAL" prefHeight="422.0" prefWidth="850.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="249.0" prefWidth="848.0">
@@ -22,11 +25,11 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Button fx:id="inbutton" layoutX="231.0" layoutY="156.0" mnemonicParsing="false" text="Einzahlung" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0">
+                  <Button fx:id="inbutton" layoutX="231.0" layoutY="156.0" mnemonicParsing="false" styleClass="bankomat_button" text="Einzahlung" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                  <Button fx:id="outbutton" layoutX="525.0" layoutY="156.0" mnemonicParsing="false" text="Auszahlung" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="200.0">
+                  <Button fx:id="outbutton" layoutX="525.0" layoutY="156.0" mnemonicParsing="false" styleClass="bankomat_button" text="Auszahlung" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="200.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -56,7 +59,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="cardpaybutton" mnemonicParsing="false" text="Zahlung Bestaetigen" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="120.0">
+                  <Button fx:id="cardpaybutton" mnemonicParsing="false" styleClass="bankomat_button" text="Zahlung Bestaetigen" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="120.0">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -74,7 +77,7 @@
       <Label layoutX="109.0" layoutY="203.0" text="Kartennummer" />
       <Label layoutX="351.0" layoutY="203.0" text="Folgenummer" />
       <Label layoutX="585.0" layoutY="203.0" text="Geheimzahl" />
-      <Button fx:id="verifybutton" layoutX="760.0" layoutY="227.0" mnemonicParsing="false" text="Verify" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="220.0">
+      <Button fx:id="verifybutton" layoutX="760.0" layoutY="227.0" mnemonicParsing="false" styleClass="bankomat_button" text="Verify" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="220.0">
          <font>
             <Font size="16.0" />
          </font></Button>

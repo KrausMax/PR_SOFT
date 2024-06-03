@@ -1,0 +1,27 @@
+
+.bankomat_container_header {
+    -fx-background-color: #023020;
+    -fx-alignment: center;
+}
+
+
+.bankomat_container Text {
+    -fx-fill: #000000;
+    -fx-font-size: 2.5em;
+    -fx-font-family: "Calibri Light";
+}
+
+.bankomat_text {
+    -fx-font-size: 4.0em;
+    -fx-fill: #FFFFFF;
+}
+
+.bankomat_button {
+    -fx-background-color: #023020;
+    -fx-text-fill: #FFFFFF;
+}
+
+.bankomat_lbl {
+    -fx-background-color: #023020;
+    -fx-alignment: center;
+}

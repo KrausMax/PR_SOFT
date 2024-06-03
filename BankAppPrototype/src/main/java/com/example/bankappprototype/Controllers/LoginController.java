@@ -29,10 +29,23 @@ public class LoginController implements Initializable {
         acc_selector.setValue(Model.getInstance().getViewFactory().getLoginAccountType());
         acc_selector.valueProperty().addListener(observable -> Model.getInstance().getViewFactory().setLoginAccountType(acc_selector.getValue()));
         login_btn.setOnAction(event -> onLogin());
+
+        // Event Handler so the User is able to press enter to log in
+        payee_address_fld.setOnAction(event -> login_btn.fire());
+        password_fld.setOnAction(event -> login_btn.fire());
     }
 
     private void onLogin() {
         Stage stage = (Stage) error_lbl.getScene().getWindow();
+        String emailAddress = payee_address_fld.getText();
+        String password = password_fld.getText();
+
+        if (emailAddress.isEmpty() || password.isEmpty()) {
+            error_lbl.setText("Bitte E-Mail-Adresse und Passwort eingeben!");
+            return;
+        }
+
+
         if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.CLIENT) {
             // Evaluate Client Login Credentials
             Model.getInstance().evaluateClientCred(payee_address_fld.getText(), password_fld.getText());

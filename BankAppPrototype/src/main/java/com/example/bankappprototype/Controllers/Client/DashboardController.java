@@ -8,6 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -30,6 +32,15 @@ public class DashboardController implements Initializable {
         Account mainAcc = Model.getInstance().getClient().checkingAccountProperty().getValue();
         checking_bal.setText(""+ mainAcc.balanceProperty().get());
         mainAccNum_lbl.setText(mainAcc.accountNumberProperty().get());
+
+        // Greeting Message
+        String firstName = Model.getInstance().getClient().firstNameProperty().get();
+        user_name.setText("Hallo " + firstName);
+
+        // Current Date
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        login_date.setText(currentDate.format(formatter));
 
         initSpaceData();
         space_listview.setItems(Model.getInstance().getSpaces());

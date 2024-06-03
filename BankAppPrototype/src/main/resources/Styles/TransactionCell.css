@@ -21,16 +21,23 @@
     -fx-font-weight: 700;
 }
 
+.trans_pAddress_lbl2 {
+    -fx-text-fill: #000000;
+    -fx-font-weight: 700;
+    -fx-font-size: 1.4em;
+}
+
 .cell_container Line {
     -fx-stroke: #EEEEEE;
 }
 
 .trans_amount_lbl {
-    -fx-background-color: #202030;
+    -fx-background-color: #023020;
     -fx-background-radius: 2;
     -fx-text-fill: #FFFFFF;
     -fx-padding: 5;
     -fx-font-weight: 700;
+    -fx-font-size: 1.2em;
 }
 
 .trans_amount_lbl FontAwesomeIconView {

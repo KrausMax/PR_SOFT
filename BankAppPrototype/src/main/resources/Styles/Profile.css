@@ -4,32 +4,22 @@
 
 .profile_container Text {
     -fx-fill: #000000;
-    -fx-font-size: 1.5em;
+    -fx-font-size: 2.0em;
     -fx-font-family: "Calibri Light";
 }
 
-.profile_container .list-view {
-    -fx-background-color: #c2c2ed;
-    -fx-padding: 10;
+.profile_container TextField {
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.3em;
 }
 
-.profile_container .list-cell {
-    -fx-background-color: #c2c2ed;
-    -fx-pref-width: 800;
-}
-
-.profile_container_header {
-    -fx-background-color: #202030;
-    -fx-alignment: center;
-}
-
-.profile_container_header Text {
-    -fx-font-size: 2.5em;
-    -fx-fill: #FFFFFF;
+.profile_container PasswordField {
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.3em;
 }
 
 .profile_container Button {
-    -fx-background-color: linear-gradient(to right, #202030, #c2c2ed);
+    -fx-background-color: linear-gradient(to right, #023020 , #09dc92);
     -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
     -fx-pref-width: 230;
     -fx-font-size: 1.5em;
@@ -38,7 +28,7 @@
 }
 
 .show_button {
-    -fx-background-color: #202030;
+    -fx-background-color: #023020;
     -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
     -fx-pref-width: 80;
     -fx-font-size: 1.1em;
@@ -55,29 +45,45 @@
 
 }
 
+/* Changes for the "Profile" Header */
+.profile_text_header {
+    -fx-fill: #023020;
+    -fx-font-size: 4.0em;
+    -fx-font-family: "Calibri Light";
+    -fx-font-weight: bold;
+
+}
+
 .profile_change_text {
     -fx-background-color: #ada8a8;
     -fx-pref-width: 200;
 }
 
-.title_container {
-    -fx-background-color: #EEEEEE;
-    -fx-background-radius: 20 20 0 0;
-    -fx-alignment: top_center;
-    -fx-padding: 10;
-}
-
-.title_container FontAwesomeIconView {
-    -fx-fill: #202030;
-}
-
-.title_container Text {
-    -fx-font-size: 3em;
-    -fx-fill: #000000;
-    -fx-font-family: fantasy;
-    -fx-font-weight: bold;;
-}
 
 .error_lbl {
     -fx-text-fill: #04c70c;
+}
+
+
+/* Profil Logo Container Styles */
+.profile_logo_container {
+    -fx-background-color: #023020;
+    -fx-alignment: center;
+}
+
+.profile_logo_container Text {
+    -fx-font-size: 3.5em;
+    -fx-fill: #FFFFFF;
+    -fx-font-family: fantasy;
+    -fx-font-weight: bold;
+}
+
+.profile_logo_container FontAwesomeIconView {
+    -fx-fill: #B0C0BC0;
+
+}
+
+.profile_change_text {
+    -fx-background-color: #ada8a8;
+    -fx-pref-width: 200;
 }

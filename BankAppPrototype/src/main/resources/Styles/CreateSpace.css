@@ -1,0 +1,59 @@
+/* Space Anlegen Container Styles */
+.create_space_container {
+    -fx-background-color: #EEEEEE;
+}
+
+.create_space_container Text {
+    -fx-fill: #000000;
+    -fx-font-size: 2.5em;
+    -fx-font-family: "Calibri Light";
+}
+
+
+.create_space_container TextField {
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 2em;
+}
+
+.create_space_container Button {
+    -fx-background-color: linear-gradient(to right, #023020, #09dc92);
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
+    -fx-pref-width: 230;
+    -fx-font-size: 1.5em;
+    -fx-font-family: "Calibri Light";
+    -fx-text-fill: #FFFFFF;
+}
+
+.create_space_container Button:hover {
+    -fx-cursor: hand;
+}
+
+/* Space Anlegen Logo Container Styles */
+.create_space_logo_container {
+    -fx-background-color: #023020;
+    -fx-alignment: center;
+}
+
+.create_space_logo_container Text {
+    -fx-font-size: 3.5em;
+    -fx-fill: #FFFFFF;
+    -fx-font-family: fantasy;
+    -fx-font-weight: bold;
+}
+
+.create_space_logo_container FontAwesomeIconView {
+    -fx-fill: #B0C0BC0;
+
+}
+
+.create_space_change_text {
+    -fx-background-color: #ada8a8;
+    -fx-pref-width: 200;
+}
+
+
+
+/* Space Anlegen Error Label Styles */
+.error_lbl {
+    -fx-text-fill: #04c70c;
+}

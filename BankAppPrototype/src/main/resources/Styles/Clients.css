@@ -22,3 +22,13 @@
 .clients_container Button:hover {
     -fx-cursor: hand;
 }
+
+.clients_container_header {
+    -fx-background-color: #023020;
+    -fx-alignment: center;
+}
+
+.clients_container_header Text {
+    -fx-font-size: 3.0em;
+    -fx-fill: #FFFFFF;
+}

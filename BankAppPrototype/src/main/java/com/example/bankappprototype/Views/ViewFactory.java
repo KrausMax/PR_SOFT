@@ -214,7 +214,7 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Images/pepe.png"))));
         stage.setResizable(false);
-        stage.setTitle("Test Bank");
+        stage.setTitle("Elysia Bank");
         stage.show();
     }
 
