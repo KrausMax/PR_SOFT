@@ -1,5 +1,8 @@
 package com.example.bankappprototype.Controllers.Client;
 
+import com.example.bankappprototype.Models.Account;
+import com.example.bankappprototype.Models.Model;
+import com.example.bankappprototype.Views.SpaceCellFactory;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -13,16 +16,32 @@ public class DashboardController implements Initializable {
     public Label checking_bal;
     public Label income_lbl;
     public Label expense_lbl;
-    public ListView transaction_listview;
     public TextField payee_fld;
     public TextArea message_fld;
     public Button send_money_btn;
     public Label space_lbl;
     public TextField name_fld;
     public Label space_lbl1;
+    public ListView space_listview;
+    public Label mainAccNum_lbl;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Account mainAcc = Model.getInstance().getClient().checkingAccountProperty().getValue();
+        checking_bal.setText(""+ mainAcc.balanceProperty().get());
+        mainAccNum_lbl.setText(mainAcc.accountNumberProperty().get());
 
+        initSpaceData();
+        space_listview.setItems(Model.getInstance().getSpaces());
+        space_listview.setCellFactory(e -> new SpaceCellFactory());
+
+    }
+
+    private void initSpaceData() {
+        setCurrentSpaces(Model.getInstance().getClient().checkingAccountProperty().getValue().idProperty().getValue());
+    }
+    private void setCurrentSpaces(int accountID){
+        Model.getInstance().setActiveAccount(accountID);
+        Model.getInstance().setSpaces(accountID);
     }
 }

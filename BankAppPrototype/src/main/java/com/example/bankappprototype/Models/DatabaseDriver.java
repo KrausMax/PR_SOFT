@@ -57,6 +57,19 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    public ResultSet getAllSpaces(int clientID) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM 'Account' WHERE OWNER ='"+clientID+"' AND MAINACCOUNT = '0';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
     /*
     * Admin Section
     * */

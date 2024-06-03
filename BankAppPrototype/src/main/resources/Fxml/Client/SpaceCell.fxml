@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="space_pane" prefHeight="60.0" prefWidth="584.0" styleClass="cell_container" stylesheets="@../../Styles/TransactionCell.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="account_number_lbl" layoutX="245.0" layoutY="23.0" styleClass="trans_pAddress_lbl" text="AT74 2032 0321 0222 1082" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="23.0" />
+    <Label fx:id="balance_lbl" layoutX="739.0" layoutY="18.0" styleClass="trans_amount_lbl" text="1000" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="18.0" />
+</AnchorPane>

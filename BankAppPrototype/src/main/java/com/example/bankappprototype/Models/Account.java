@@ -2,7 +2,7 @@ package com.example.bankappprototype.Models;
 
 import javafx.beans.property.*;
 
-public abstract class Account {
+public class Account {
     private final IntegerProperty owner;
     private final StringProperty accountNumber;
     private final DoubleProperty balance;

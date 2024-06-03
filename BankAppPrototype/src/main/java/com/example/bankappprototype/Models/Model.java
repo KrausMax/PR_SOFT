@@ -18,6 +18,7 @@ public class Model {
     private final Client client;
     private boolean clientLoginSuccessFlag;
     private final ObservableList<Transaction> transactions;
+    private final ObservableList<Account> spaces;
     private int activeAccount;
 
     // Admin Data Section
@@ -32,6 +33,7 @@ public class Model {
         this.clientLoginSuccessFlag = false;
         this.client = new Client("","","","",1,null,null, null);
         this.transactions = FXCollections.observableArrayList();
+        this.spaces = FXCollections.observableArrayList();
         // Admin Data Section
         this.adminLoginSuccessFlag = false;
         this.clients = FXCollections.observableArrayList();
@@ -121,6 +123,28 @@ public class Model {
                 String [] dateParts = resultSet.getString("Date").split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 transactions.add(0,new Transaction(sender, receiver, amount, date, message, type));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Account> getSpaces() {
+        return spaces;
+    }
+
+    public void setSpaces(int account_id) {
+        spaces.clear();
+
+        ResultSet resultSet = databaseDriver.getAllSpaces(account_id);
+
+        try {
+            while(resultSet.next()) {
+                int owner = resultSet.getInt("Owner");
+                String accountNumber = resultSet.getString("AccountNumber");
+                double balance = resultSet.getDouble("Balance");
+                int id = resultSet.getInt("ID");
+                spaces.add(0,new Account(owner, accountNumber, balance, id));
             }
         } catch (Exception e) {
             e.printStackTrace();
