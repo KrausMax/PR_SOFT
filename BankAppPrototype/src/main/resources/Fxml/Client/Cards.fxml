@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="report_container" stylesheets="@../../Styles/Report.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.ReportController">
+    <HBox layoutX="20.0" layoutY="20.0" prefHeight="100.0" prefWidth="850.0" styleClass="report_container_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Text fill="#fcf7f7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="friends_text" text="Karten von" />
+      <Label prefHeight="26.0" prefWidth="96.0" text="IBAN" textFill="WHITE" />
+    </HBox>
+   <ListView layoutX="6.0" layoutY="108.0" prefHeight="630.0" prefWidth="831.0" />
+</AnchorPane>

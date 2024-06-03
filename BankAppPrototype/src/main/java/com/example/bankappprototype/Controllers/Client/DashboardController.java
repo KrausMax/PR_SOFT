@@ -3,8 +3,10 @@ package com.example.bankappprototype.Controllers.Client;
 import com.example.bankappprototype.Models.Account;
 import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Views.SpaceCellFactory;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -24,6 +26,7 @@ public class DashboardController implements Initializable {
     public Label space_lbl1;
     public ListView space_listview;
     public Label mainAccNum_lbl;
+    public Button showCards_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,6 +38,7 @@ public class DashboardController implements Initializable {
         space_listview.setItems(Model.getInstance().getSpaces());
         space_listview.setCellFactory(e -> new SpaceCellFactory());
 
+        showCards_btn.setOnAction(event -> transferDialogue());
     }
 
     private void initSpaceData() {
@@ -43,5 +47,16 @@ public class DashboardController implements Initializable {
     private void setCurrentSpaces(int accountID){
         Model.getInstance().setActiveAccount(accountID);
         Model.getInstance().setSpaces(accountID);
+    }
+
+    public void transferDialogue() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/Fxml/Client/TransferDialogue.fxml"));
+            Pane transferDialogPane =fxmlLoader.load();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

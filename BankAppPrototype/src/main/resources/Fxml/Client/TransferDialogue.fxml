@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<DialogPane prefHeight="320.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.TransferDialogueController">
+   <content>
+      <AnchorPane prefHeight="296.0" prefWidth="472.0">
+         <children>
+            <TextField layoutX="270.0" layoutY="26.0" prefHeight="25.0" prefWidth="152.0" />
+            <TextField layoutX="267.0" layoutY="99.0" prefHeight="25.0" prefWidth="164.0" />
+            <TextArea layoutX="268.0" layoutY="153.0" prefHeight="81.0" prefWidth="159.0" />
+            <Button layoutX="224.0" layoutY="261.0" mnemonicParsing="false" text="Überweisung freigeben" />
+            <Button layoutX="379.0" layoutY="261.0" mnemonicParsing="false" text="Abbrechen" />
+            <Text layoutX="53.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iban" />
+            <Text layoutX="53.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betrag" />
+            <Text layoutX="53.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verwendungszweck" />
+         </children>
+      </AnchorPane>
+   </content>
+</DialogPane>
