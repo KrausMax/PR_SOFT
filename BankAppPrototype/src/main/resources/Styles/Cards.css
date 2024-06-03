@@ -1,0 +1,36 @@
+
+.cards_container {
+    -fx-background-color: #EEEEEE;
+}
+
+.cards_container Text {
+    -fx-fill: #00000;
+    -fx-font-size: 1.5em;
+
+}
+
+.cards_container .list-view {
+    -fx-background-color: #e7fef6;
+    -fx-padding: 10;
+}
+
+.cards_container .list-cell {
+    -fx-background-color: #e7fef6;
+    -fx-pref-width: 800;
+}
+
+.cards_container_header {
+    -fx-background-color: #023020;
+    -fx-alignment: center;
+}
+
+.cards_container_header Text {
+    -fx-font-size: 3.0em;
+    -fx-fill: #FFFFFF;
+}
+
+.cards_container_header Label {
+    -fx-font-size: 3.0em;
+    -fx-fill: #FFFFFF;
+}
+

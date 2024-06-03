@@ -1,0 +1,17 @@
+
+.cell_container {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 7);
+}
+
+.cell_container Label {
+    -fx-text-fill: #000000;
+    -fx-font-weight: 700;
+}
+
+.cell_container Line {
+    -fx-stroke: #EEEEEE;
+}
+
+
