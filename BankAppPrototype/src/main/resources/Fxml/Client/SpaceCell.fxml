@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="space_pane" prefHeight="60.0" prefWidth="584.0" styleClass="cell_container" stylesheets="@../../Styles/TransactionCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="space_pane" prefHeight="60.0" prefWidth="584.0" styleClass="cell_container" stylesheets="@../../Styles/TransactionCell.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <Label fx:id="account_number_lbl" alignment="CENTER" layoutX="245.0" layoutY="23.0" styleClass="trans_pAddress_lbl2" text="AT74 2032 0321 0222 1082" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="20.0" />
     <Label fx:id="balance_lbl" layoutX="526.0" layoutY="14.0" styleClass="trans_amount_lbl" text="1000" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="15.0" />
+   <Button fx:id="showCards_btn" layoutX="57.0" layoutY="19.0" mnemonicParsing="false" text="Karten anzeigen" />
 </AnchorPane>

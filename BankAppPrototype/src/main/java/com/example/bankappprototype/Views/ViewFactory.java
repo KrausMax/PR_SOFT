@@ -1,7 +1,9 @@
 package com.example.bankappprototype.Views;
 
 import com.example.bankappprototype.Controllers.Admin.AdminController;
+import com.example.bankappprototype.Controllers.Client.CardsController;
 import com.example.bankappprototype.Controllers.Client.ClientController;
+import com.example.bankappprototype.Models.Model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +31,7 @@ public class ViewFactory {
     private AnchorPane friendsView;
     private AnchorPane reportView;
     private AnchorPane bankomatView;
+    private AnchorPane cardsView;
 
 
     public ViewFactory(){
@@ -142,6 +145,19 @@ public class ViewFactory {
         return bankomatView;
     }
 
+    public AnchorPane getCardsView() {
+        if (cardsView == null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Cards.fxml"));
+            CardsController controller = new CardsController(Model.getInstance().getCardIban());
+            loader.setController(controller);
+            try {
+                cardsView = loader.load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return cardsView;
+    }
 
     public void showClientWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Client/Client.fxml"));

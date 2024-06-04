@@ -70,6 +70,33 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    public ResultSet getCards(String iban) {
+        int account = getAccountId(iban);
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM 'Card' WHERE ACCOUNT ="+account+";");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  resultSet;
+    }
+
+    public int getAccountId(String iban) {
+        int accountID = -1;
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("select ID from Account where AccountNumber ='"+ iban +"';");
+            accountID = resultSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return accountID;
+    }
     /*
     * Admin Section
     * */
