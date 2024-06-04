@@ -2,6 +2,7 @@ package com.example.bankappprototype.Controllers.Client;
 
 import com.example.bankappprototype.Models.Account;
 import com.example.bankappprototype.Models.Model;
+import com.example.bankappprototype.Views.ClientMenuOptions;
 import com.example.bankappprototype.Views.SpaceCellFactory;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -26,6 +27,7 @@ public class DashboardController implements Initializable {
     public Label space_lbl1;
     public ListView space_listview;
     public Label mainAccNum_lbl;
+    public Button showCards_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,7 +47,14 @@ public class DashboardController implements Initializable {
         initSpaceData();
         space_listview.setItems(Model.getInstance().getSpaces());
         space_listview.setCellFactory(e -> new SpaceCellFactory());
+        
+        showCards_btn.setOnAction(Event -> showCards());
 
+    }
+
+    private void showCards() {
+        Model.getInstance().setCardIban(mainAccNum_lbl.getText());
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.CARDS);
     }
 
     private void initSpaceData() {

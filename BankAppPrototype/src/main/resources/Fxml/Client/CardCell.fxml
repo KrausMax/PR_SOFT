@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="60.0" prefWidth="822.0" styleClass="cell_container" stylesheets="@../../Styles/Cardcell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.CardCellController">
+<AnchorPane prefHeight="60.0" prefWidth="822.0" styleClass="cell_container" stylesheets="@../../Styles/Cardcell.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <Label fx:id="iban_lbl" layoutX="79.0" layoutY="22.0" text="XXXX XXXX XXXX XXXX" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="23.0" />
     <Line endX="100.0" endY="-17.0" layoutX="185.0" layoutY="17.0" startX="100.0" startY="43.0" />
     <Label fx:id="seq_num_lbl" layoutX="395.0" layoutY="22.0" text="XX" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="23.0" />
-    <Label fx:id="sec_num_lbl" layoutX="613.0" layoutY="22.0" text="XXX" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="23.0" />
     <Line endX="100.0" layoutX="410.0" startX="100.0" startY="60.5" />
-    <CheckBox layoutX="695.0" layoutY="23.0" mnemonicParsing="false" text="PIN anzeigen" AnchorPane.topAnchor="23.0" />
+    <CheckBox fx:id="show_box" layoutX="695.0" layoutY="23.0" mnemonicParsing="false" text="PIN anzeigen" AnchorPane.topAnchor="23.0" />
+   <PasswordField fx:id="phidden_fld" editable="false" layoutX="577.0" layoutY="18.0" prefHeight="25.0" prefWidth="43.0" text="1234" />
+   <TextField fx:id="pplain_fld" editable="false" layoutX="577.0" layoutY="18.0" prefHeight="25.0" prefWidth="43.0" visible="false" />
 </AnchorPane>

@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="profile_container" stylesheets="@../../Styles/Profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.ProfileController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="profile_container" stylesheets="@../../Styles/Profile.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.ProfileController">
    <HBox alignment="CENTER" layoutX="374.0" prefHeight="100.0" prefWidth="236.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="profile_text_header" text="Mein Profil" />
@@ -47,7 +40,7 @@
       </children>
     </HBox>
     <PasswordField fx:id="password_fld" layoutX="495.0" layoutY="503.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="519.0" />
-   <TextField fx:id="plaintxt_password_fld" editable="false" layoutX="180.0" layoutY="500.0" prefHeight="25.0" prefWidth="200.0" visible="false" />
+   <TextField fx:id="plaintxt_password_fld" editable="false" layoutX="500.0" layoutY="519.0" prefHeight="25.0" prefWidth="200.0" visible="false" />
    <CheckBox fx:id="show_box" layoutX="711.0" layoutY="524.0" mnemonicParsing="false" text="Passwort anzeigen" />
     <Text layoutX="463.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort ändern:" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="572.0" />
     <TextField fx:id="password_change_fld" layoutX="619.0" layoutY="535.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="569.0" />

@@ -19,7 +19,9 @@ public class Model {
     private boolean clientLoginSuccessFlag;
     private final ObservableList<Transaction> transactions;
     private final ObservableList<Account> spaces;
+    private final ObservableList<Card> cards;
     private int activeAccount;
+    private String cardIban;
 
     // Admin Data Section
     private boolean adminLoginSuccessFlag;
@@ -34,6 +36,7 @@ public class Model {
         this.client = new Client("","","","",1,null,null, null);
         this.transactions = FXCollections.observableArrayList();
         this.spaces = FXCollections.observableArrayList();
+        this.cards = FXCollections.observableArrayList();
         // Admin Data Section
         this.adminLoginSuccessFlag = false;
         this.clients = FXCollections.observableArrayList();
@@ -123,6 +126,25 @@ public class Model {
                 String [] dateParts = resultSet.getString("Date").split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 transactions.add(0,new Transaction(sender, receiver, amount, date, message, type));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Card> getCards() { return cards; }
+    public void setCards(String iban) {
+        cards.clear();
+
+        ResultSet resultSet = databaseDriver.getCards(iban);
+
+        try {
+            while(resultSet.next()) {
+                int account =resultSet.getInt("Account");
+                String cardNumber = resultSet.getString("CardNumber");
+                int sequenceNumber = resultSet.getInt("SequenceNumber");
+                int pin = resultSet.getInt("SecretNumber");
+                cards.add(0,new Card(account, cardNumber, sequenceNumber, pin));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -253,6 +275,13 @@ public class Model {
 
     public boolean payWithCard(String accountID, String amount, String message) {
         return databaseDriver.payWithCard(accountID,amount,message);
+    }
+
+    public String getCardIban() {
+        return cardIban;
+    }
+    public void setCardIban(String iban) {
+        this.cardIban = iban;
     }
 }
 
