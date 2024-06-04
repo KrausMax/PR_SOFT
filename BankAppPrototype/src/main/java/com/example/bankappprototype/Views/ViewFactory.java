@@ -146,15 +146,13 @@ public class ViewFactory {
     }
 
     public AnchorPane getCardsView() {
-        if (cardsView == null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Cards.fxml"));
-            CardsController controller = new CardsController(Model.getInstance().getCardIban());
-            loader.setController(controller);
-            try {
-                cardsView = loader.load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Cards.fxml"));
+        CardsController controller = new CardsController(Model.getInstance().getCardIban());
+        loader.setController(controller);
+        try {
+            cardsView = loader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return cardsView;
     }
