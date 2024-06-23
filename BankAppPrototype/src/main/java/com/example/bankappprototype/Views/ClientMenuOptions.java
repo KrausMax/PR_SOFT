@@ -9,5 +9,7 @@ public enum ClientMenuOptions {
     REPORT,
     CREATE_SPACE,
     BANKOMAT,
-    CARDS
+    CARDS,
+    CREATE_CARD,
+    EDIT_CARD
 }

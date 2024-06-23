@@ -2,7 +2,9 @@ package com.example.bankappprototype.Controllers.Client;
 
 import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Views.CardsCellFactory;
+import com.example.bankappprototype.Views.ClientMenuOptions;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
@@ -13,6 +15,7 @@ public class CardsController implements Initializable {
 
     public ListView cards_listview;
     public Label iban_lbl;
+    public Button order_card_btn;
 
     private final String iban;
     public CardsController(String iban) {
@@ -24,6 +27,11 @@ public class CardsController implements Initializable {
         initCardData();
         cards_listview.setItems(Model.getInstance().getCards());
         cards_listview.setCellFactory(e -> new CardsCellFactory());
+        order_card_btn.setOnAction(Event -> orderCards());
+    }
+
+    private void orderCards() {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.CREATE_CARD);
     }
 
     private void initCardData() {

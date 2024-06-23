@@ -4,6 +4,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 public class DatabaseDriver {
     private Connection conn;
@@ -84,6 +85,29 @@ public class DatabaseDriver {
         return  resultSet;
     }
 
+    public ResultSet getCard(String cardNum) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT CardLimit, StatusOnline, StatusTerminal FROM Card WHERE CardNumber = '"+cardNum+"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  resultSet;
+    }
+
+    public void updateCard(int limit, int online, int terminal) {
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE Card  SET CardLimit =" + limit + ", StatusOnline = " + online + ", StatusTerminal = " + terminal + " WHERE CardNumber = '" + Model.getInstance().getCardNum() + "';");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public int getAccountId(String iban) {
         int accountID = -1;
         Statement statement;
@@ -96,6 +120,19 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return accountID;
+    }
+    public double getAccountBalance(String iban) {
+        double balance = -1;
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("select Balance from Account where AccountNumber ='"+ iban +"';");
+            balance = resultSet.getDouble(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return balance;
     }
     /*
     * Admin Section
@@ -156,6 +193,42 @@ public class DatabaseDriver {
             statement.executeUpdate("INSERT INTO " +
                     "Account(Owner, AccountNumber, TransactionLimit, Balance, MainAccount, space_name, space_image)" +
                     "VALUES ('"+(getLastClientsId()+1)+"','"+number+"','"+tLimit+"','"+balance+"','"+0+"','"+space_name+"','"+space_image+"')");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createCard(int limit) {
+        String iban = Model.getInstance().getCardIban();
+        int account = getAccountId(iban);
+        String cardNumber = "";
+        Random random = new Random();
+        for (int i = 0; i < 3; i++) {
+            int randomNumber = random.nextInt(10000);
+            String formattedNumber = String.format("%04d", randomNumber);
+            cardNumber += formattedNumber + " ";
+        }
+        int randomNumber = random.nextInt(10000);
+        String formattedNumber = String.format("%04d", randomNumber);
+        cardNumber += formattedNumber;
+
+        int pin = 100 + random.nextInt(900);
+        int sequenceNum = 10 + random.nextInt(90);
+
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("INSERT INTO " +
+                    "Card(Account, CardNumber, SequenceNumber, SecretNumber, CardLimit, StatusOnline, StatusTerminal)" +
+                    "VALUES ('"+account+"','"+cardNumber+"','"+sequenceNum+"','"+pin+"','"+limit+"','"+1+"','"+1+"')");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE Account  SET Balance = Balance - 20 WHERE ID = " + account);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

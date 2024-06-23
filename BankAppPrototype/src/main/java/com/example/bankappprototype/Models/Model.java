@@ -22,6 +22,7 @@ public class Model {
     private final ObservableList<Card> cards;
     private int activeAccount;
     private String cardIban;
+    private String cardNum;
 
     // Admin Data Section
     private boolean adminLoginSuccessFlag;
@@ -283,5 +284,7 @@ public class Model {
     public void setCardIban(String iban) {
         this.cardIban = iban;
     }
+    public String getCardNum() { return cardNum; }
+    public void setCardNum(String cardNum) {this.cardNum = cardNum; }
 }
 

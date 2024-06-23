@@ -9,8 +9,9 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Karten von " />
       <Label fx:id="iban_lbl" text="IBAN" textFill="WHITE" />
    </HBox>
-   <ListView fx:id="cards_listview" layoutX="11.0" layoutY="131.0" prefHeight="634.0" prefWidth="822.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="131.0" />
+   <ListView fx:id="cards_listview" layoutX="11.0" layoutY="131.0" prefHeight="588.0" prefWidth="824.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="131.0" />
    <Text layoutX="88.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kartennummer" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="91.0" />
    <Text layoutX="315.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Folgenummer" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="91.0" />
    <Text layoutX="496.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PIN" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="91.0" />
+   <Button fx:id="order_card_btn" layoutX="709.0" layoutY="719.0" mnemonicParsing="false" text="Neue Karte bestellen" />
 </AnchorPane>

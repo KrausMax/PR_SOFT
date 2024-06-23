@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="profile_container" stylesheets="@../../Styles/Profile.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.EditCardController">
+    <HBox alignment="CENTER" layoutX="374.0" prefHeight="100.0" prefWidth="236.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="profile_text_header" text="Karte bearbeiten" />
+        </children>
+    </HBox>
+    <VBox alignment="CENTER" layoutX="24.0" layoutY="29.0" prefHeight="672.0" prefWidth="230.0" styleClass="profile_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <Text rotate="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elysia Bank" />
+        </children>
+    </VBox>
+    <VBox alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="125.0" prefWidth="230.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <FontAwesomeIconView fill="#cde5d7" glyphName="BANK" size="75" styleClass="create_space_logo_container" text="" />
+        </children>
+    </VBox>
+    <Text layoutX="307.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transakionslimit:" AnchorPane.leftAnchor="307.0" AnchorPane.topAnchor="303.0" />
+    <TextField fx:id="limit_fld" layoutX="500.0" layoutY="301.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="301.0" />
+    <Button fx:id="save_card_btn" layoutX="600.0" layoutY="702.0" mnemonicParsing="false" text="Speichern" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="700.0" />
+    <HBox layoutX="278.0" layoutY="113.0" prefHeight="150.0" prefWidth="153.0" styleClass="Hbox">
+        <children>
+            <ImageView fx:id="picture_imageview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../Images/pepe.png" />
+                </image>
+            </ImageView>
+        </children>
+    </HBox>
+    <Label fx:id="update_lbl" layoutX="618.0" layoutY="675.0" styleClass="error_lbl" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="618.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="675.0" />
+   <Text layoutX="335.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Onlinezahlung" />
+   <Text layoutX="334.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bankomatabhebung" />
+   <CheckBox fx:id="online_box" layoutX="307.0" layoutY="367.0" mnemonicParsing="false" />
+   <CheckBox fx:id="atm_box" layoutX="307.0" layoutY="424.0" mnemonicParsing="false" />
+
+</AnchorPane>
