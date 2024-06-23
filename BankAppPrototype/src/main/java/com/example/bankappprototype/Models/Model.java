@@ -18,6 +18,7 @@ public class Model {
     private final Client client;
     private boolean clientLoginSuccessFlag;
     private final ObservableList<Transaction> transactions;
+    private final ObservableList<Friends> friends;
     private final ObservableList<Account> spaces;
     private final ObservableList<Card> cards;
     private int activeAccount;
@@ -35,6 +36,7 @@ public class Model {
         this.clientLoginSuccessFlag = false;
         this.client = new Client("","","","",1,null,null, null);
         this.transactions = FXCollections.observableArrayList();
+        this.friends = FXCollections.observableArrayList();
         this.spaces = FXCollections.observableArrayList();
         this.cards = FXCollections.observableArrayList();
         // Admin Data Section
@@ -76,6 +78,10 @@ public class Model {
 
     public String getClientEmailByAccountID(int id){
         return databaseDriver.getClientEmailByAccountID(id);
+    }
+
+    public String getClientEmailByID(int id){
+        return databaseDriver.getClientEmailByID(id);
     }
 
     public String verifyCard(String cardNumber, String sequenceNumber, String secretNumber){
@@ -130,6 +136,27 @@ public class Model {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setFriends() {
+        friends.clear();
+
+        ResultSet resultSet = databaseDriver.getAllFriendsOfClient(client.idProperty().getValue());
+
+        try {
+            while(resultSet.next()) {
+                String client = String.valueOf(resultSet.getInt("Client"));
+                String friend = String.valueOf(resultSet.getInt("FriendClient"));
+                int sharedSpace = resultSet.getInt("SharedSpace");
+                friends.add(0,new Friends(client, friend, sharedSpace));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Friends> getFriends() {
+        return friends;
     }
 
     public ObservableList<Card> getCards() { return cards; }
@@ -250,7 +277,7 @@ public class Model {
             double wLimit = resultSet.getDouble("TransactionLimit");
             double balance = resultSet.getDouble("Balance");
             int id = resultSet.getInt("ID");
-            account = new SavingsAccount(owner, num, wLimit, balance, id);
+            account = new SavingsAccount(owner, num, balance, wLimit, id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -282,6 +309,33 @@ public class Model {
     }
     public void setCardIban(String iban) {
         this.cardIban = iban;
+    }
+
+    public boolean addNewFriend(int newFriendID) {
+        return databaseDriver.addNewFriend(client.idProperty().getValue(),newFriendID);
+    }
+
+    public int getClientIDByEmail(String text) {
+        return databaseDriver.getClientIDByEMail(text);
+    }
+
+    public boolean addSharedSpace(int client, int friend, int spaceId) {
+        return databaseDriver.addSharedSpace(client,friend,spaceId);
+    }
+
+    public Account getSpace(int spaceId) {
+        SavingsAccount account = null;
+        ResultSet resultSet = databaseDriver.getAccountById(spaceId);
+        try {
+            String num = resultSet.getString("AccountNumber");
+            double wLimit = resultSet.getDouble("TransactionLimit");
+            double balance = resultSet.getDouble("Balance");
+            int owner = resultSet.getInt("Owner");
+            account = new SavingsAccount(owner, num, balance, wLimit, spaceId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return account;
     }
 }
 

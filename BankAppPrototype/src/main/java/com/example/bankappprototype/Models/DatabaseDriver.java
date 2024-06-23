@@ -57,6 +57,19 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    public ResultSet getAllFriendsOfClient(int clientID) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM 'Friends' WHERE Client ='"+clientID+"' or FriendClient ='"+clientID+"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
     public ResultSet getAllSpaces(int clientID) {
         Statement statement;
         ResultSet resultSet = null;
@@ -173,6 +186,24 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /*
+    * Utility Section
+    * */
+
+    public int getLastClientsId() {
+        Statement statement;
+        ResultSet resultSet;
+        int id = 0;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM sqlite_sequence WHERE name='Client';");
+            id = resultSet.getInt("seq");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
     public String getClientEmailByAccountID(int id) {
         Statement statement;
         ResultSet resultSet = null;
@@ -187,19 +218,29 @@ public class DatabaseDriver {
         return name;
     }
 
-    /*
-    * Utility Section
-    * */
-
-    public int getLastClientsId() {
+    public String getClientEmailByID(int id) {
         Statement statement;
-        ResultSet resultSet;
+        ResultSet resultSet = null;
+        String name = "NameNotFound";
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("select email from Client where ID ="+ id +";");
+            name = resultSet.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
+
+    public int getClientIDByEMail(String email) {
+        Statement statement;
+        ResultSet resultSet = null;
         int id = 0;
         try {
             statement = this.conn.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM sqlite_sequence WHERE name='Client';");
-            id = resultSet.getInt("seq");
-        } catch (Exception e) {
+            resultSet = statement.executeQuery("select ID from Client where email ='"+ email +"';");
+            id = resultSet.getInt(1);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return id;
@@ -223,6 +264,18 @@ public class DatabaseDriver {
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM Account WHERE Owner='"+owner+"' AND MainAccount=0;");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
+    public ResultSet getAccountById(int id) {
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM Account WHERE ID='"+id+"';");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -304,6 +357,35 @@ public class DatabaseDriver {
             statement.executeUpdate();
 
         } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean addNewFriend(int client, int friend) {
+        PreparedStatement statement;
+        try {
+            statement = conn.prepareStatement("insert INTO 'Friends' (Client, FriendClient) VALUES  (?, ?)");
+
+            statement.setInt(1, client);
+            statement.setInt(2, friend);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean addSharedSpace(int client, int friend, int spaceId) {
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE " +
+                    "Friends SET SharedSpace = '" + spaceId + "' WHERE Client = '" + client + "' AND FriendClient = '" + friend + "';");
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
