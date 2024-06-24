@@ -8,7 +8,16 @@
     <HBox layoutX="20.0" layoutY="20.0" prefHeight="100.0" prefWidth="850.0" styleClass="friends_container_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Text fill="#fcf7f7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="friends_text" text="Freunde" />
     </HBox>
-    <ListView fx:id="friends_listview" layoutX="21.0" layoutY="134.0" prefHeight="631.0" prefWidth="822.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="134.0" />
-   <Button fx:id="addFriend_btn" layoutX="690.0" layoutY="104.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Freund hinzufügen" />
-   <TextField fx:id="addFriend_fld" layoutX="519.0" layoutY="104.0" />
+    <ListView fx:id="friends_listview" layoutX="21.0" layoutY="134.0" prefHeight="631.0" prefWidth="600.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="134.0" />
+   <Button fx:id="addFriend_btn" layoutX="491.0" layoutY="104.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Freund hinzufügen" />
+   <TextField fx:id="addFriend_fld" layoutX="343.0" layoutY="104.0" />
+   <Button fx:id="fasttrans_btn" layoutX="22.0" layoutY="104.0" mnemonicParsing="false" text="Schnellüberweisung" />
+   <Button fx:id="request_btn" layoutX="152.0" layoutY="104.0" mnemonicParsing="false" text="Geld Anfordern" />
+   <ListView fx:id="sharedSpace_listview" layoutX="624.0" layoutY="135.0" onMouseClicked="#viewSharedSpace" prefHeight="631.0" prefWidth="221.0" />
+   <Label layoutX="675.0" layoutY="105.0" text="Shared Spaces">
+      <font>
+         <Font name="System Bold" size="16.0" />
+      </font>
+   </Label>
+   <Separator layoutX="616.0" layoutY="100.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0" />
 </AnchorPane>

@@ -5,7 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Model {
 
@@ -21,6 +24,7 @@ public class Model {
     private final ObservableList<Friends> friends;
     private final ObservableList<Account> spaces;
     private final ObservableList<Card> cards;
+    private final ObservableList<Account> shared_spaces;
     private int activeAccount;
     private String cardIban;
 
@@ -39,6 +43,7 @@ public class Model {
         this.friends = FXCollections.observableArrayList();
         this.spaces = FXCollections.observableArrayList();
         this.cards = FXCollections.observableArrayList();
+        this.shared_spaces = FXCollections.observableArrayList();
         // Admin Data Section
         this.adminLoginSuccessFlag = false;
         this.clients = FXCollections.observableArrayList();
@@ -153,10 +158,36 @@ public class Model {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        setShared_spaces();
     }
 
     public ObservableList<Friends> getFriends() {
         return friends;
+    }
+
+    public ObservableList<Account> getShared_spaces(){
+        if (shared_spaces.isEmpty())
+            setShared_spaces();
+
+        return shared_spaces;
+    }
+    public void setShared_spaces(){
+        shared_spaces.clear();
+        ResultSet resultSet;
+        for (Friends tFriends:friends){
+            if (tFriends.sharedSpaceProperty().getValue()>1){
+                resultSet = databaseDriver.getSpaceByID(tFriends.sharedSpaceProperty().getValue());
+                try {
+                    Account tempAcc = new Account(resultSet.getInt(2),resultSet.getString(3),resultSet.getDouble(5),resultSet.getInt(1));
+                    if (shared_spaces.stream().anyMatch(space -> space.idProperty().getValue() == tempAcc.idProperty().getValue())){
+                        continue;
+                    }
+                    shared_spaces.add(tempAcc);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     public ObservableList<Card> getCards() { return cards; }
@@ -336,6 +367,31 @@ public class Model {
             e.printStackTrace();
         }
         return account;
+    }
+
+    public Set<String> getSharedSpaceMembersBySpaceID(int id) {
+
+        Set<String> friendEmails = new TreeSet<>();
+
+        ResultSet resultSet = databaseDriver.getSharedSpaceMembersBySharedSpaceID(id);
+
+        try {
+            while(resultSet.next()) {
+                friendEmails.add(getClientEmailByID(resultSet.getInt("Client")));
+                friendEmails.add(getClientEmailByID(resultSet.getInt("FriendClient")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return friendEmails;
+    }
+
+    public boolean deleteFriendsByIDs(int client, int friend) {
+        return databaseDriver.deleteFriendsByIDs(client,friend);
+    }
+
+    public boolean deleteSharedSpaceByIDs(int client, int friend) {
+        return databaseDriver.deleteSharedSpaceByIDs(client,friend);
     }
 }
 

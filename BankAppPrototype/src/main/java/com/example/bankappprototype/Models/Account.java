@@ -30,4 +30,9 @@ public class Account {
     public IntegerProperty idProperty() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return accountNumber.getValue();
+    }
 }

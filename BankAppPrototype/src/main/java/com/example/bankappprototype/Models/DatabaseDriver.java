@@ -100,7 +100,7 @@ public class DatabaseDriver {
     public int getAccountId(String iban) {
         int accountID = -1;
         Statement statement;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("select ID from Account where AccountNumber ='"+ iban +"';");
@@ -206,7 +206,7 @@ public class DatabaseDriver {
 
     public String getClientEmailByAccountID(int id) {
         Statement statement;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         String name = "NameNotFound";
         try {
             statement = this.conn.createStatement();
@@ -220,7 +220,7 @@ public class DatabaseDriver {
 
     public String getClientEmailByID(int id) {
         Statement statement;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         String name = "NameNotFound";
         try {
             statement = this.conn.createStatement();
@@ -234,7 +234,7 @@ public class DatabaseDriver {
 
     public int getClientIDByEMail(String email) {
         Statement statement;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         int id = 0;
         try {
             statement = this.conn.createStatement();
@@ -284,7 +284,7 @@ public class DatabaseDriver {
 
     public String verifyCard(String cardNumber, String sequenceNumber, String secretNumber) {
         Statement statement;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("select Account from Card where Card.CardNumber='"+cardNumber+"' AND Card.SequenceNumber='"+sequenceNumber+"' AND card.SecretNumber='"+secretNumber+"';");
@@ -385,6 +385,57 @@ public class DatabaseDriver {
             statement = this.conn.createStatement();
             statement.executeUpdate("UPDATE " +
                     "Friends SET SharedSpace = '" + spaceId + "' WHERE Client = '" + client + "' AND FriendClient = '" + friend + "';");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public ResultSet getSpaceByID(int id) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM 'Account' WHERE ID ='"+id+"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
+    public ResultSet getSharedSpaceMembersBySharedSpaceID(int id) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM 'Friends' WHERE SharedSpace ='"+id+"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
+    public boolean deleteFriendsByIDs(int client, int friend) {
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("DELETE FROM Friends WHERE Client = " + client + " AND FriendClient = "+ friend +";");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean deleteSharedSpaceByIDs(int client, int friend) {
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE " +
+                    "Friends SET SharedSpace = NULL WHERE Client = '" + client + "' AND FriendClient = '" + friend + "';");
         } catch (Exception e) {
             e.printStackTrace();
             return false;
