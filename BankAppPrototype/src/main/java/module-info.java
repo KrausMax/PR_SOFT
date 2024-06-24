@@ -4,7 +4,9 @@ module com.example.bankappprototype {
     requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
-
+    requires java.desktop;
+    requires org.apache.pdfbox;
+    requires javafx.swing;
 
 
     opens com.example.bankappprototype to javafx.fxml;
