@@ -205,7 +205,7 @@ public class DatabaseDriver {
             statement = this.conn.createStatement();
             statement.executeUpdate("INSERT INTO " +
                     "Account(Owner, AccountNumber, TransactionLimit, Balance, MainAccount, space_name, space_image)" +
-                    "VALUES ('"+(getLastClientsId()+1)+"','"+number+"','"+tLimit+"','"+balance+"','"+0+"','"+space_name+"','"+space_image+"')");
+                    "VALUES ('"+Model.getInstance().getClient().idProperty().getValue()+"','"+number+"','"+tLimit+"','"+balance+"','"+0+"','"+space_name+"','"+space_image+"')");
         } catch (Exception e) {
             e.printStackTrace();
         }
