@@ -20,6 +20,7 @@ public class ClientMenuController implements Initializable {
     public Button friends_btn;
     public Button create_space_btn;
     public Button bankomat_btn;
+    public Button flow_chart_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,6 +37,7 @@ public class ClientMenuController implements Initializable {
         create_space_btn.setOnAction(Event -> onCreateSpace());
         logout_btn.setOnAction(Event -> onLogout());
         bankomat_btn.setOnAction(Event -> onBankomat());
+        flow_chart_btn.setOnAction(Event -> onFlowChart());
     }
 
     private void onDashboard() {
@@ -68,6 +70,10 @@ public class ClientMenuController implements Initializable {
 
     private void onBankomat() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.BANKOMAT);
+    }
+
+    private void onFlowChart() {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.FLOWCHART);
     }
 
 

@@ -22,6 +22,7 @@ public class ViewFactory {
 
     private AnchorPane profileView;
     private AnchorPane createSpaceView;
+    private AnchorPane flowChartView;
 
     // Admin Views
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
@@ -143,6 +144,17 @@ public class ViewFactory {
             }
         }
         return bankomatView;
+    }
+
+    public AnchorPane getFlowChartView() {
+        if(flowChartView == null){
+            try {
+                flowChartView = new FXMLLoader(getClass().getResource("/Fxml/Client/FlowChart.fxml")).load();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return flowChartView;
     }
 
     public AnchorPane getCardsView() {

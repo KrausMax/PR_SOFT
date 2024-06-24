@@ -1,0 +1,64 @@
+/* Header style for the flow chart */
+.flowChart_container_header {
+    -fx-background-color: #023020;
+    -fx-alignment: center;
+}
+
+/* Text style for the header */
+.flowChart_container_header Text {
+    -fx-fill: #fcf7f7;
+    -fx-font-size: 4.0em;
+    -fx-font-family: "Calibri Light";
+}
+
+/* Label style */
+.flowChart_label {
+    -fx-font-size: 1.2em;
+    -fx-font-family: "Calibri Light";
+}
+
+/* Button style for change and delete buttons */
+.flowChart_button {
+    -fx-background-color: #023020;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+
+/* Style for the TitledPane headers */
+.flowChart_titledPane .title {
+    -fx-background-color: #023020;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.2em;
+}
+
+/* Style for the TextFields */
+.flowChart_textField {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #023020;
+    -fx-padding: 5px;
+}
+
+/* Button style for add buttons */
+.flowChart_addButton {
+    -fx-background-color: #023020;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.5em;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+
+/* Style for the Calculate button */
+.flowChart_calculateButton {
+    -fx-background-color: #023020;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.5em;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+}
+
+/* Style for the CheckBox label */
+.flowChart_checkBoxLabel {
+    -fx-font-size: 1.2em;
+    -fx-font-family: "Calibri Light";
+}

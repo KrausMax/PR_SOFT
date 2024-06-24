@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../Styles/FlowChart.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.FlowChartController">
+    <HBox layoutX="40.0" layoutY="10.0" prefHeight="100.0" prefWidth="850.0" styleClass="flowChart_container_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Text fill="#fcf7f7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bankomat_text" text="Finanz-Flussdiagramm" />
+    </HBox>
+
+    <ScrollPane layoutY="110.0" prefHeight="640.0" prefWidth="850.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <VBox alignment="TOP_CENTER" prefWidth="800.0" spacing="10" style="-fx-padding: 10;">
+
+            <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="10">
+                <TitledPane expanded="true" prefWidth="800.0" styleClass="flowChart_titledPane" text="Einkommen" textFill="WHITE">
+                    <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="10" style="-fx-padding: 10;">
+                        <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="5">
+                            <HBox spacing="10">
+                                <Label fx:id="income_lbl" styleClass="flowChart_label" text="Gehalt" />
+                                <Button onAction="#changeTitle" styleClass="flowChart_button" text="✏" />
+                                <Button onAction="#deleteEntry" styleClass="flowChart_button" text="🗑" />
+                            </HBox>
+                            <HBox spacing="10">
+                                <TextField fx:id="salaryField" prefWidth="600.0" promptText="Gehalt" styleClass="flowChart_textField" />
+                                <Label styleClass="flowChart_label" text="€" />
+                            </HBox>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="5">
+                            <HBox spacing="10">
+                                <Label fx:id="additional_income_lbl" styleClass="flowChart_label" text="Weitere Einkünfte" />
+                                <Button onAction="#changeTitle" styleClass="flowChart_button" text="✏" />
+                                <Button onAction="#deleteEntry" styleClass="flowChart_button" text="🗑" />
+                            </HBox>
+                            <HBox spacing="10">
+                                <TextField fx:id="additionalIncomeField" prefWidth="600.0" promptText="Weitere Einkünfte" styleClass="flowChart_textField" />
+                                <Label styleClass="flowChart_label" text="€" />
+                            </HBox>
+                        </VBox>
+                        <Button fx:id="income_add_btn" styleClass="flowChart_addButton" text="+" />
+                    </VBox>
+                </TitledPane>
+
+                <TitledPane expanded="true" prefWidth="800.0" styleClass="flowChart_titledPane" text="Ausgaben" textFill="WHITE">
+                    <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="10" style="-fx-padding: 10;">
+                        <TitledPane expanded="true" prefWidth="800.0" text="Wohnen" textFill="WHITE">
+                            <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="10" style="-fx-padding: 10;">
+                                <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="5">
+                                    <HBox spacing="10">
+                                        <Label fx:id="rent_lbl" styleClass="flowChart_label" text="Miete" />
+                                        <Button onAction="#changeTitle" styleClass="flowChart_button" text="✏" />
+                                        <Button onAction="#deleteEntry" styleClass="flowChart_button" text="🗑" />
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <TextField fx:id="rentField" prefWidth="600.0" promptText="Miete" styleClass="flowChart_textField" />
+                                        <Label styleClass="flowChart_label" text="€" />
+                                    </HBox>
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="5">
+                                    <HBox spacing="10">
+                                        <Label fx:id="electricity_lbl" styleClass="flowChart_label" text="Strom" />
+                                        <Button onAction="#changeTitle" styleClass="flowChart_button" text="✏" />
+                                        <Button onAction="#deleteEntry" styleClass="flowChart_button" text="🗑" />
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <TextField fx:id="electricityField" prefWidth="600.0" promptText="Strom" styleClass="flowChart_textField" />
+                                        <Label styleClass="flowChart_label" text="€" />
+                                    </HBox>
+                                </VBox>
+                                <Button fx:id="expense_living_btn" styleClass="flowChart_addButton" text="+" />
+                            </VBox>
+                        </TitledPane>
+
+                        <TitledPane expanded="true" prefWidth="800.0" text="Täglicher Bedarf" textFill="WHITE">
+                            <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="10" style="-fx-padding: 10;">
+                                <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="5">
+                                    <HBox spacing="10">
+                                        <Label fx:id="groceries_lbl" styleClass="flowChart_label" text="Lebensmittel" />
+                                        <Button onAction="#changeTitle" styleClass="flowChart_button" text="✏" />
+                                        <Button onAction="#deleteEntry" styleClass="flowChart_button" text="🗑" />
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <TextField fx:id="groceriesField" prefWidth="600.0" promptText="Lebensmittel" styleClass="flowChart_textField" />
+                                        <Label styleClass="flowChart_label" text="€" />
+                                    </HBox>
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="5">
+                                    <HBox spacing="10">
+                                        <Label fx:id="car_lbl" styleClass="flowChart_label" text="Auto" />
+                                        <Button onAction="#changeTitle" styleClass="flowChart_button" text="✏" />
+                                        <Button onAction="#deleteEntry" styleClass="flowChart_button" text="🗑" />
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <TextField fx:id="carField" prefWidth="600.0" promptText="Auto" styleClass="flowChart_textField" />
+                                        <Label text="€" />
+                                    </HBox>
+                                </VBox>
+                                <Button fx:id="expense_dailyneeds_btn" styleClass="flowChart_addButton" text="+" />
+                            </VBox>
+                        </TitledPane>
+
+                        <TitledPane expanded="true" prefWidth="800.0" styleClass="flowChart_titledPane" text="Sparen" textFill="WHITE">
+                            <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="10" style="-fx-padding: 10;">
+                                <VBox alignment="CENTER_LEFT" prefWidth="800.0" spacing="5">
+                                    <HBox spacing="10">
+                                        <TextField fx:id="savingField" prefWidth="600.0" promptText="Sparen" styleClass="flowChart_textField" />
+                                        <Label styleClass="flowChart_label" text="€" />
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Button onAction="#changeTitle" styleClass="flowChart_button" text="✏" />
+                                        <Button onAction="#deleteEntry" styleClass="flowChart_button" text="🗑" />
+                                    </HBox>
+                                </VBox>
+                                <Button fx:id="expense_savings_btn" styleClass="flowChart_addButton" text="+" />
+                            </VBox>
+                        </TitledPane>
+                    </VBox>
+                </TitledPane>
+            </VBox>
+
+            <Button onAction="#calculateButtonClicked" styleClass="flowChart_calculateButton" text="Berechnen" />
+        </VBox>
+    </ScrollPane>
+</AnchorPane>
