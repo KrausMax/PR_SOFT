@@ -10,7 +10,7 @@ public enum ClientMenuOptions {
     CREATE_SPACE,
     BANKOMAT,
     CARDS,
-    FLOWCHART
+    FLOWCHART,
     CREATE_CARD,
     EDIT_CARD
 }
