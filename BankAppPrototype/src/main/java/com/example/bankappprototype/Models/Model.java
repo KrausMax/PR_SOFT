@@ -27,6 +27,7 @@ public class Model {
     private final ObservableList<Account> shared_spaces;
     private int activeAccount;
     private String cardIban;
+    private String cardNum;
 
     // Admin Data Section
     private boolean adminLoginSuccessFlag;
@@ -393,5 +394,8 @@ public class Model {
     public boolean deleteSharedSpaceByIDs(int client, int friend) {
         return databaseDriver.deleteSharedSpaceByIDs(client,friend);
     }
+	
+    public String getCardNum() { return cardNum; }
+    public void setCardNum(String cardNum) {this.cardNum = cardNum; }
 }
 

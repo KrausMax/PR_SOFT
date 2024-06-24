@@ -32,7 +32,7 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Account mainAcc = Model.getInstance().getClient().checkingAccountProperty().getValue();
-        checking_bal.setText(""+ mainAcc.balanceProperty().get());
+        checking_bal.setText(""+ Model.getInstance().getDatabaseDriver().getAccountBalance(mainAcc.accountNumberProperty().get()));
         mainAccNum_lbl.setText(mainAcc.accountNumberProperty().get());
 
         // Greeting Message

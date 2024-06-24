@@ -11,4 +11,6 @@ public enum ClientMenuOptions {
     BANKOMAT,
     CARDS,
     FLOWCHART
+    CREATE_CARD,
+    EDIT_CARD
 }

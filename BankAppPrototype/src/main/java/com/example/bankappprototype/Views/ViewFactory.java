@@ -33,6 +33,8 @@ public class ViewFactory {
     private AnchorPane reportView;
     private AnchorPane bankomatView;
     private AnchorPane cardsView;
+    private AnchorPane createCardView;
+    private AnchorPane editCardView;
 
 
     public ViewFactory(){
@@ -59,12 +61,10 @@ public class ViewFactory {
     }
 
     public AnchorPane getDashboardView(){
-        if(dashboardView == null){
-            try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Client/Dashboard.fxml")).load();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+        try {
+            dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Client/Dashboard.fxml")).load();
+        } catch (Exception e){
+            e.printStackTrace();
         }
         return dashboardView;
     }
@@ -78,6 +78,24 @@ public class ViewFactory {
             }
         }
         return transactionView;
+    }
+
+    public AnchorPane getCreateCardView() {
+        try {
+                createCardView = new FXMLLoader(getClass().getResource("/Fxml/Client/CreateCard.fxml")).load();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return createCardView;
+    }
+
+    public AnchorPane getEditCardView() {
+        try {
+            editCardView = new FXMLLoader(getClass().getResource("/Fxml/Client/EditCard.fxml")).load();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return editCardView;
     }
 
     public AnchorPane getAccountsView() {
