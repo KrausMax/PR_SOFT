@@ -34,17 +34,6 @@ public class DatabaseDriver {
         return resultSet;
     }
 
-    public void createCard(int accountID, String cardNumber, int sequenceNumber, int secretNumber, int cardLimit, int statusOnline, int statusTerminal) {
-        Statement statement;
-        try {
-            statement = this.conn.createStatement();
-            statement.executeUpdate("INSERT INTO Card (Account, CardNumber, SequenceNumber, SecretNumber, CardLimit, StatusOnline, StatusTerminal) " +
-                    "VALUES (" + accountID + ", '" + cardNumber + "', " + sequenceNumber + ", " + secretNumber + ", " + cardLimit + ", " + statusOnline + ", " + statusTerminal + ")");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public ResultSet getAllTransactionsOfClient(int clientID) {
         Statement statement;
         ResultSet resultSet = null;
@@ -111,13 +100,90 @@ public class DatabaseDriver {
         return  resultSet;
     }
 
-    public void updateCard(int limit, int online, int terminal) {
+    public void updateCard(int limit, int online, int terminal, boolean changeOnline, boolean changeTerminal) {
+        int accountId = -1;
+        int prevLimit = -1;
+        ResultSet resultSet;
         Statement statement;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("select Account, CardLimit from Card where Card.CardNumber='"+Model.getInstance().getCardNum()+"';");
+            if (resultSet.isBeforeFirst() ) {
+                accountId = resultSet.getInt(1);
+                prevLimit = resultSet.getInt(2);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if(limit == -1) {
+            limit = prevLimit;
+        }
+
         try {
             statement = this.conn.createStatement();
             statement.executeUpdate("UPDATE Card  SET CardLimit =" + limit + ", StatusOnline = " + online + ", StatusTerminal = " + terminal + " WHERE CardNumber = '" + Model.getInstance().getCardNum() + "';");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        PreparedStatement transStatement;
+        if (changeOnline) {
+            try {
+                transStatement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
+
+                LocalDateTime ldt = LocalDateTime.now();
+
+                transStatement.setInt(1, accountId);
+                transStatement.setDouble(2, 0);
+                transStatement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
+                transStatement.setString(4,"Card :" + Model.getInstance().getCardNum());
+                transStatement.setString(5,TransactionTypes.KARTE_ONLINE_STATUS.toString());
+                transStatement.setInt(6,1);
+                transStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (changeTerminal) {
+            try {
+                transStatement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
+
+                LocalDateTime ldt = LocalDateTime.now();
+
+                transStatement.setInt(1, accountId);
+                transStatement.setDouble(2, 0);
+                transStatement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
+                transStatement.setString(4,"Card :" + Model.getInstance().getCardNum());
+                transStatement.setString(5,TransactionTypes.KARTE_BANKOMAT_STATUS.toString());
+                transStatement.setInt(6,1);
+                transStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (limit != prevLimit) {
+            try {
+                transStatement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
+
+                LocalDateTime ldt = LocalDateTime.now();
+
+                transStatement.setInt(1, accountId);
+                transStatement.setDouble(2, limit);
+                transStatement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
+                transStatement.setString(4,"Card :" + Model.getInstance().getCardNum());
+                transStatement.setString(5,TransactionTypes.KARTE_LIMIT_AENDERUNG.toString());
+                transStatement.setInt(6,1);
+                transStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -133,6 +199,27 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return accountID;
+    }
+
+    public boolean ibanValid(String iban) {
+        boolean valid = false;
+        Statement statement;
+        ResultSet resultSet;
+        int mainAcc = -1;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("select MainAccount from Account where AccountNumber ='"+ iban +"';");
+            valid = resultSet.isBeforeFirst();
+            if(valid) {
+                mainAcc = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (mainAcc != 1) {
+            return false;
+        }
+        return valid;
     }
     public double getAccountBalance(String iban) {
         double balance = -1;
@@ -168,8 +255,8 @@ public class DatabaseDriver {
         try {
             statement = this.conn.createStatement();
             statement.executeUpdate("INSERT INTO " +
-                    "Client(FirstName, LastName, email, Password, Date)" +
-                    "VALUES ('"+fName+"', '"+lName+"','"+email+"','"+password+"', '"+date.toString()+"');");
+                    "Client(FirstName, LastName, email, Password, Date, image)" +
+                    "VALUES ('"+fName+"', '"+lName+"','"+email+"','"+password+"', '"+date.toString()+"', 'C:\\Users\\User\\IdeaProjects\\PR_SOFT\\BankAppPrototype\\src\\main\\resources\\Images\\Max_Mustermann.png');");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -182,6 +269,17 @@ public class DatabaseDriver {
             statement.executeUpdate("UPDATE " +
                     "Client SET FirstName = '" + fName + "', LastName = '" + lName + "', Password = '" + password + "'" +
                     "WHERE email = '" + email + "';");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateProfilePic(String filepath, String email) {
+        Statement statement;
+        try {
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE " +
+                    "Client SET image = '" + filepath + "' WHERE email = '" + email + "';");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -435,6 +533,49 @@ public class DatabaseDriver {
         }
         return true;
     }
+
+    public boolean payment (int senderID, double amount, String message, String type, int receiverID) {
+        PreparedStatement statement;
+        try {
+            statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
+
+            LocalDateTime ldt = LocalDateTime.now();
+
+            statement.setInt(1, senderID);
+            statement.setDouble(2, amount);
+            statement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
+            statement.setString(4, message);
+            statement.setString(5,type);
+            statement.setInt(6,receiverID);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        Statement updateStatement;
+        try {
+            updateStatement = this.conn.createStatement();
+            updateStatement.executeUpdate("UPDATE Account  SET Balance = Balance - " + amount + " WHERE ID = " + senderID);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        try {
+            updateStatement = this.conn.createStatement();
+            updateStatement.executeUpdate("UPDATE Account  SET Balance = Balance + " + amount + " WHERE ID = " + receiverID);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
 
     public boolean addNewFriend(int client, int friend) {
         PreparedStatement statement;

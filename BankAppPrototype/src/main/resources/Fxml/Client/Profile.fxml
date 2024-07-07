@@ -22,27 +22,28 @@
          <FontAwesomeIconView fill="#cde5d7" glyphName="BANK" size="75" styleClass="create_space_logo_container" text="" />
       </children>
    </VBox>
-    <Text layoutX="280.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail Adresse:" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="310.0" />
-    <Text layoutX="279.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname:" AnchorPane.leftAnchor="279.0" AnchorPane.topAnchor="365.0" />
-    <Text layoutX="280.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname:" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="420.0" />
-    <Text layoutX="512.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort:" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="522.0" />
-    <TextField fx:id="fName_fld" layoutX="500.0" layoutY="353.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="363.0" />
-    <TextField fx:id="lName_fld" layoutX="500.0" layoutY="404.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="417.0" />
-    <TextField fx:id="email_fld" editable="false" layoutX="504.0" layoutY="298.0" prefHeight="25.0" prefWidth="200.0" styleClass="profile_change_text" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="308.0" />
+    <Text layoutX="280.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail Adresse:" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="433.0" />
+    <Text layoutX="279.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname:" AnchorPane.leftAnchor="279.0" AnchorPane.topAnchor="474.0" />
+    <Text layoutX="279.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname:" AnchorPane.leftAnchor="279.0" AnchorPane.topAnchor="507.0" />
+    <Text layoutX="280.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort:" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="565.0" />
+    <TextField fx:id="fName_fld" layoutX="495.0" layoutY="472.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="495.0" AnchorPane.topAnchor="472.0" />
+    <TextField fx:id="lName_fld" layoutX="495.0" layoutY="507.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="495.0" AnchorPane.topAnchor="507.0" />
+    <TextField fx:id="email_fld" editable="false" layoutX="495.0" layoutY="433.0" prefHeight="25.0" prefWidth="200.0" styleClass="profile_change_text" AnchorPane.leftAnchor="495.0" AnchorPane.topAnchor="433.0" />
     <Button fx:id="save_profile_btn" layoutX="600.0" layoutY="702.0" mnemonicParsing="false" text="Speichern" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="700.0" />
     <HBox layoutX="278.0" layoutY="113.0" prefHeight="150.0" prefWidth="153.0" styleClass="Hbox">
       <children>
-           <ImageView fx:id="picture_imageview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+           <ImageView fx:id="profile_picture_imageview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                    <Image url="@../../Images/pepe.png" />
                </image>
            </ImageView>
       </children>
     </HBox>
-    <PasswordField fx:id="password_fld" layoutX="495.0" layoutY="503.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="519.0" />
+    <PasswordField fx:id="password_fld" layoutX="495.0" layoutY="566.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="495.0" AnchorPane.topAnchor="566.0" />
    <TextField fx:id="plaintxt_password_fld" editable="false" layoutX="500.0" layoutY="519.0" prefHeight="25.0" prefWidth="200.0" visible="false" />
-   <CheckBox fx:id="show_box" layoutX="711.0" layoutY="524.0" mnemonicParsing="false" text="Passwort anzeigen" />
-    <Text layoutX="463.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort ändern:" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="572.0" />
-    <TextField fx:id="password_change_fld" layoutX="619.0" layoutY="535.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="569.0" />
+   <CheckBox fx:id="show_box" layoutX="711.0" layoutY="571.0" mnemonicParsing="false" text="Passwort anzeigen" />
+    <Text layoutX="278.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort ändern:" AnchorPane.leftAnchor="278.0" AnchorPane.topAnchor="609.0" />
+    <TextField fx:id="password_change_fld" layoutX="495.0" layoutY="607.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="495.0" AnchorPane.topAnchor="607.0" />
    <Label fx:id="update_lbl" layoutX="618.0" layoutY="675.0" styleClass="error_lbl" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="618.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="675.0" />
+   <Button layoutX="259.0" layoutY="297.0" mnemonicParsing="false" onAction="#chooseImageButtonPushed" text="Bild ändern" />
 </AnchorPane>

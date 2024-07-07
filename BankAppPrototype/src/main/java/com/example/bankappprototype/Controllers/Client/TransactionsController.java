@@ -44,9 +44,7 @@ public class TransactionsController implements Initializable {
     }
 
     private void initData() {
-        if(Model.getInstance().getTransactions().isEmpty()) {
-            setCurrentTransactions(Model.getInstance().getClient().checkingAccountProperty().getValue().idProperty().getValue());
-        }
+        setCurrentTransactions(Model.getInstance().getClient().checkingAccountProperty().getValue().idProperty().getValue());
     }
 
     private void setCurrentTransactions(int accountID){

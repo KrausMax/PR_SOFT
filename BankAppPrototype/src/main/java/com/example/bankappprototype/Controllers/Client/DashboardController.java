@@ -1,9 +1,11 @@
 package com.example.bankappprototype.Controllers.Client;
 
 import com.example.bankappprototype.Models.Account;
+import com.example.bankappprototype.Models.CheckingAccount;
 import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Views.ClientMenuOptions;
 import com.example.bankappprototype.Views.SpaceCellFactory;
+import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -28,10 +30,11 @@ public class DashboardController implements Initializable {
     public ListView space_listview;
     public Label mainAccNum_lbl;
     public Button showCards_btn;
+    public Button transfer_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Account mainAcc = Model.getInstance().getClient().checkingAccountProperty().getValue();
+        CheckingAccount mainAcc = Model.getInstance().getClient().checkingAccountProperty().getValue();
         checking_bal.setText(""+ Model.getInstance().getDatabaseDriver().getAccountBalance(mainAcc.accountNumberProperty().get()));
         mainAccNum_lbl.setText(mainAcc.accountNumberProperty().get());
 
@@ -49,7 +52,12 @@ public class DashboardController implements Initializable {
         space_listview.setCellFactory(e -> new SpaceCellFactory());
         
         showCards_btn.setOnAction(Event -> showCards());
+        transfer_btn.setOnAction(Event -> transfer());
 
+    }
+
+    private void transfer() {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.TRANSFER);
     }
 
     private void showCards() {

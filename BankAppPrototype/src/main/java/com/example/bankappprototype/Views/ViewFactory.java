@@ -7,6 +7,7 @@ import com.example.bankappprototype.Models.Model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -19,7 +20,8 @@ public class ViewFactory {
     private AnchorPane dashboardView;
     private AnchorPane transactionView;
     private AnchorPane accountsView;
-
+    private AnchorPane transferView;
+    private AnchorPane spaceTransferView;
     private AnchorPane profileView;
     private AnchorPane createSpaceView;
     private AnchorPane flowChartView;
@@ -63,26 +65,24 @@ public class ViewFactory {
     public AnchorPane getDashboardView(){
         try {
             dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Client/Dashboard.fxml")).load();
-        } catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+                e.printStackTrace();
         }
         return dashboardView;
     }
 
     public AnchorPane getTransactionView() {
-        if(transactionView == null){
-            try {
-                transactionView = new FXMLLoader(getClass().getResource("/Fxml/Client/Transactions.fxml")).load();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+        try {
+            transactionView = new FXMLLoader(getClass().getResource("/Fxml/Client/Transactions.fxml")).load();
+        } catch (Exception e){
+            e.printStackTrace();
         }
         return transactionView;
     }
 
     public AnchorPane getCreateCardView() {
         try {
-                createCardView = new FXMLLoader(getClass().getResource("/Fxml/Client/CreateCard.fxml")).load();
+            createCardView = new FXMLLoader(getClass().getResource("/Fxml/Client/CreateCard.fxml")).load();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -143,13 +143,11 @@ public class ViewFactory {
     }
 
     public AnchorPane getCreateSpaceView() {
-        if(createSpaceView == null) {
-            try {
-                createSpaceView = new FXMLLoader(getClass().getResource("/Fxml/Client/CreateSpace.fxml")).load();
-            } catch (Exception e) {
+        try {
+            createSpaceView = new FXMLLoader(getClass().getResource("/Fxml/Client/CreateSpace.fxml")).load();
+        } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
         return createSpaceView;
     }
 
@@ -185,6 +183,24 @@ public class ViewFactory {
             e.printStackTrace();
         }
         return cardsView;
+    }
+
+    public AnchorPane getTransferView() {
+        try {
+            transferView = new FXMLLoader(getClass().getResource("/Fxml/Client/Transfer.fxml")).load();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return transferView;
+    }
+
+    public AnchorPane getSpaceTransferView() {
+        try {
+            spaceTransferView = new FXMLLoader(getClass().getResource("/Fxml/Client/SpaceTransfer.fxml")).load();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return spaceTransferView;
     }
 
     public void showClientWindow() {
@@ -265,5 +281,4 @@ public class ViewFactory {
     public void closeStage(Stage stage) {
         stage.close();
     }
-
 }

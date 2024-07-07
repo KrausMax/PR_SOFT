@@ -74,7 +74,7 @@ public class CreateClientController implements Initializable {
         if(accountType.equals("Checking")) {
             Model.getInstance().getDatabaseDriver().createMainAccount(accountNumber, 10, balance);
         } else {
-            Model.getInstance().getDatabaseDriver().createSpace(accountNumber, 2000, balance,"space_xyz", "img_xyz");
+            Model.getInstance().getDatabaseDriver().createSpace(accountNumber, 2000, balance,"My Space", "\\IdeaProjects\\PR_SOFT\\BankAppPrototype\\src\\main\\resources\\Images\\pepe.png");
         }
     }
 

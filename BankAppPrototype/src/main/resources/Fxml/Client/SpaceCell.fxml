@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane fx:id="space_pane" prefHeight="60.0" prefWidth="584.0" styleClass="cell_container" stylesheets="@../../Styles/TransactionCell.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <Label fx:id="account_number_lbl" alignment="CENTER" layoutX="245.0" layoutY="23.0" styleClass="trans_pAddress_lbl2" text="AT74 2032 0321 0222 1082" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="20.0" />
-    <Label fx:id="balance_lbl" layoutX="526.0" layoutY="14.0" styleClass="trans_amount_lbl" text="1000" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="15.0" />
-   <Button fx:id="showCards_btn" layoutX="57.0" layoutY="19.0" mnemonicParsing="false" text="Karten anzeigen" />
+<AnchorPane fx:id="space_pane" prefHeight="254.0" prefWidth="744.0" styleClass="cell_container" stylesheets="@../../Styles/TransactionCell.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="account_number_lbl" alignment="CENTER" layoutX="373.0" layoutY="134.0" styleClass="trans_pAddress_lbl2" text="AT74 2032 0321 0222 1082" AnchorPane.leftAnchor="373.0" AnchorPane.topAnchor="134.0" />
+    <Label fx:id="balance_lbl" layoutX="661.0" layoutY="130.0" styleClass="trans_amount_lbl" text="1000" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="130.0" />
+   <Button fx:id="showCards_btn" layoutX="219.0" layoutY="102.0" mnemonicParsing="false" text="Karten anzeigen" />
+   <Button fx:id="transfer_btn" layoutX="206.0" layoutY="181.0" mnemonicParsing="false" text="Transfer durchführen" />
+    <ImageView fx:id="space_picture_imageview" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="74.0">
+        <Image url="@../../Images/Max_Mustermann.png" />
+    </ImageView>
+   <Line endX="-235.0" endY="170.0" layoutX="578.0" layoutY="75.0" startX="-235.0" startY="-28.5" />
+   <Line endX="2.0" endY="170.0" layoutX="615.0" layoutY="76.0" startX="2.0" startY="-28.5" />
+   <Label fx:id="spaceName_lbl" alignment="CENTER" layoutX="40.0" layoutY="14.0" styleClass="trans_pAddress_lbl2" text="Space Name" />
+   <Line endX="606.0" layoutX="129.0" layoutY="38.0" startX="-119.0" />
 </AnchorPane>

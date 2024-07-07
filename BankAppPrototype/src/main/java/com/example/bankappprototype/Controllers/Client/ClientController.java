@@ -26,6 +26,8 @@ public class ClientController implements Initializable {
                 case FLOWCHART -> client_parent.setCenter(Model.getInstance().getViewFactory().getFlowChartView());
                 case CREATE_CARD -> client_parent.setCenter(Model.getInstance().getViewFactory().getCreateCardView());
                 case EDIT_CARD -> client_parent.setCenter(Model.getInstance().getViewFactory().getEditCardView());
+                case TRANSFER -> client_parent.setCenter(Model.getInstance().getViewFactory().getTransferView());
+                case SPACE_TRANSFER -> client_parent.setCenter(Model.getInstance().getViewFactory().getSpaceTransferView());
                 default -> client_parent.setCenter(Model.getInstance().getViewFactory().getDashboardView());
             }
         });

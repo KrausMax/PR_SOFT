@@ -10,11 +10,12 @@ public class Client {
     private final StringProperty payeeAddress;
     private final StringProperty password;
     private final IntegerProperty id;
-    private final ObjectProperty<Account> checkingAccount;
-    private final ObjectProperty<Account> savingsAccount;
+    private final ObjectProperty<CheckingAccount> checkingAccount;
+    private ObjectProperty<SavingsAccount> savingsAccount;
     private final ObjectProperty<LocalDate> dateCreated;
+    private StringProperty image;
 
-    public Client(String fName, String lName, String pAddress, String pword, int id, Account cAccount, Account sAccount, LocalDate date) {
+    public Client(String fName, String lName, String pAddress, String pword, int id, CheckingAccount cAccount, SavingsAccount sAccount, LocalDate date, String image) {
         this.firstName = new SimpleStringProperty(this, "First Name", fName);
         this.lastName = new SimpleStringProperty(this, "Last Name", lName);
         this.payeeAddress = new SimpleStringProperty(this, "Payee Address", pAddress);
@@ -23,6 +24,7 @@ public class Client {
         this.checkingAccount = new SimpleObjectProperty<>(this, "Checking Account", cAccount);
         this.savingsAccount = new SimpleObjectProperty<>(this, "Savings Account", sAccount);
         this.dateCreated = new SimpleObjectProperty<>(this, "Date", date);
+        this.image = new SimpleStringProperty(this, "Image", image);
     }
 
     public StringProperty firstNameProperty() {
@@ -41,16 +43,22 @@ public class Client {
     }
     public StringProperty pwordProperty() { return  password; }
 
-    public ObjectProperty<Account> checkingAccountProperty() {
+    public ObjectProperty<CheckingAccount> checkingAccountProperty() {
         return checkingAccount;
     }
 
-    public ObjectProperty<Account> savingsAccountProperty() {
+    public ObjectProperty<SavingsAccount> savingsAccountProperty() {
         return savingsAccount;
+    }
+    public void setSavingsAccount(SavingsAccount space) {
+        this.savingsAccount = new SimpleObjectProperty<>(this, "Savings Account", space);
     }
 
     public ObjectProperty<LocalDate> dateProperty() {
         return dateCreated;
+    }
+    public StringProperty imageProperty() {
+        return image;
     }
 
 }
