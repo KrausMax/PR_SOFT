@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="profile_container" stylesheets="@../../Styles/Profile.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.SpaceTransferController">
+    <HBox alignment="CENTER" layoutX="374.0" prefHeight="100.0" prefWidth="236.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="profile_text_header" text="Space Transfer" />
+        </children>
+    </HBox>
+    <VBox alignment="CENTER" layoutX="24.0" layoutY="29.0" prefHeight="672.0" prefWidth="230.0" styleClass="profile_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <Text rotate="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elysia Bank" />
+        </children>
+    </VBox>
+    <VBox alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="125.0" prefWidth="230.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <FontAwesomeIconView fill="#cde5d7" glyphName="BANK" size="75" styleClass="create_space_logo_container" text="" />
+        </children>
+    </VBox>
+    <Text layoutX="307.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betrag:" AnchorPane.leftAnchor="307.0" AnchorPane.topAnchor="205.0" />
+    <TextField fx:id="euro_fld" layoutX="387.0" layoutY="203.0" prefHeight="28.0" prefWidth="103.0" AnchorPane.leftAnchor="387.0" AnchorPane.topAnchor="203.0" />
+    <Button fx:id="commit_btn" layoutX="600.0" layoutY="702.0" mnemonicParsing="false" text="Überweisung freigeben" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="700.0" />
+    <Label fx:id="update_lbl" layoutX="618.0" layoutY="675.0" styleClass="error_lbl" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="618.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="675.0" />
+    <Text layoutX="308.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verwendungszweck:" />
+    <TextArea fx:id="message_fld" layoutX="308.0" layoutY="292.0" prefHeight="34.0" prefWidth="284.0" />
+    <RadioButton fx:id="plus_rd" layoutX="298.0" layoutY="117.0" mnemonicParsing="false" text="Transfer onto Space">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </RadioButton>
+    <RadioButton fx:id="minus_rd" layoutX="298.0" layoutY="153.0" mnemonicParsing="false" text="Transfer from Space">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </RadioButton>
+
+</AnchorPane>
+

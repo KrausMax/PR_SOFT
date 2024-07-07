@@ -22,7 +22,7 @@ public class Model {
     private boolean clientLoginSuccessFlag;
     private final ObservableList<Transaction> transactions;
     private final ObservableList<Friends> friends;
-    private final ObservableList<Account> spaces;
+    private final ObservableList<SavingsAccount> spaces;
     private final ObservableList<Card> cards;
     private final ObservableList<Account> shared_spaces;
     private int activeAccount;
@@ -39,7 +39,7 @@ public class Model {
 
         // Client Data Section
         this.clientLoginSuccessFlag = false;
-        this.client = new Client("","","","",1,null,null, null);
+        this.client = new Client("","","","",1,null,null, null, "");
         this.transactions = FXCollections.observableArrayList();
         this.friends = FXCollections.observableArrayList();
         this.spaces = FXCollections.observableArrayList();
@@ -112,6 +112,7 @@ public class Model {
                 savingsAccount = getSavingsAccount(resultSet.getInt("ID"));
                 this.client.checkingAccountProperty().set(checkingAccount);
                 this.client.savingsAccountProperty().set(savingsAccount);
+                this.client.imageProperty().set(resultSet.getString("image"));
                 this.clientLoginSuccessFlag = true;
             }
         } catch (Exception e) {
@@ -210,7 +211,7 @@ public class Model {
         }
     }
 
-    public ObservableList<Account> getSpaces() {
+    public ObservableList<SavingsAccount> getSpaces() {
         return spaces;
     }
 
@@ -225,7 +226,10 @@ public class Model {
                 String accountNumber = resultSet.getString("AccountNumber");
                 double balance = resultSet.getDouble("Balance");
                 int id = resultSet.getInt("ID");
-                spaces.add(0,new Account(owner, accountNumber, balance, id));
+                double limit = resultSet.getDouble("TransactionLimit");
+                String spaceName = resultSet.getString("space_name");
+                String spaceImage = resultSet.getString("space_image");
+                spaces.add(0,new SavingsAccount(owner, accountNumber, balance, limit, id, spaceName, spaceImage));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -274,7 +278,8 @@ public class Model {
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 checkingAccount = getCheckingAccount(resultSet.getInt("ID"));
                 savingsAccount = getSavingsAccount(resultSet.getInt("ID"));
-                clients.add(new Client(fName, lName, pAddress, pword, id, checkingAccount, savingsAccount, date));
+                String image = resultSet.getString("image");
+                clients.add(new Client(fName, lName, pAddress, pword, id, checkingAccount, savingsAccount, date, image));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -309,7 +314,9 @@ public class Model {
             double wLimit = resultSet.getDouble("TransactionLimit");
             double balance = resultSet.getDouble("Balance");
             int id = resultSet.getInt("ID");
-            account = new SavingsAccount(owner, num, balance, wLimit, id);
+            String spaceName = resultSet.getString("space_name");
+            String spaceImage = resultSet.getString("space_image");
+            account = new SavingsAccount(owner, num, balance, wLimit, id, spaceName, spaceImage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -363,7 +370,9 @@ public class Model {
             double wLimit = resultSet.getDouble("TransactionLimit");
             double balance = resultSet.getDouble("Balance");
             int owner = resultSet.getInt("Owner");
-            account = new SavingsAccount(owner, num, balance, wLimit, spaceId);
+            String spaceName = resultSet.getString("space_name");
+            String spaceImage = resultSet.getString("space_image");
+            account = new SavingsAccount(owner, num, balance, wLimit, spaceId, spaceName, spaceImage);
         } catch (Exception e) {
             e.printStackTrace();
         }

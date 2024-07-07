@@ -36,7 +36,9 @@ public class EditCardController implements Initializable {
         limit_fld.setText("" + limit);
         online_box.setSelected(online);
         atm_box.setSelected(terminal);
-        save_card_btn.setOnAction(event -> saveCard());
+        boolean finalOnline = online;
+        boolean finalTerminal = terminal;
+        save_card_btn.setOnAction(event -> saveCard(finalOnline, finalTerminal));
         limit_fld.textProperty().addListener((observable, oldValue, newValue) -> {
             if(!newValue.matches("[0-9]*")){
                 limit_fld.setText(oldValue);
@@ -44,7 +46,7 @@ public class EditCardController implements Initializable {
         });
     }
 
-    public void saveCard(){
+    public void saveCard(boolean prevOnline, boolean prevTerminal){
         int online = -1;
         int terminal = -1;
         int limit = -1;
@@ -55,15 +57,31 @@ public class EditCardController implements Initializable {
             online = 0;
         }
 
+        if(prevOnline == online_box.isSelected()) {
+            prevOnline = false;
+        } else {
+            prevOnline = true;
+        }
+
+        if(prevTerminal == atm_box.isSelected()) {
+            prevTerminal = false;
+        } else {
+            prevTerminal = true;
+        }
+
         if (atm_box.isSelected()) {
             terminal = 1;
         } else {
             terminal = 0;
         }
 
-        limit = Integer.parseInt(limit_fld.getText());
+        if (limit_fld.getText().trim().isEmpty()) {
+            limit = -1;
+        } else {
+            limit = Integer.parseInt(limit_fld.getText());
+        }
 
-        Model.getInstance().getDatabaseDriver().updateCard(limit, online, terminal);
+        Model.getInstance().getDatabaseDriver().updateCard(limit, online, terminal, prevOnline, prevTerminal);
         update_lbl.setText("Update successful");
     }
 }

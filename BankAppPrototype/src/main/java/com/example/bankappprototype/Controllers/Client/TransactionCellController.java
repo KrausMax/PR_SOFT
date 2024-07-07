@@ -38,6 +38,15 @@ public class TransactionCellController implements Initializable {
             }else in_icon.setVisible(false);
         }else out_icon.setVisible(false);
 
+        if (transaction.transactionTypeProperty().getValue().equals("KARTE_ONLINE_STATUS") || transaction.transactionTypeProperty().getValue().equals("KARTE_BANKOMAT_STATUS") || transaction.transactionTypeProperty().getValue().equals("KARTE_LIMIT_AENDERUNG")) {
+            in_icon.setVisible(false);
+            out_icon.setVisible(false);
+            receiver_lbl.setVisible(false);
+            if (transaction.transactionTypeProperty().getValue().equals("KARTE_ONLINE_STATUS") || transaction.transactionTypeProperty().getValue().equals("KARTE_BANKOMAT_STATUS")) {
+                amount_lbl.setVisible(false);
+            }
+        }
+
         trans_date_lbl.textProperty().bind(transaction.dateProperty().asString());
         trans_type_lbl.textProperty().bind(transaction.transactionTypeProperty());
 

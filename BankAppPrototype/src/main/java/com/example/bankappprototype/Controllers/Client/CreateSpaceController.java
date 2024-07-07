@@ -27,7 +27,6 @@ public class CreateSpaceController implements Initializable {
     public TextField space_name_fld;
     public ImageView space_picture_imageview;
     public Label created_successfully_btn;
-    private FileChooser fileChooser;
     private File filePath;
 
 
@@ -42,7 +41,7 @@ public class CreateSpaceController implements Initializable {
     public void chooseImageButtonPushed(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        fileChooser = new FileChooser();
+        FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image");
 
         this.filePath = fileChooser.showOpenDialog(stage);
@@ -79,6 +78,7 @@ public class CreateSpaceController implements Initializable {
         Model.getInstance().getDatabaseDriver().createSpace(accountNumber, transactionLimit, balance, spaceName, spaceImage);
 
         // Show success message
+        Model.getInstance().setSpaces(Model.getInstance().getClient().checkingAccountProperty().getValue().idProperty().getValue());
         created_successfully_btn.setText("Space created successfully!");
     }
 

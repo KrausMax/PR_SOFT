@@ -1,12 +1,12 @@
 package com.example.bankappprototype.Views;
 
 import com.example.bankappprototype.Controllers.Client.SpaceCellController;
-import com.example.bankappprototype.Models.Account;
+import com.example.bankappprototype.Models.SavingsAccount;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 
-public class SpaceCellFactory extends ListCell<Account> {
-    protected void updateItem(Account space, boolean empty) {
+public class SpaceCellFactory extends ListCell<SavingsAccount> {
+    protected void updateItem(SavingsAccount space, boolean empty) {
         super.updateItem(space, empty);
         if(empty) {
             setText(null);

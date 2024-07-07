@@ -12,5 +12,7 @@ public enum ClientMenuOptions {
     CARDS,
     FLOWCHART,
     CREATE_CARD,
-    EDIT_CARD
+    EDIT_CARD,
+    TRANSFER,
+    SPACE_TRANSFER
 }

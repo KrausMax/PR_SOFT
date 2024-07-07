@@ -5,8 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d05e2029-86ba-4d7a-96b9-c07ca351aedc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/SpaceTransferController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransferController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/SpaceTransfer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mazebank.db" beforeDir="false" afterPath="$PROJECT_DIR$/mazebank.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Admin/CreateClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Admin/CreateClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/BankomatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/BankomatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/CreateSpaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/CreateSpaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/EditCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/EditCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/SpaceCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/SpaceCellController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionCellController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Controllers/Client/TransactionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/DatabaseDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/SavingsAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/TransactionTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Models/TransactionTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ClientMenuOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ClientMenuOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/SpaceCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/SpaceCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bankappprototype/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Profile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/SpaceCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/SpaceCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Client/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Client/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/ClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/DashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/TransactionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Controllers/Client/TransactionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Models/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bankappprototype/Views/ViewFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,26 +76,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.App.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/maxim/OneDrive/ASMDW/_Maximilian/Uni/PR_SOFT/PR_SOFT/BankAppPrototype/src/main/resources/Fxml/Client/Bankomat.fxml",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#32-Transfer&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxim/OneDrive/ASMDW/_Maximilian/Uni/PR_SOFT/PR_SOFT/BankAppPrototype/src/main/resources/Fxml/Client/Bankomat.fxml&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.bankappprototype.Controllers.Client" />
@@ -117,6 +148,12 @@
       <workItem from="1719234420449" duration="915000" />
       <workItem from="1719246981962" duration="2922000" />
       <workItem from="1719249914125" duration="3926000" />
+      <workItem from="1719399673544" duration="852000" />
+      <workItem from="1720204134875" duration="430000" />
+      <workItem from="1720204572957" duration="2132000" />
+      <workItem from="1720300928333" duration="2452000" />
+      <workItem from="1720303389203" duration="5208000" />
+      <workItem from="1720339646054" duration="27201000" />
     </task>
     <servers />
   </component>
@@ -125,5 +162,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
