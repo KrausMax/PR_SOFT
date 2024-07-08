@@ -11,7 +11,8 @@
    <ListView fx:id="transactions_listview" layoutX="11.0" layoutY="131.0" prefHeight="634.0" prefWidth="822.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="131.0" />
    <Text layoutX="88.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Absender" AnchorPane.leftAnchor="88.0" AnchorPane.topAnchor="91.576171875" />
    <Text layoutX="315.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empfänger" AnchorPane.leftAnchor="315.0" AnchorPane.topAnchor="92.576171875" />
-   <ToolBar fx:id="account_bar" layoutX="625.0" layoutY="88.0" prefHeight="40.0" prefWidth="214.0" />
    <ComboBox fx:id="filter_box" layoutX="470.0" layoutY="79.0" prefWidth="150.0" promptText="Filter" />
    <TextField fx:id="search_field" layoutX="470.0" layoutY="105.0" promptText="Search" />
+   <ComboBox fx:id="account_box" layoutX="662.0" layoutY="103.0" prefWidth="150.0" />
+   <Text layoutX="669.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account wählen" />
 </AnchorPane>
