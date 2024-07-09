@@ -15,6 +15,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+/**
+ * Controller Klasse für das Dashboard, wo der Kunde eine Übersicht seiner Kunden bekommt und auf verschiedene
+ * Funktionen der Konten zugreifen kann
+ */
 public class DashboardController implements Initializable {
     public Text user_name;
     public Label login_date;

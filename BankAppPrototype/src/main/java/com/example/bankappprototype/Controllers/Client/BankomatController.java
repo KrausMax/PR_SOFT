@@ -14,6 +14,9 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+/**
+ * Controller-Klasse für die Simulierung eines Bankomaten
+ */
 public class BankomatController implements Initializable {
 
     @FXML

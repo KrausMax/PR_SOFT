@@ -12,6 +12,10 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+/**
+ * Controller Klasse, die dem Kunden erlaubt die ausgewählte Karte im Bezug auf Transaktionslimit zu bearbeiten
+ * und das Zahlen mit der Karte online oder am Bankomaten zu aktivieren oder deaktvieren
+ */
 public class EditCardController implements Initializable {
     public TextField limit_fld;
     public Button save_card_btn;

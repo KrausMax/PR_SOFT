@@ -336,13 +336,7 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
 
-        try {
-            statement = this.conn.createStatement();
-            statement.executeUpdate("UPDATE Account  SET Balance = Balance - 20 WHERE ID = " + account);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Model.getInstance().getDatabaseDriver().payment(account, 20, "Bestellung der Karte " + cardNumber, TransactionTypes.UEBERWEISUNG.toString(), 1);
     }
 
     public ResultSet getAllClientsData() {
@@ -468,72 +462,16 @@ public class DatabaseDriver {
         return null;
     }
 
-    public boolean addToCardPayment(String accountID, String amount) {
-        PreparedStatement statement;
-        try {
-            statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
-
-            LocalDateTime ldt = LocalDateTime.now();
-
-            statement.setInt(1, 1);
-            statement.setFloat(2, Float.parseFloat(amount));
-            statement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
-            statement.setString(4,"Einzahlung");
-            statement.setString(5,TransactionTypes.BANKOMAT_EINZAHLUNG.toString());
-            statement.setInt(6,Integer.parseInt(accountID));
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public boolean subtractFromCardPayment(String accountID, String amount) {
-        PreparedStatement statement;
-        try {
-            statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
-
-            LocalDateTime ldt = LocalDateTime.now();
-
-            statement.setInt(1, Integer.parseInt(accountID));
-            statement.setFloat(2, Float.parseFloat(amount));
-            statement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
-            statement.setString(4,"Abhebung");
-            statement.setString(5,TransactionTypes.BANKOMAT_BEHEBUNG.toString());
-            statement.setInt(6,1);
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public boolean payWithCard(String accountID, String amount, String message) {
-        PreparedStatement statement;
-        try {
-            statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
-
-            LocalDateTime ldt = LocalDateTime.now();
-
-            statement.setInt(1, Integer.parseInt(accountID));
-            statement.setFloat(2, Float.parseFloat(amount));
-            statement.setString(3, DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt));
-            statement.setString(4, message);
-            statement.setString(5,TransactionTypes.KARTENZAHLUNG.toString());
-            statement.setInt(6,2);
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
+    /**
+     * Processes a payment transaction between two accounts.
+     * 
+     * @param senderID   The ID of the sender's account
+     * @param amount     The amount of money to be transferred
+     * @param message    A message associated with the transaction
+     * @param type       The type of the transaction
+     * @param receiverID The ID of the receiver's account
+     * @return True if the transaction was successful, false otherwise
+     */
     public boolean payment (int senderID, double amount, String message, String type, int receiverID) {
         PreparedStatement statement;
         try {

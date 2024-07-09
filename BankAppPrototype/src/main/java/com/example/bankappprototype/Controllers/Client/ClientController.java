@@ -7,6 +7,9 @@ import javafx.scene.layout.BorderPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroller Klasse zum Verwalten der Kunden UI, verwaltet das Wechseln zwischen verschiedenen Views
+ */
 public class ClientController implements Initializable {
     public BorderPane client_parent;
 

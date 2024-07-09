@@ -14,6 +14,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller Klasse, die es dem User erlaubt Daten seines Profils einzusehen und zu bearbeiten
+ */
 public class ProfileController implements Initializable {
 
     public TextField fName_fld;
@@ -28,7 +31,7 @@ public class ProfileController implements Initializable {
     public ImageView profile_picture_imageview;
     private File filePath;
 
-    public void togglevisiblePassword() {
+    private void togglevisiblePassword() {
         if (show_box.isSelected()) {
             plaintxt_password_fld.setText(password_fld.getText());
             plaintxt_password_fld.setVisible(true);
@@ -38,7 +41,7 @@ public class ProfileController implements Initializable {
         password_fld.setVisible(true);
         plaintxt_password_fld.setVisible(false);
     }
-    public void updateClientData(){
+    private void updateClientData(){
         String fName = fName_fld.getText();
         String lName = lName_fld.getText();
         String email = email_fld.getText();

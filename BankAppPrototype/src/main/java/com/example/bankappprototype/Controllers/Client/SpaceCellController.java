@@ -15,6 +15,10 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroller Klasse einer Space Zelle, die im Dashboard angezeigt wird, und dem Nutzer erlaubt Informationen über das
+ * Space einzusehen und Funktionen des Spaces zu nutzen
+ */
 public class SpaceCellController implements Initializable {
     public Label account_number_lbl;
     public Label balance_lbl;
@@ -25,6 +29,11 @@ public class SpaceCellController implements Initializable {
     public Button transfer_btn;
 
     private final SavingsAccount space;
+
+    /**
+     *
+     * @param space
+     */
     public SpaceCellController(SavingsAccount space){
         this.space = space;
     }

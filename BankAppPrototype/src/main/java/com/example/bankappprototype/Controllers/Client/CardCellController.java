@@ -9,6 +9,9 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller-Klasse für die einzelnen Kartenzellen in der Karten ListView
+ */
 public class CardCellController implements Initializable {
 
     public Label iban_lbl;
@@ -19,9 +22,15 @@ public class CardCellController implements Initializable {
     public Button edit_card_btn;
 
     private final Card card;
+
+    /**
+     * Konstruktor für CardCellController
+     * @param card Das Karten Objekt mit den Daten der Karte die abgebildet werden sollen
+     */
     public CardCellController(Card card) {
         this.card = card;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iban_lbl.setText(card.cardNumberProperty().getValue());

@@ -17,12 +17,13 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller Klasse, die es dem Kunden erlaubt eine neue Karte zu erstellen
+ */
 public class CreateCardController implements Initializable {
     public Button create_card_btn;
     public Label created_successfully_btn;
     public TextField limit_fld;
-    public ImageView card_picture_imageview;
-    private File filePath;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

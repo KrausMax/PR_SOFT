@@ -331,18 +331,6 @@ public class Model {
         this.activeAccount = activeAccount;
     }
 
-    public boolean addToCard(String accountID, String amount) {
-        return databaseDriver.addToCardPayment(accountID,amount);
-    }
-
-    public boolean subtractFromCard(String accountID, String amount) {
-        return databaseDriver.subtractFromCardPayment(accountID,amount);
-    }
-
-    public boolean payWithCard(String accountID, String amount, String message) {
-        return databaseDriver.payWithCard(accountID,amount,message);
-    }
-
     public String getCardIban() {
         return cardIban;
     }

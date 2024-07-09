@@ -11,6 +11,9 @@ import javafx.scene.control.ListView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroller Klasse zum Verwalten und Abbilden der Karten des Kontos
+ */
 public class CardsController implements Initializable {
 
     public ListView cards_listview;
@@ -18,6 +21,11 @@ public class CardsController implements Initializable {
     public Button order_card_btn;
 
     private final String iban;
+
+    /**
+     * Konstruktor für CardsController
+     * @param iban Die IBAN des Kontos dessen Karten angezeigt werden sollen
+     */
     public CardsController(String iban) {
         this.iban = iban;
     }

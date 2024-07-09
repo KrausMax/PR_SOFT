@@ -8,6 +8,10 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller Klasse, die dem Nutzer ermöglicht unter Beachtung vom Limit und Kontostand Geld von seinem Hauptkonto
+ * auf das ausgewählte Space zu laden und umgekehrt
+ */
 public class SpaceTransferController implements Initializable {
     public TextField euro_fld;
     public Button commit_btn;
