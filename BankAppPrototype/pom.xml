@@ -44,9 +44,16 @@
       <artifactId>javafx-swing</artifactId>
       <version>19-ea+11</version>
     </dependency>
+    <dependency>
+      <groupId>org.jfree</groupId>
+      <artifactId>jfreechart</artifactId>
+      <version>1.5.5</version>
+    </dependency>
 
 
-<dependency>
+
+
+    <dependency>
       <groupId>com.dlsc.formsfx</groupId>
       <artifactId>formsfx-core</artifactId>
       <version>11.6.0</version>
