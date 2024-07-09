@@ -2,20 +2,14 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="create_space_container" stylesheets="@../../Styles/CreateSpace.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.CreateCardController">
-    <Text layoutX="262.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaktionslimit:" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="70.5" />
-    <Text layoutX="269.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bild:" AnchorPane.leftAnchor="269.0" AnchorPane.topAnchor="294.5" />
+    <Text layoutX="265.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaktionslimit:" AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="294.5" />
     <Button fx:id="create_card_btn" layoutX="717.0" layoutY="663.0" mnemonicParsing="false" text="Bestellen" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="663.0" />
     <Label fx:id="created_successfully_btn" layoutX="20.0" layoutY="176.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="720.0" />
-    <TextField fx:id="limit_fld" layoutX="480.0" layoutY="64.0" prefHeight="44.0" prefWidth="230.0" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="64.0" />
-    <Button layoutX="385.0" layoutY="358.0" mnemonicParsing="false" onAction="#chooseImageButtonPushed" text="Bild ändern" />
-    <ImageView fx:id="card_picture_imageview" fitHeight="150.0" fitWidth="200.0" layoutX="425.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="425.0" AnchorPane.topAnchor="175.0">
-        <Image url="@../../Images/Max_Mustermann.png" />
-    </ImageView>
+    <TextField fx:id="limit_fld" layoutX="498.0" layoutY="288.0" prefHeight="44.0" prefWidth="230.0" AnchorPane.leftAnchor="498.0" AnchorPane.topAnchor="288.0" />
     <VBox alignment="CENTER" layoutX="14.0" layoutY="19.0" prefHeight="672.0" prefWidth="230.0" styleClass="create_space_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
             <Text rotate="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elysia Bank" />

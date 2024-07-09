@@ -35,8 +35,8 @@ public class CreateCardController implements Initializable {
     }
 
     private void createCard() {
-        if (limit_fld.getText().isEmpty() || filePath == null) {
-            created_successfully_btn.setText("Please provide a limit and upload an image.");
+        if (limit_fld.getText().isEmpty()) {
+            created_successfully_btn.setText("Please provide a limit");
             return;
         }
         int limit;
@@ -49,20 +49,5 @@ public class CreateCardController implements Initializable {
 
         Model.getInstance().getDatabaseDriver().createCard(limit);
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.CARDS);
-    }
-
-    public void chooseImageButtonPushed(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Image");
-
-        this.filePath = fileChooser.showOpenDialog(stage);
-
-        if (this.filePath != null) {
-            // Load the image directly into the ImageView
-            Image image = new Image(filePath.toURI().toString());
-            card_picture_imageview.setImage(image);
-        }
     }
 }
