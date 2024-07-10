@@ -85,7 +85,6 @@ public class FlowChartController implements Initializable {
         sumLabel.setText(String.format("%.2f €", sum));
     }
 
-
     private double parseDoubleOrZero(String value) {
         try {
             return Double.parseDouble(value);
@@ -152,13 +151,12 @@ public class FlowChartController implements Initializable {
             double salary = parseDoubleOrZero(salaryField.getText());
             double additionalIncome = parseDoubleOrZero(additionalIncomeField.getText());
 
-            Map<String, Map<String, Double>> incomeCategories = new HashMap<>();
+            Map<String, Double> incomeCategories = new HashMap<>();
             Map<String, Map<String, Double>> expenseCategories = new HashMap<>();
 
+            // Segregate income and expense categories
             for (Node node : incomeVBox.getChildren()) {
                 if (node instanceof TitledPane titledPane) {
-                    Map<String, Double> subcategories = new HashMap<>();
-
                     VBox categoryVBox = (VBox) titledPane.getContent();
                     for (Node subNode : categoryVBox.getChildren()) {
                         if (subNode instanceof VBox subCategoryVBox) {
@@ -170,11 +168,9 @@ public class FlowChartController implements Initializable {
                             TextField textField = (TextField) inputBox.getChildren().get(0);
                             double value = parseDoubleOrZero(textField.getText());
 
-                            subcategories.put(subCategory, value);
+                            incomeCategories.put(subCategory, value);
                         }
                     }
-
-                    incomeCategories.put(titledPane.getText(), subcategories);
                 }
             }
 
@@ -206,7 +202,7 @@ public class FlowChartController implements Initializable {
             sankeyDiagramController.generatePDF(salary, additionalIncome, incomeCategories, expenseCategories);
 
             try {
-                File pdfFile = new File("sankey_diagram.png");
+                File pdfFile = new File("sankey_diagram.pdf");
                 if (pdfFile.exists()) {
                     Desktop.getDesktop().open(pdfFile);
                 } else {
