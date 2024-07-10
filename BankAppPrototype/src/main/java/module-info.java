@@ -9,6 +9,7 @@ module com.example.bankappprototype {
     requires javafx.swing;
 
 
+
     opens com.example.bankappprototype to javafx.fxml;
     exports com.example.bankappprototype;
     exports com.example.bankappprototype.Controllers;
