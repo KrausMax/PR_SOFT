@@ -4,8 +4,12 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -18,17 +22,41 @@ public class SankeyDiagramController {
 
     public void generatePDF(double salary, double additionalIncome, Map<String, Map<String, Double>> categories) {
         // Create a new Canvas
-        Canvas canvas = new Canvas(1000, 600);
+        Canvas canvas = new Canvas(1600, 1000);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         // Draw nodes and edges
         drawSankeyDiagram(gc, salary, additionalIncome, categories);
 
+        // Calculate total income and expenses for the summary text
+        double totalIncome = salary + additionalIncome;
+        double totalExpenses = categories.values().stream()
+                .flatMap(m -> m.values().stream())
+                .mapToDouble(Double::doubleValue)
+                .sum();
+        double difference = totalIncome - totalExpenses;
+
+        // Summary text
+        String summaryText;
+        if (difference == 0) {
+            summaryText = "Die Summe deines Budgets beläuft sich auf " + String.format("%.2f", totalIncome) + "€ und die deiner Ausgaben auf " + String.format("%.2f", totalExpenses) + "€. Deine Ausgaben werden somit von deinem Budget gedeckt.";
+        } else if (difference > 0) {
+            summaryText = "Die Summe deines Budgets beläuft sich auf " + String.format("%.2f", totalIncome) + "€ und die deiner Ausgaben auf " + String.format("%.2f", totalExpenses) + "€. Von deinem Budget bleiben " + String.format("%.2f", difference) + "€ übrig.";
+        } else {
+            summaryText = "Die Summe deines Budgets beläuft sich auf " + String.format("%.2f", totalIncome) + "€ und die deiner Ausgaben auf " + String.format("%.2f", totalExpenses) + "€. Deine Ausgaben übersteigen somit dein Budget um " + String.format("%.2f", -difference) + "€.";
+        }
+        gc.fillText(summaryText, 50, 50);
+
+        // Create the list of income and expenses
+        String incomeExpensesList = generateIncomeExpensesList(salary, additionalIncome, categories);
+        gc.fillText(incomeExpensesList, 50, 70);
+
         // Display the canvas in a new window
         Stage stage = new Stage();
-        Pane pane = new Pane();
+        VBox pane = new VBox();
         pane.getChildren().add(canvas);
-        Scene scene = new Scene(pane, 1000, 600);
+        ScrollPane scrollPane = new ScrollPane(pane);
+        Scene scene = new Scene(scrollPane, 1600, 1000);
         stage.setScene(scene);
         stage.show();
 
@@ -42,8 +70,8 @@ public class SankeyDiagramController {
 
     private void drawSankeyDiagram(GraphicsContext gc, double salary, double additionalIncome, Map<String, Map<String, Double>> categories) {
         double totalIncome = salary + additionalIncome;
-        double width = 1000;
-        double height = 600;
+        double width = 1600;
+        double height = 1000;
 
         // Set background color
         gc.setFill(Color.WHITE);
@@ -91,6 +119,10 @@ public class SankeyDiagramController {
 
         int colorIndex = 0;
         for (Map.Entry<String, Map<String, Double>> category : categories.entrySet()) {
+            if (category.getKey().equals("Einkommen")) {
+                continue; // Skip income categories
+            }
+
             String categoryName = category.getKey();
             Map<String, Double> subcategories = category.getValue();
 
@@ -102,6 +134,11 @@ public class SankeyDiagramController {
             gc.fillRect(mainCategoryX, currentY, mainCategoryWidth, mainCategoryHeight);
             gc.setFill(Color.BLACK);
             gc.fillText(categoryName + ": " + String.format("%.2f", totalCategory) + "€", mainCategoryX + 10, currentY + 25);
+
+            // Draw edges from budget to main categories
+            gc.setStroke(categoryColors[colorIndex % categoryColors.length]);
+            gc.setLineWidth(5);
+            gc.strokeLine(budgetX + budgetWidth, budgetY + 20, mainCategoryX, currentY + 20);
 
             // Draw subcategories
             double subCategoryX = 850;
@@ -127,7 +164,7 @@ public class SankeyDiagramController {
                 subCurrentY += 60;
             }
 
-            currentY += 140;
+            currentY += 200;
             colorIndex++;
         }
 
@@ -137,5 +174,47 @@ public class SankeyDiagramController {
         gc.strokeLine(incomeX + incomeWidth, incomeY + 20, budgetX, budgetY + 20);
         gc.setStroke(additionalIncomeColor);
         gc.strokeLine(incomeX + incomeWidth, incomeY + 80, budgetX, budgetY + 20);
+    }
+
+    private String generateIncomeExpensesList(double salary, double additionalIncome, Map<String, Map<String, Double>> categories) {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(String.format("%-20s %-20s %-10s\n", "EINKOMMEN", "BETRAG", "PROZENT"));
+        double totalIncome = salary + additionalIncome;
+        double totalExpenses = 0.0;
+
+        // Append income categories
+        for (Map.Entry<String, Map<String, Double>> entry : categories.entrySet()) {
+            if (entry.getKey().equals("Einkommen")) {
+                for (Map.Entry<String, Double> subEntry : entry.getValue().entrySet()) {
+                    double percentage = (subEntry.getValue() / totalIncome) * 100;
+                    builder.append(String.format("%-20s %-20s %-10s\n", subEntry.getKey(), String.format("%.2f€", subEntry.getValue()), String.format("%.2f%%", percentage)));
+                }
+                builder.append(String.format("%-20s %-20s %-10s\n", "SUMME", String.format("%.2f€", totalIncome), "100%"));
+            }
+        }
+
+        builder.append("\n");
+        builder.append(String.format("%-20s %-20s %-10s\n", "AUSGABEN", "BETRAG", "PROZENT"));
+
+        // Append expense categories
+        for (Map.Entry<String, Map<String, Double>> entry : categories.entrySet()) {
+            if (!entry.getKey().equals("Einkommen")) {
+                double categoryTotal = entry.getValue().values().stream().mapToDouble(Double::doubleValue).sum();
+                totalExpenses += categoryTotal;
+                double categoryPercentage = (categoryTotal / totalExpenses) * 100;
+                builder.append(String.format("%-20s %-20s %-10s\n", entry.getKey(), String.format("%.2f€", categoryTotal), String.format("%.2f%%", categoryPercentage)));
+                for (Map.Entry<String, Double> subEntry : entry.getValue().entrySet()) {
+                    double subPercentage = (subEntry.getValue() / categoryTotal) * 100;
+                    builder.append(String.format("%-20s %-20s %-10s\n", "  " + subEntry.getKey(), String.format("%.2f€", subEntry.getValue()), String.format("%.2f%%", subPercentage)));
+                }
+            }
+        }
+
+        builder.append(String.format("%-20s %-20s %-10s\n", "SUMME", String.format("%.2f€", totalExpenses), "100%"));
+        double difference = totalIncome - totalExpenses;
+        builder.append(String.format("\n%-20s %-20s\n", "DIFFERENZ", String.format("%.2f€", difference)));
+
+        return builder.toString();
     }
 }

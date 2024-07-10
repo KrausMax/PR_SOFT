@@ -85,6 +85,15 @@ public class FlowChartController implements Initializable {
         sumLabel.setText(String.format("%.2f €", sum));
     }
 
+
+    private double parseDoubleOrZero(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
+    }
+
     // Change Title of SubCategory
     public void changeTitle(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -140,12 +149,36 @@ public class FlowChartController implements Initializable {
 
     public void calculateButtonClicked() {
         try {
-            double salary = Double.parseDouble(salaryField.getText());
-            double additionalIncome = Double.parseDouble(additionalIncomeField.getText());
+            double salary = parseDoubleOrZero(salaryField.getText());
+            double additionalIncome = parseDoubleOrZero(additionalIncomeField.getText());
 
-            Map<String, Map<String, Double>> categories = new HashMap<>();
+            Map<String, Map<String, Double>> incomeCategories = new HashMap<>();
+            Map<String, Map<String, Double>> expenseCategories = new HashMap<>();
 
-            for (Node node : mainVBox.getChildren()) {
+            for (Node node : incomeVBox.getChildren()) {
+                if (node instanceof TitledPane titledPane) {
+                    Map<String, Double> subcategories = new HashMap<>();
+
+                    VBox categoryVBox = (VBox) titledPane.getContent();
+                    for (Node subNode : categoryVBox.getChildren()) {
+                        if (subNode instanceof VBox subCategoryVBox) {
+                            HBox labelBox = (HBox) subCategoryVBox.getChildren().get(0);
+                            Label label = (Label) labelBox.getChildren().get(0);
+                            String subCategory = label.getText();
+
+                            HBox inputBox = (HBox) subCategoryVBox.getChildren().get(1);
+                            TextField textField = (TextField) inputBox.getChildren().get(0);
+                            double value = parseDoubleOrZero(textField.getText());
+
+                            subcategories.put(subCategory, value);
+                        }
+                    }
+
+                    incomeCategories.put(titledPane.getText(), subcategories);
+                }
+            }
+
+            for (Node node : expensesVBox.getChildren()) {
                 if (node instanceof TitledPane titledPane) {
                     String mainCategory = titledPane.getText();
                     Map<String, Double> subcategories = new HashMap<>();
@@ -159,18 +192,18 @@ public class FlowChartController implements Initializable {
 
                             HBox inputBox = (HBox) subCategoryVBox.getChildren().get(1);
                             TextField textField = (TextField) inputBox.getChildren().get(0);
-                            double value = Double.parseDouble(textField.getText());
+                            double value = parseDoubleOrZero(textField.getText());
 
                             subcategories.put(subCategory, value);
                         }
                     }
 
-                    categories.put(mainCategory, subcategories);
+                    expenseCategories.put(mainCategory, subcategories);
                 }
             }
 
             SankeyDiagramController sankeyDiagramController = new SankeyDiagramController();
-            sankeyDiagramController.generatePDF(salary, additionalIncome, categories);
+            sankeyDiagramController.generatePDF(salary, additionalIncome, incomeCategories, expenseCategories);
 
             try {
                 File pdfFile = new File("sankey_diagram.png");
@@ -182,8 +215,9 @@ public class FlowChartController implements Initializable {
             } catch (IOException e) {
                 new Alert(Alert.AlertType.ERROR, "Error opening PDF. Please try again.").show();
             }
-        } catch (NumberFormatException e) {
-            new Alert(Alert.AlertType.ERROR, "Invalid number format. Please ensure all fields contain numeric values.").show();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "An unexpected error occurred. Please try again.").show();
+            e.printStackTrace();
         }
     }
 
