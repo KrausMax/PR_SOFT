@@ -22,6 +22,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing the flowchart view, allowing users to add, edit, and delete categories and subcategories
+ * for income and expenses, and generating a Sankey diagram PDF based on the input data.
+ */
 public class FlowChartController implements Initializable {
 
     public TextField salaryField;
@@ -52,6 +56,12 @@ public class FlowChartController implements Initializable {
     public VBox incomeVBox;
     public VBox expensesVBox;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setNumericTextField(salaryField, salarySum);
@@ -63,6 +73,12 @@ public class FlowChartController implements Initializable {
         setNumericTextField(savingField, savingSum);
     }
 
+    /**
+     * Sets up a TextField to only accept numeric input and updates the corresponding sum label.
+     *
+     * @param textField The TextField to be set up.
+     * @param sumLabel  The Label to be updated with the sum.
+     */
     private void setNumericTextField(TextField textField, Label sumLabel) {
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("^(\\d*)\\.?(\\d*)$")) {
@@ -75,6 +91,12 @@ public class FlowChartController implements Initializable {
         });
     }
 
+    /**
+     * Updates the sum label with the value from the TextField.
+     *
+     * @param sumLabel   The Label to be updated.
+     * @param textField  The TextField containing the value.
+     */
     private void updateSumLabel(Label sumLabel, TextField textField) {
         double sum = 0;
         try {
@@ -85,6 +107,12 @@ public class FlowChartController implements Initializable {
         sumLabel.setText(String.format("%.2f €", sum));
     }
 
+    /**
+     * Parses a String to a double, returning 0.0 if the String is not a valid number.
+     *
+     * @param value The String to be parsed.
+     * @return The parsed double value, or 0.0 if the String is not a valid number.
+     */
     private double parseDoubleOrZero(String value) {
         try {
             return Double.parseDouble(value);
@@ -93,7 +121,11 @@ public class FlowChartController implements Initializable {
         }
     }
 
-    // Change Title of SubCategory
+    /**
+     * Changes the title of a subcategory when the associated button is clicked.
+     *
+     * @param event The ActionEvent triggered by clicking the button.
+     */
     public void changeTitle(ActionEvent event) {
         Button button = (Button) event.getSource();
         Label associatedLabel = getAssociatedLabel(button);
@@ -108,6 +140,11 @@ public class FlowChartController implements Initializable {
         }
     }
 
+    /**
+     * Changes the title of a main category when the associated button is clicked.
+     *
+     * @param event The ActionEvent triggered by clicking the button.
+     */
     public void changeMainCategoryTitle(ActionEvent event) {
         Button button = (Button) event.getSource();
         TitledPane titledPane = (TitledPane) button.getParent().getParent();
@@ -120,6 +157,11 @@ public class FlowChartController implements Initializable {
         result.ifPresent(titledPane::setText);
     }
 
+    /**
+     * Deletes an entry (subcategory) when the associated button is clicked.
+     *
+     * @param event The ActionEvent triggered by clicking the button.
+     */
     public void deleteEntry(ActionEvent event) {
         Button button = (Button) event.getSource();
         HBox parentHBox = (HBox) button.getParent();
@@ -137,6 +179,12 @@ public class FlowChartController implements Initializable {
         }
     }
 
+    /**
+     * Gets the Label associated with a button in the same HBox.
+     *
+     * @param button The button whose associated label is to be found.
+     * @return The associated Label, or null if not found.
+     */
     private Label getAssociatedLabel(Button button) {
         if (button.getParent() instanceof HBox parentHBox) {
             if (!parentHBox.getChildren().isEmpty() && parentHBox.getChildren().get(0) instanceof Label) {
@@ -146,6 +194,9 @@ public class FlowChartController implements Initializable {
         return null;
     }
 
+    /**
+     * Handles the calculation of the Sankey diagram when the "Calculate" button is clicked.
+     */
     public void calculateButtonClicked() {
         try {
             double salary = parseDoubleOrZero(salaryField.getText());
@@ -217,6 +268,11 @@ public class FlowChartController implements Initializable {
         }
     }
 
+    /**
+     * Opens a dialog to add a new main category.
+     *
+     * @param event The ActionEvent triggered by clicking the button.
+     */
     public void addMainCategory(ActionEvent event) {
         ChoiceDialog<String> dialog = new ChoiceDialog<>("Einkommen", "Einkommen", "Ausgaben");
         dialog.setTitle("Neue Hauptkategorie");
@@ -235,6 +291,12 @@ public class FlowChartController implements Initializable {
         });
     }
 
+    /**
+     * Creates a new main category and adds it to the appropriate VBox.
+     *
+     * @param name The name of the new main category.
+     * @param type The type of the new main category (income or expense).
+     */
     private void createMainCategory(String name, String type) {
         TitledPane mainCategoryPane = new TitledPane();
         mainCategoryPane.setText(name);
@@ -260,12 +322,23 @@ public class FlowChartController implements Initializable {
         }
     }
 
+    /**
+     * Adds a new subcategory from the event of clicking the button.
+     *
+     * @param event The ActionEvent triggered by clicking the button.
+     */
     public void addSubCategoryFromEvent(ActionEvent event) {
         Button button = (Button) event.getSource();
         VBox parentVBox = (VBox) button.getParent();
         addSubCategory(event, parentVBox);
     }
 
+    /**
+     * Adds a new subcategory to the specified parent VBox.
+     *
+     * @param event      The ActionEvent triggered by clicking the button.
+     * @param parentVBox The VBox to which the new subcategory will be added.
+     */
     private void addSubCategory(ActionEvent event, VBox parentVBox) {
         VBox newEntry = new VBox(5);
         HBox labelBox = new HBox(10);
@@ -300,6 +373,11 @@ public class FlowChartController implements Initializable {
         parentVBox.getChildren().add(parentVBox.getChildren().size() - 1, newEntry);
     }
 
+    /**
+     * Opens a dialog to delete a main category.
+     *
+     * @param event The ActionEvent triggered by clicking the button.
+     */
     public void deleteMainCategoryDialog(ActionEvent event) {
         ChoiceDialog<String> dialog = new ChoiceDialog<>();
         dialog.setTitle("Hauptkategorie löschen");
@@ -324,6 +402,11 @@ public class FlowChartController implements Initializable {
         result.ifPresent(this::deleteMainCategory);
     }
 
+    /**
+     * Deletes the specified main category.
+     *
+     * @param selectedCategory The main category to be deleted.
+     */
     private void deleteMainCategory(String selectedCategory) {
         String[] parts = selectedCategory.split(": ");
         String type = parts[0];
@@ -336,6 +419,12 @@ public class FlowChartController implements Initializable {
         }
     }
 
+    /**
+     * Deletes a main category from the specified VBox.
+     *
+     * @param vBox The VBox from which the main category will be deleted.
+     * @param name The name of the main category to be deleted.
+     */
     private void deleteMainCategoryFromVBox(VBox vBox, String name) {
         for (Node node : vBox.getChildren()) {
             if (node instanceof TitledPane titledPane) {

@@ -4,15 +4,15 @@ import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Views.AccountType;
 import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for handling login operations.
+ */
 public class LoginController implements Initializable {
     public ChoiceBox<AccountType> acc_selector;
     public Label payee_address_lbl;
@@ -23,6 +23,12 @@ public class LoginController implements Initializable {
     public Label error_lbl;
     public Button register_btn;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the resources used to localize the root object, or null if the root object was not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         acc_selector.setItems(FXCollections.observableArrayList(AccountType.CLIENT, AccountType.ADMIN));
@@ -35,6 +41,9 @@ public class LoginController implements Initializable {
         password_fld.setOnAction(event -> login_btn.fire());
     }
 
+    /**
+     * Handles the login operation.
+     */
     private void onLogin() {
         Stage stage = (Stage) error_lbl.getScene().getWindow();
         String emailAddress = payee_address_fld.getText();
@@ -44,7 +53,6 @@ public class LoginController implements Initializable {
             error_lbl.setText("Bitte E-Mail-Adresse und Passwort eingeben!");
             return;
         }
-
 
         if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.CLIENT) {
             // Evaluate Client Login Credentials
@@ -72,7 +80,4 @@ public class LoginController implements Initializable {
             }
         }
     }
-
-
-
 }

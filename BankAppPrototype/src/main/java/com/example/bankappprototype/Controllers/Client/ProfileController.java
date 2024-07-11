@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller Klasse, die es dem User erlaubt Daten seines Profils einzusehen und zu bearbeiten
+ * Controller class that allows the user to view and edit their profile data.
  */
 public class ProfileController implements Initializable {
 
@@ -31,6 +31,9 @@ public class ProfileController implements Initializable {
     public ImageView profile_picture_imageview;
     private File filePath;
 
+    /**
+     * Toggles the visibility of the password between plain text and hidden.
+     */
     private void togglevisiblePassword() {
         if (show_box.isSelected()) {
             plaintxt_password_fld.setText(password_fld.getText());
@@ -41,6 +44,10 @@ public class ProfileController implements Initializable {
         password_fld.setVisible(true);
         plaintxt_password_fld.setVisible(false);
     }
+
+    /**
+     * Updates the client's profile data in the database and in the model.
+     */
     private void updateClientData(){
         String fName = fName_fld.getText();
         String lName = lName_fld.getText();
@@ -48,8 +55,7 @@ public class ProfileController implements Initializable {
         String password;
         if (password_change_fld.getText().equals("")) {
             password = password_fld.getText();
-        }
-        else {
+        } else {
             password = password_change_fld.getText();
         }
         Model.getInstance().getDatabaseDriver().updateClient(fName, lName, email, password);
@@ -63,6 +69,12 @@ public class ProfileController implements Initializable {
         password_change_fld.setText("");
     }
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         email_fld.setText(Model.getInstance().getClient().pAddressProperty().get());
@@ -75,6 +87,11 @@ public class ProfileController implements Initializable {
         profile_picture_imageview.setImage(image);
     }
 
+    /**
+     * Opens a file chooser to select a new profile picture and updates the profile picture in the database and model.
+     *
+     * @param event The ActionEvent triggered by clicking the "Choose Image" button.
+     */
     public void chooseImageButtonPushed(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 

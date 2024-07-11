@@ -5,11 +5,21 @@ import com.example.bankappprototype.Models.Transaction;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 
+/**
+ * A custom cell factory for displaying transaction details in a ListView.
+ */
 public class TransactionCellFactory extends ListCell<Transaction> {
+
+    /**
+     * Updates the cell with the provided transaction details.
+     *
+     * @param transaction the transaction to display
+     * @param empty whether the cell is empty
+     */
     @Override
     protected void updateItem(Transaction transaction, boolean empty) {
         super.updateItem(transaction, empty);
-        if(empty) {
+        if (empty) {
             setText(null);
             setGraphic(null);
         } else {

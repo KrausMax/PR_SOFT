@@ -1,6 +1,5 @@
 package com.example.bankappprototype.Controllers.Client;
 
-import com.example.bankappprototype.Models.Card;
 import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Models.TransactionTypes;
 import javafx.fxml.FXML;
@@ -15,7 +14,7 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 /**
- * Controller-Klasse für die Simulierung eines Bankomaten
+ * Controller class for simulating an ATM machine.
  */
 public class BankomatController implements Initializable {
 
@@ -55,16 +54,22 @@ public class BankomatController implements Initializable {
     private String accountID;
     private String message;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inoutsum_field.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("^(\\d*)\\.?(\\d){0,2}$")){
+            if (!newValue.matches("^(\\d*)\\.?(\\d){0,2}$")) {
                 inoutsum_field.setText(oldValue);
             }
         });
 
         cardpaysum_field.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("^(\\d*)\\.?(\\d){0,2}$")){
+            if (!newValue.matches("^(\\d*)\\.?(\\d){0,2}$")) {
                 cardpaysum_field.setText(oldValue);
             }
         });
@@ -74,30 +79,36 @@ public class BankomatController implements Initializable {
         cardpaybutton.setOnAction(actionEvent -> cardPayment());
     }
 
-    private void verifyCard(){
-        accountID = Model.getInstance().verifyCard(cnumber_field.getText(),fnumber_field.getText(),gnumber_field.getText());
+    /**
+     * Verifies the card using the provided card number, first name, and last name.
+     */
+    private void verifyCard() {
+        accountID = Model.getInstance().verifyCard(cnumber_field.getText(), fnumber_field.getText(), gnumber_field.getText());
 
-        if (accountID!=null){
+        if (accountID != null) {
             systemlabel.textProperty().set("Karte verifiziert!");
-        }else {
+        } else {
             systemlabel.textProperty().set("Karte nicht gefunden!");
         }
     }
 
+    /**
+     * Handles inbound payments.
+     */
     private void inboundPayment() {
-        if (accountID!=null){
+        if (accountID != null) {
             message = "Card: " + cnumber_field.getText();
 
             if (Model.getInstance().getDatabaseDriver().payment(1, Double.parseDouble(inoutsum_field.getText()), message, TransactionTypes.BANKOMAT_EINZAHLUNG.toString(), Integer.parseInt(accountID))) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Bankomat");
                 alert.setHeaderText("Bankomat - Einzahlung");
-                alert.setContentText("Ihre Transaktion war erfolgreich, "+inoutsum_field.getText()+"€ wurden auf das Konto gutgeschrieben.");
+                alert.setContentText("Ihre Transaktion war erfolgreich, " + inoutsum_field.getText() + "€ wurden auf das Konto gutgeschrieben.");
                 inoutsum_field.clear();
 
                 alert.showAndWait();
             }
-        }else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Bankomat");
             alert.setHeaderText("Transaktionsfehler");
@@ -107,8 +118,11 @@ public class BankomatController implements Initializable {
         }
     }
 
+    /**
+     * Handles outbound payments.
+     */
     private void outboundPayment() {
-        if (accountID!=null){
+        if (accountID != null) {
             message = "Card: " + cnumber_field.getText();
             ResultSet resultSet = Model.getInstance().getDatabaseDriver().getCard(cnumber_field.getText());
             int limit = -1;
@@ -131,11 +145,11 @@ public class BankomatController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Bankomat");
                 alert.setHeaderText("Bankomat - Abhebung");
-                alert.setContentText("Ihre Transaktion war erfolgreich, "+inoutsum_field.getText()+"€ wurden vom Konto abgehoben.");
+                alert.setContentText("Ihre Transaktion war erfolgreich, " + inoutsum_field.getText() + "€ wurden vom Konto abgehoben.");
                 inoutsum_field.clear();
                 alert.showAndWait();
             }
-        }else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Bankomat");
             alert.setHeaderText("Transaktionsfehler");
@@ -145,8 +159,11 @@ public class BankomatController implements Initializable {
         }
     }
 
+    /**
+     * Handles card payments.
+     */
     private void cardPayment() {
-        if (accountID!=null){
+        if (accountID != null) {
             message = "Card: " + cnumber_field.getText() + " | " + message_field.getText();
             ResultSet resultSet = Model.getInstance().getDatabaseDriver().getCard(cnumber_field.getText());
             int limit = -1;
@@ -169,11 +186,11 @@ public class BankomatController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Bankomat");
                 alert.setHeaderText("Kartenzahlung getaetigt");
-                alert.setContentText("Ihre Transaktion war erfolgreich, "+cardpaysum_field.getText()+"€ wurden vom Konto abgehoben.");
+                alert.setContentText("Ihre Transaktion war erfolgreich, " + cardpaysum_field.getText() + "€ wurden vom Konto abgehoben.");
                 inoutsum_field.clear();
                 alert.showAndWait();
             }
-        }else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Bankomat");
             alert.setHeaderText("Transaktionsfehler");
@@ -182,6 +199,4 @@ public class BankomatController implements Initializable {
             alert.showAndWait();
         }
     }
-
 }
-

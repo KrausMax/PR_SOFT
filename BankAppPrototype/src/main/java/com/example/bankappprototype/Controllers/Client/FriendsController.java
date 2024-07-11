@@ -16,6 +16,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing the friends and shared spaces of the client.
+ */
 public class FriendsController implements Initializable {
     public ListView friends_listview;
     public ListView sharedSpace_listview;
@@ -24,6 +27,12 @@ public class FriendsController implements Initializable {
     public Button request_btn;
     public Button fasttrans_btn;
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initData();
@@ -40,6 +49,11 @@ public class FriendsController implements Initializable {
 
     }
 
+    /**
+     * Adds a new friend to the client's friend list.
+     *
+     * @param text The email address of the friend to be added.
+     */
     private void addNewFriend(String text) {
         int newFriendID = Model.getInstance().getClientIDByEmail(text);
         if (newFriendID == 0 || newFriendID == 1){
@@ -62,6 +76,9 @@ public class FriendsController implements Initializable {
         }
     }
 
+    /**
+     * Shows the dialog for making a fast transaction to a friend.
+     */
     private void showFastTransactionDialog() {
 
         Optional<Pair<String, String>> result = createCustomDialog("Schnell überweisung","Wählen Sie ihren Freund und den Überweisungsbetrag");
@@ -77,6 +94,9 @@ public class FriendsController implements Initializable {
         });
     }
 
+    /**
+     * Shows the dialog for requesting money from a friend.
+     */
     private void showRequestMoneyDialog(){
         Optional<Pair<String, String>> result = createCustomDialog("Geld Anfragen","Wählen Sie ihren Freund und den Geldbetrag");
 
@@ -91,6 +111,13 @@ public class FriendsController implements Initializable {
         });
     }
 
+    /**
+     * Creates a custom dialog for selecting a friend and entering an amount.
+     *
+     * @param title  The title of the dialog.
+     * @param header The header text of the dialog.
+     * @return An Optional containing a Pair of the selected friend's email and the entered amount.
+     */
     private Optional<Pair<String, String>> createCustomDialog(String title, String header){
 
         Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -144,6 +171,12 @@ public class FriendsController implements Initializable {
         return null;
     }
 
+    /**
+     * Checks if a friend already exists in the client's friend list.
+     *
+     * @param newFriendID The ID of the new friend to be checked.
+     * @return True if the friend already exists, false otherwise.
+     */
     private boolean friendAlreadyExists(int newFriendID) {
         int currentClient = Model.getInstance().getClient().idProperty().getValue();
         for (Friends iFriends:Model.getInstance().getFriends()){
@@ -156,12 +189,22 @@ public class FriendsController implements Initializable {
         return false;
     }
 
+    /**
+     * Initializes the friend and shared space data.
+     */
     private void initData() {
         if(Model.getInstance().getFriends().isEmpty()) {
             Model.getInstance().setFriends();
         }
     }
 
+    /**
+     * Shows an information alert with the specified title, header, and content.
+     *
+     * @param title   The title of the alert.
+     * @param header  The header text of the alert.
+     * @param context The content text of the alert.
+     */
     private void showInfoAlert(String title,String header, String context){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -171,7 +214,11 @@ public class FriendsController implements Initializable {
         alert.showAndWait();
     }
 
-
+    /**
+     * Displays the details of the selected shared space.
+     *
+     * @param mouseEvent The mouse event triggered by selecting a shared space.
+     */
     public void viewSharedSpace(MouseEvent mouseEvent) {
         Account shared_space = (Account) sharedSpace_listview.getSelectionModel().getSelectedItem();
         showInfoAlert("Shared Space", "Besitzer: "+Model.getInstance().getClientEmailByID(shared_space.ownerProperty().getValue())+" \n\n IBAN: "+shared_space+"\n Guthaben: "+shared_space.balanceProperty().getValue()+"€","Members:"+Model.getInstance().getSharedSpaceMembersBySpaceID(shared_space.idProperty().getValue()));

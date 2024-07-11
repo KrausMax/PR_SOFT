@@ -3,7 +3,6 @@ package com.example.bankappprototype.Controllers.Client;
 import com.example.bankappprototype.Models.Account;
 import com.example.bankappprototype.Models.Friends;
 import com.example.bankappprototype.Models.Model;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -13,6 +12,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing individual friend cells in the friends ListView.
+ */
 public class FriendsCellController implements Initializable {
 
     public Label client_lbl;
@@ -20,13 +22,23 @@ public class FriendsCellController implements Initializable {
     public Button friend_btn;
 
     private final Friends friends;
+    private Model model;
 
-    Model model;
-
+    /**
+     * Constructor for FriendsCellController.
+     *
+     * @param friends The Friends object containing the data for the friend to be displayed.
+     */
     public FriendsCellController(Friends friends) {
         this.friends = friends;
     }
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         model = Model.getInstance();
@@ -36,7 +48,7 @@ public class FriendsCellController implements Initializable {
         }else {
             client_lbl.textProperty().bind(new SimpleStringProperty(Model.getInstance().getClientEmailByID(Integer.parseInt(friends.clientProperty().getValue()))));
         }
-        
+
         friend_btn.setOnAction(ActionEvent -> showDeleteFriendDialogue());
 
         if (friends.sharedSpaceProperty().getValue() == 0){
@@ -47,6 +59,9 @@ public class FriendsCellController implements Initializable {
         }
     }
 
+    /**
+     * Shows a dialog to confirm the removal of a shared space.
+     */
     private void showRemoveSharedSpaceDialog() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
@@ -64,6 +79,9 @@ public class FriendsCellController implements Initializable {
         }
     }
 
+    /**
+     * Shows a dialog to confirm the deletion of a friend.
+     */
     private void showDeleteFriendDialogue() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
@@ -81,6 +99,9 @@ public class FriendsCellController implements Initializable {
         }
     }
 
+    /**
+     * Shows a dialog to add a shared space to the friend.
+     */
     private void showAddSharedSpaceDialog() {
         ChoiceDialog<String> cDialog = new ChoiceDialog<>();
         ObservableList<String> list = cDialog.getItems();
@@ -106,6 +127,11 @@ public class FriendsCellController implements Initializable {
 
     }
 
+    /**
+     * Adds a shared space to the friend.
+     *
+     * @param spaceId The ID of the space to be shared.
+     */
     private void addSharedSpace(int spaceId) {
         if(Model.getInstance().addSharedSpace(Integer.parseInt(friends.clientProperty().getValue()),Integer.parseInt(friends.friendProperty().getValue()),spaceId)){
             Model.getInstance().setFriends();
@@ -115,7 +141,14 @@ public class FriendsCellController implements Initializable {
         }
     }
 
-    private void showInfoAlert(String title,String header, String context){
+    /**
+     * Shows an information alert with the specified title, header, and content.
+     *
+     * @param title   The title of the alert.
+     * @param header  The header text of the alert.
+     * @param context The content text of the alert.
+     */
+    private void showInfoAlert(String title, String header, String context){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(header);

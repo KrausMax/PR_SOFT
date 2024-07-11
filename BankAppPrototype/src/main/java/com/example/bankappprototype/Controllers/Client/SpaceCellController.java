@@ -1,23 +1,19 @@
 package com.example.bankappprototype.Controllers.Client;
 
-import com.example.bankappprototype.Models.Account;
 import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Models.SavingsAccount;
 import com.example.bankappprototype.Views.ClientMenuOptions;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Kontroller Klasse einer Space Zelle, die im Dashboard angezeigt wird, und dem Nutzer erlaubt Informationen über das
- * Space einzusehen und Funktionen des Spaces zu nutzen
+ * Controller class for a space cell displayed on the dashboard, allowing the user to view space information and utilize its functions.
  */
 public class SpaceCellController implements Initializable {
     public Label account_number_lbl;
@@ -31,13 +27,20 @@ public class SpaceCellController implements Initializable {
     private final SavingsAccount space;
 
     /**
+     * Constructor for SpaceCellController.
      *
-     * @param space
+     * @param space The SavingsAccount associated with this cell.
      */
     public SpaceCellController(SavingsAccount space){
         this.space = space;
     }
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         account_number_lbl.setText(space.accountNumberProperty().getValue());
@@ -49,11 +52,17 @@ public class SpaceCellController implements Initializable {
         transfer_btn.setOnAction(actionEvent -> transfer());
     }
 
+    /**
+     * Transfers money to or from the space.
+     */
     private void transfer() {
         Model.getInstance().getClient().setSavingsAccount(space);
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.SPACE_TRANSFER);
     }
 
+    /**
+     * Shows the cards associated with the space.
+     */
     private void showCards() {
         Model.getInstance().setCardIban(account_number_lbl.getText());
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.CARDS);

@@ -13,8 +13,7 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 /**
- * Controller Klasse, die dem Kunden erlaubt die ausgewählte Karte im Bezug auf Transaktionslimit zu bearbeiten
- * und das Zahlen mit der Karte online oder am Bankomaten zu aktivieren oder deaktvieren
+ * Controller class that allows the client to edit the selected card in terms of transaction limit and enable or disable card usage online or at ATMs.
  */
 public class EditCardController implements Initializable {
     public TextField limit_fld;
@@ -24,8 +23,14 @@ public class EditCardController implements Initializable {
     public CheckBox online_box;
     public CheckBox atm_box;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         ResultSet resultSet = Model.getInstance().getDatabaseDriver().getCard(Model.getInstance().getCardNum());
         int limit = -1;
         boolean online = false;
@@ -44,30 +49,36 @@ public class EditCardController implements Initializable {
         boolean finalTerminal = terminal;
         save_card_btn.setOnAction(event -> saveCard(finalOnline, finalTerminal));
         limit_fld.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("[0-9]*")){
+            if (!newValue.matches("[0-9]*")) {
                 limit_fld.setText(oldValue);
             }
         });
     }
 
-    public void saveCard(boolean prevOnline, boolean prevTerminal){
+    /**
+     * Saves the updated card information including the transaction limit, online status, and terminal status.
+     *
+     * @param prevOnline    The previous online status of the card.
+     * @param prevTerminal  The previous terminal status of the card.
+     */
+    public void saveCard(boolean prevOnline, boolean prevTerminal) {
         int online = -1;
         int terminal = -1;
         int limit = -1;
 
-        if(online_box.isSelected()) {
+        if (online_box.isSelected()) {
             online = 1;
         } else {
             online = 0;
         }
 
-        if(prevOnline == online_box.isSelected()) {
+        if (prevOnline == online_box.isSelected()) {
             prevOnline = false;
         } else {
             prevOnline = true;
         }
 
-        if(prevTerminal == atm_box.isSelected()) {
+        if (prevTerminal == atm_box.isSelected()) {
             prevTerminal = false;
         } else {
             prevTerminal = true;

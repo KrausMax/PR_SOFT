@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller-Klasse für die einzelnen Kartenzellen in der Karten ListView
+ * Controller class for individual card cells in the card ListView.
  */
 public class CardCellController implements Initializable {
 
@@ -24,28 +24,41 @@ public class CardCellController implements Initializable {
     private final Card card;
 
     /**
-     * Konstruktor für CardCellController
-     * @param card Das Karten Objekt mit den Daten der Karte die abgebildet werden sollen
+     * Constructor for CardCellController.
+     *
+     * @param card The Card object with the card data to be displayed.
      */
     public CardCellController(Card card) {
         this.card = card;
     }
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iban_lbl.setText(card.cardNumberProperty().getValue());
         seq_num_lbl.setText(String.valueOf(card.sequenceNumberProperty().getValue()));
         phidden_fld.setText(String.valueOf(card.pinProperty().getValue()));
-        show_box.setOnAction(event -> togglevisiblePin());
+        show_box.setOnAction(event -> toggleVisiblePin());
         edit_card_btn.setOnAction(event -> editCard());
     }
 
+    /**
+     * Sets the card number and switches the view to the edit card menu.
+     */
     private void editCard() {
         Model.getInstance().setCardNum(card.cardNumberProperty().getValue());
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.EDIT_CARD);
     }
 
-    private void togglevisiblePin() {
+    /**
+     * Toggles the visibility of the card PIN.
+     */
+    private void toggleVisiblePin() {
         if (show_box.isSelected()) {
             pplain_fld.setText(phidden_fld.getText());
             pplain_fld.setVisible(true);

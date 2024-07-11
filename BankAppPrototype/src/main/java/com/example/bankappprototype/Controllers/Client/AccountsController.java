@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing user accounts.
+ */
 public class AccountsController implements Initializable {
     public Label ch_acc_num;
     public Label transaction_limit;
@@ -30,8 +33,14 @@ public class AccountsController implements Initializable {
     public Button trans_to_main_btn1;
     public ChoiceBox space_choice_box;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Initialization logic
     }
 }
