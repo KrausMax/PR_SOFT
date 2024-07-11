@@ -10,7 +10,7 @@ import java.util.Random;
  * Handles database operations related to the banking application.
  */
 public class DatabaseDriver {
-    private Connection conn;
+    Connection conn;
 
     /**
      * Initializes the database connection.
