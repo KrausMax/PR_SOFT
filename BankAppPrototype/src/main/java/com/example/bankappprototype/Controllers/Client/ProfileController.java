@@ -85,7 +85,7 @@ public class ProfileController implements Initializable {
 
         if (this.filePath != null) {
             Image image = new Image(filePath.toURI().toString());
-            Model.getInstance().getDatabaseDriver().updateProfilePic(filePath.toURI().toString(), email_fld.getText());
+            Model.getInstance().getDatabaseDriver().updateProfilePic(filePath.getPath(), email_fld.getText());
             update_lbl.setText("Profile Picture Changed");
             profile_picture_imageview.setImage(image);
         }

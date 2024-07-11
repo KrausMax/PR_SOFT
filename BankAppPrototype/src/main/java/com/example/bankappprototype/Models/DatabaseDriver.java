@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class DatabaseDriver {
-    private Connection conn;
+    Connection conn;
 
     public DatabaseDriver() {
         try {
