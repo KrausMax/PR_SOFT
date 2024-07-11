@@ -6,10 +6,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing the client menu options.
+ */
 public class ClientMenuController implements Initializable {
     public Button dashboard_btn;
     public Button transaction_btn;
@@ -22,11 +24,20 @@ public class ClientMenuController implements Initializable {
     public Button bankomat_btn;
     public Button flow_chart_btn;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListeners();
     }
 
+    /**
+     * Adds listeners to the buttons to handle menu option changes.
+     */
     private void addListeners() {
         dashboard_btn.setOnAction(Event -> onDashboard());
         transaction_btn.setOnAction(Event -> onTransactions());
@@ -40,52 +51,79 @@ public class ClientMenuController implements Initializable {
         flow_chart_btn.setOnAction(Event -> onFlowChart());
     }
 
+    /**
+     * Sets the selected menu item to dashboard.
+     */
     private void onDashboard() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.DASHBOARD);
     }
 
+    /**
+     * Sets the selected menu item to transactions.
+     */
     private void onTransactions() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.TRANSACTIONS);
     }
 
+    /**
+     * Sets the selected menu item to accounts.
+     */
     private void onAccounts() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.ACCOUNTS);
     }
 
+    /**
+     * Sets the selected menu item to profile.
+     */
     private void onProfile() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.PROFILE);
     }
 
+    /**
+     * Sets the selected menu item to friends.
+     */
     private void onFriends() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.FRIENDS);
     }
 
+    /**
+     * Sets the selected menu item to report.
+     */
     private void onReport() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.REPORT);
     }
 
+    /**
+     * Sets the selected menu item to create space.
+     */
     private void onCreateSpace() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.CREATE_SPACE);
     }
 
+    /**
+     * Sets the selected menu item to bankomat.
+     */
     private void onBankomat() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.BANKOMAT);
     }
 
+    /**
+     * Sets the selected menu item to flow chart.
+     */
     private void onFlowChart() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.FLOWCHART);
     }
 
-
-
+    /**
+     * Logs out the client and closes the client window, showing the login window.
+     */
     private void onLogout() {
         // Get Stage
         Stage stage = (Stage) dashboard_btn.getScene().getWindow();
-        // Close the client Window
+        // Close the client window
         Model.getInstance().getViewFactory().closeStage(stage);
-        // Show Login Window
+        // Show login window
         Model.getInstance().getViewFactory().showLoginWindow();
-        // Set Client Login Success Flag to False
-        Model.getInstance().setClientLoginSuccessFlag(false);
+        // Set c
     }
 }

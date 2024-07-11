@@ -1,11 +1,9 @@
 package com.example.bankappprototype.Controllers.Client;
 
-import com.example.bankappprototype.Models.Account;
 import com.example.bankappprototype.Models.CheckingAccount;
 import com.example.bankappprototype.Models.Model;
 import com.example.bankappprototype.Views.ClientMenuOptions;
 import com.example.bankappprototype.Views.SpaceCellFactory;
-import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -16,8 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 /**
- * Controller Klasse für das Dashboard, wo der Kunde eine Übersicht seiner Kunden bekommt und auf verschiedene
- * Funktionen der Konten zugreifen kann
+ * Controller class for the dashboard, where the client can get an overview of their accounts and access various account features.
  */
 public class DashboardController implements Initializable {
     public Text user_name;
@@ -36,10 +33,16 @@ public class DashboardController implements Initializable {
     public Button showCards_btn;
     public Button transfer_btn;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CheckingAccount mainAcc = Model.getInstance().getClient().checkingAccountProperty().getValue();
-        checking_bal.setText(""+ Model.getInstance().getDatabaseDriver().getAccountBalance(mainAcc.accountNumberProperty().get()));
+        checking_bal.setText("" + Model.getInstance().getDatabaseDriver().getAccountBalance(mainAcc.accountNumberProperty().get()));
         mainAccNum_lbl.setText(mainAcc.accountNumberProperty().get());
 
         // Greeting Message
@@ -54,25 +57,39 @@ public class DashboardController implements Initializable {
         initSpaceData();
         space_listview.setItems(Model.getInstance().getSpaces());
         space_listview.setCellFactory(e -> new SpaceCellFactory());
-        
+
         showCards_btn.setOnAction(Event -> showCards());
         transfer_btn.setOnAction(Event -> transfer());
-
     }
 
+    /**
+     * Navigates to the transfer view.
+     */
     private void transfer() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.TRANSFER);
     }
 
+    /**
+     * Navigates to the cards view.
+     */
     private void showCards() {
         Model.getInstance().setCardIban(mainAccNum_lbl.getText());
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.CARDS);
     }
 
+    /**
+     * Initializes the space data for the client's checking account.
+     */
     private void initSpaceData() {
         setCurrentSpaces(Model.getInstance().getClient().checkingAccountProperty().getValue().idProperty().getValue());
     }
-    private void setCurrentSpaces(int accountID){
+
+    /**
+     * Sets the current spaces for the given account ID.
+     *
+     * @param accountID The ID of the account for which to set the spaces.
+     */
+    private void setCurrentSpaces(int accountID) {
         Model.getInstance().setActiveAccount(accountID);
         Model.getInstance().setSpaces(accountID);
     }

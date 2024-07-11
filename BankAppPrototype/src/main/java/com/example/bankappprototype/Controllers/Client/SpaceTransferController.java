@@ -9,8 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller Klasse, die dem Nutzer ermöglicht unter Beachtung vom Limit und Kontostand Geld von seinem Hauptkonto
- * auf das ausgewählte Space zu laden und umgekehrt
+ * Controller class allowing the user to transfer money between the main account and selected space, considering limits and balances.
  */
 public class SpaceTransferController implements Initializable {
     public TextField euro_fld;
@@ -20,7 +19,12 @@ public class SpaceTransferController implements Initializable {
     public RadioButton plus_rd;
     public RadioButton minus_rd;
 
-
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         euro_fld.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -37,6 +41,9 @@ public class SpaceTransferController implements Initializable {
         commit_btn.setOnAction(event -> commitTransfer());
     }
 
+    /**
+     * Commits the transfer of money based on the user inputs and selected options.
+     */
     private void commitTransfer() {
         if (euro_fld.getText().trim().isEmpty()) {
             update_lbl.setText("No amount given");
@@ -76,4 +83,3 @@ public class SpaceTransferController implements Initializable {
         }
     }
 }
-

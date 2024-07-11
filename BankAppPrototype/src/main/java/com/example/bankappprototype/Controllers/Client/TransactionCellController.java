@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing individual transaction cells in a ListView.
+ */
 public class TransactionCellController implements Initializable {
 
     public FontAwesomeIconView in_icon;
@@ -24,25 +27,43 @@ public class TransactionCellController implements Initializable {
 
     private final Transaction transaction;
 
+    /**
+     * Constructor for TransactionCellController.
+     *
+     * @param transaction The transaction associated with this cell.
+     */
     public TransactionCellController(Transaction transaction) {
         this.transaction = transaction;
     }
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        if (transaction.senderProperty().getValue().equals(String.valueOf(Model.getInstance().getActiveAccount()))){
-            if (transaction.receiverProperty().getValue().equals(String.valueOf(Model.getInstance().getActiveAccount()))){
+        if (transaction.senderProperty().getValue().equals(String.valueOf(Model.getInstance().getActiveAccount()))) {
+            if (transaction.receiverProperty().getValue().equals(String.valueOf(Model.getInstance().getActiveAccount()))) {
                 in_icon.setFill(Color.GRAY);
                 out_icon.setFill(Color.GRAY);
-            }else in_icon.setVisible(false);
-        }else out_icon.setVisible(false);
+            } else {
+                in_icon.setVisible(false);
+            }
+        } else {
+            out_icon.setVisible(false);
+        }
 
-        if (transaction.transactionTypeProperty().getValue().equals("KARTE_ONLINE_STATUS") || transaction.transactionTypeProperty().getValue().equals("KARTE_BANKOMAT_STATUS") || transaction.transactionTypeProperty().getValue().equals("KARTE_LIMIT_AENDERUNG")) {
+        if (transaction.transactionTypeProperty().getValue().equals("KARTE_ONLINE_STATUS") ||
+                transaction.transactionTypeProperty().getValue().equals("KARTE_BANKOMAT_STATUS") ||
+                transaction.transactionTypeProperty().getValue().equals("KARTE_LIMIT_AENDERUNG")) {
             in_icon.setVisible(false);
             out_icon.setVisible(false);
             receiver_lbl.setVisible(false);
-            if (transaction.transactionTypeProperty().getValue().equals("KARTE_ONLINE_STATUS") || transaction.transactionTypeProperty().getValue().equals("KARTE_BANKOMAT_STATUS")) {
+            if (transaction.transactionTypeProperty().getValue().equals("KARTE_ONLINE_STATUS") ||
+                    transaction.transactionTypeProperty().getValue().equals("KARTE_BANKOMAT_STATUS")) {
                 amount_lbl.setVisible(false);
             }
         }

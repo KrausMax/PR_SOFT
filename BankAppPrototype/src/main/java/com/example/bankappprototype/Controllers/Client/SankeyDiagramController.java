@@ -19,8 +19,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Controller class responsible for generating a PDF of the Sankey diagram.
+ */
 public class SankeyDiagramController {
 
+    /**
+     * Generates a PDF of the Sankey diagram.
+     *
+     * @param salary            The salary amount.
+     * @param additionalIncome  The additional income amount.
+     * @param incomeCategories  The income categories with their respective amounts.
+     * @param expenseCategories The expense categories with their respective subcategories and amounts.
+     */
     public void generatePDF(double salary, double additionalIncome, Map<String, Double> incomeCategories, Map<String, Map<String, Double>> expenseCategories) {
         // Create a new Canvas
         Canvas canvas = new Canvas(1200, 1600);
@@ -63,6 +74,15 @@ public class SankeyDiagramController {
         stage.show();
     }
 
+    /**
+     * Draws the Sankey diagram on the given GraphicsContext.
+     *
+     * @param gc                 The GraphicsContext to draw on.
+     * @param salary             The salary amount.
+     * @param additionalIncome   The additional income amount.
+     * @param incomeCategories   The income categories with their respective amounts.
+     * @param expenseCategories  The expense categories with their respective subcategories and amounts.
+     */
     private void drawSankeyDiagram(GraphicsContext gc, double salary, double additionalIncome, Map<String, Double> incomeCategories, Map<String, Map<String, Double>> expenseCategories) {
         double totalIncome = salary + additionalIncome;
         double totalExpenses = expenseCategories.values().stream()
@@ -189,6 +209,18 @@ public class SankeyDiagramController {
         drawTextSummary(gc, salary, additionalIncome, incomeCategories, expenseCategories, totalIncome, totalExpenses, difference);
     }
 
+    /**
+     * Draws the text summary below the Sankey diagram.
+     *
+     * @param gc                 The GraphicsContext to draw on.
+     * @param salary             The salary amount.
+     * @param additionalIncome   The additional income amount.
+     * @param incomeCategories   The income categories with their respective amounts.
+     * @param expenseCategories  The expense categories with their respective subcategories and amounts.
+     * @param totalIncome        The total income amount.
+     * @param totalExpenses      The total expenses amount.
+     * @param difference         The difference between total income and total expenses.
+     */
     private void drawTextSummary(GraphicsContext gc, double salary, double additionalIncome, Map<String, Double> incomeCategories, Map<String, Map<String, Double>> expenseCategories, double totalIncome, double totalExpenses, double difference) {
         gc.setFill(Color.BLACK);
         gc.setFont(new javafx.scene.text.Font("Arial", 14));
@@ -238,5 +270,4 @@ public class SankeyDiagramController {
         String formattedDifference = String.format("%-30s %10.2f €", "DIFFERENZ", difference);
         gc.fillText(formattedDifference, textX, textY);
     }
-
 }

@@ -8,16 +8,21 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Kontroller Klasse zum Verwalten der Kunden UI, verwaltet das Wechseln zwischen verschiedenen Views
+ * Controller class for managing the client UI, handles switching between different views.
  */
 public class ClientController implements Initializable {
     public BorderPane client_parent;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //AI generated Code
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal)-> {
-            switch(newVal){
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
+            switch (newVal) {
                 case TRANSACTIONS -> client_parent.setCenter(Model.getInstance().getViewFactory().getTransactionView());
                 case ACCOUNTS -> client_parent.setCenter(Model.getInstance().getViewFactory().getAccountsView());
                 case PROFILE -> client_parent.setCenter(Model.getInstance().getViewFactory().getProfileView());

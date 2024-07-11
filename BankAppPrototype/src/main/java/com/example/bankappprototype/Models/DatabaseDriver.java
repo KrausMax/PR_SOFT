@@ -6,9 +6,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
+/**
+ * Handles database operations related to the banking application.
+ */
 public class DatabaseDriver {
     private Connection conn;
 
+    /**
+     * Initializes the database connection.
+     */
     public DatabaseDriver() {
         try {
             this.conn = DriverManager.getConnection("jdbc:sqlite:mazebank.db");
@@ -17,14 +23,16 @@ public class DatabaseDriver {
         }
     }
 
-    /*
-    * Client Section
-    * */
-
+    /**
+     * Retrieves client data based on the provided email address and password.
+     *
+     * @param pAddress the email address of the client
+     * @param password the password of the client
+     * @return a ResultSet containing the client data
+     */
     public ResultSet getClientData(String pAddress, String password) {
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM Client WHERE email='"+pAddress+"' AND Password='"+password+"';");
@@ -34,10 +42,15 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Retrieves all transactions of a client based on the client ID.
+     *
+     * @param clientID the ID of the client
+     * @return a ResultSet containing all transactions of the client
+     */
     public ResultSet getAllTransactionsOfClient(int clientID) {
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM 'Transaction' WHERE Sender ='"+clientID+"' or receiver ='"+clientID+"';");
@@ -47,10 +60,15 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Retrieves all friends of a client based on the client ID.
+     *
+     * @param clientID the ID of the client
+     * @return a ResultSet containing all friends of the client
+     */
     public ResultSet getAllFriendsOfClient(int clientID) {
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM 'Friends' WHERE Client ='"+clientID+"' or FriendClient ='"+clientID+"';");
@@ -60,10 +78,15 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Retrieves all spaces (accounts) of a client based on the client ID.
+     *
+     * @param clientID the ID of the client
+     * @return a ResultSet containing all spaces of the client
+     */
     public ResultSet getAllSpaces(int clientID) {
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM 'Account' WHERE OWNER ='"+clientID+"' AND MAINACCOUNT = '0';");
@@ -73,33 +96,52 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Retrieves all cards associated with the given IBAN.
+     *
+     * @param iban the IBAN of the account
+     * @return a ResultSet containing all cards associated with the IBAN
+     */
     public ResultSet getCards(String iban) {
         int account = getAccountId(iban);
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM 'Card' WHERE ACCOUNT ="+account+";");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return  resultSet;
+        return resultSet;
     }
 
+    /**
+     * Retrieves the card details based on the card number.
+     *
+     * @param cardNum the card number
+     * @return a ResultSet containing the card details
+     */
     public ResultSet getCard(String cardNum) {
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT CardLimit, StatusOnline, StatusTerminal FROM Card WHERE CardNumber = '"+cardNum+"';");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return  resultSet;
+        return resultSet;
     }
 
+    /**
+     * Updates the card details including limit, online status, and terminal status.
+     *
+     * @param limit the new card limit
+     * @param online the new online status
+     * @param terminal the new terminal status
+     * @param changeOnline whether to change the online status
+     * @param changeTerminal whether to change the terminal status
+     */
     public void updateCard(int limit, int online, int terminal, boolean changeOnline, boolean changeTerminal) {
         int accountId = -1;
         int prevLimit = -1;
@@ -187,6 +229,12 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Gets the account ID based on the given IBAN.
+     *
+     * @param iban the IBAN of the account
+     * @return the account ID
+     */
     public int getAccountId(String iban) {
         int accountID = -1;
         Statement statement;
@@ -201,6 +249,12 @@ public class DatabaseDriver {
         return accountID;
     }
 
+    /**
+     * Checks if the given IBAN is valid.
+     *
+     * @param iban the IBAN to validate
+     * @return true if the IBAN is valid, false otherwise
+     */
     public boolean ibanValid(String iban) {
         boolean valid = false;
         Statement statement;
@@ -221,6 +275,13 @@ public class DatabaseDriver {
         }
         return valid;
     }
+
+    /**
+     * Gets the account balance based on the given IBAN.
+     *
+     * @param iban the IBAN of the account
+     * @return the account balance
+     */
     public double getAccountBalance(String iban) {
         double balance = -1;
         Statement statement;
@@ -234,10 +295,14 @@ public class DatabaseDriver {
         }
         return balance;
     }
-    /*
-    * Admin Section
-    * */
 
+    /**
+     * Retrieves admin data based on the provided username and password.
+     *
+     * @param username the username of the admin
+     * @param password the password of the admin
+     * @return a ResultSet containing the admin data
+     */
     public ResultSet getAdminData(String username, String password) {
         Statement statement;
         ResultSet resultSet = null;
@@ -250,6 +315,15 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Creates a new client with the provided details.
+     *
+     * @param fName the first name of the client
+     * @param lName the last name of the client
+     * @param email the email address of the client
+     * @param password the password of the client
+     * @param date the date the client was created
+     */
     public void createClient(String fName, String lName, String email, String password, LocalDate date) {
         Statement statement;
         try {
@@ -262,6 +336,14 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Updates the client details with the provided information.
+     *
+     * @param fName the first name of the client
+     * @param lName the last name of the client
+     * @param email the email address of the client
+     * @param password the new password of the client
+     */
     public void updateClient(String fName, String lName, String email, String password) {
         Statement statement;
         try {
@@ -274,6 +356,12 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Updates the profile picture of the client.
+     *
+     * @param filepath the new file path of the profile picture
+     * @param email the email address of the client
+     */
     public void updateProfilePic(String filepath, String email) {
         Statement statement;
         try {
@@ -285,6 +373,13 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Creates a main account with the provided details.
+     *
+     * @param number the account number
+     * @param tLimit the transaction limit
+     * @param balance the initial balance
+     */
     public void createMainAccount(String number, double tLimit, double balance) {
         Statement statement;
         try {
@@ -297,6 +392,15 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Creates a new space (account) with the provided details.
+     *
+     * @param number the account number
+     * @param tLimit the transaction limit
+     * @param balance the initial balance
+     * @param space_name the name of the space
+     * @param space_image the image path of the space
+     */
     public void createSpace(String number, double tLimit, double balance, String space_name, String space_image) {
         Statement statement;
         try {
@@ -309,6 +413,11 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Creates a new card with the specified limit.
+     *
+     * @param limit the card limit
+     */
     public void createCard(int limit) {
         String iban = Model.getInstance().getCardIban();
         int account = getAccountId(iban);
@@ -339,6 +448,11 @@ public class DatabaseDriver {
         Model.getInstance().getDatabaseDriver().payment(account, 20, "Bestellung der Karte " + cardNumber, TransactionTypes.UEBERWEISUNG.toString(), 1);
     }
 
+    /**
+     * Retrieves all client data.
+     *
+     * @return a ResultSet containing all client data
+     */
     public ResultSet getAllClientsData() {
         Statement statement;
         ResultSet resultSet = null;
@@ -351,10 +465,11 @@ public class DatabaseDriver {
         return resultSet;
     }
 
-    /*
-    * Utility Section
-    * */
-
+    /**
+     * Gets the last client ID in the database.
+     *
+     * @return the last client ID
+     */
     public int getLastClientsId() {
         Statement statement;
         ResultSet resultSet;
@@ -369,6 +484,12 @@ public class DatabaseDriver {
         return id;
     }
 
+    /**
+     * Gets the client's email based on the account ID.
+     *
+     * @param id the account ID
+     * @return the client's email
+     */
     public String getClientEmailByAccountID(int id) {
         Statement statement;
         ResultSet resultSet;
@@ -383,6 +504,12 @@ public class DatabaseDriver {
         return name;
     }
 
+    /**
+     * Gets the client's email based on the client ID.
+     *
+     * @param id the client ID
+     * @return the client's email
+     */
     public String getClientEmailByID(int id) {
         Statement statement;
         ResultSet resultSet;
@@ -397,6 +524,12 @@ public class DatabaseDriver {
         return name;
     }
 
+    /**
+     * Gets the client ID based on the email address.
+     *
+     * @param email the email address
+     * @return the client ID
+     */
     public int getClientIDByEMail(String email) {
         Statement statement;
         ResultSet resultSet;
@@ -411,6 +544,12 @@ public class DatabaseDriver {
         return id;
     }
 
+    /**
+     * Retrieves the checking account data of a client based on the owner ID.
+     *
+     * @param owner the owner ID
+     * @return a ResultSet containing the checking account data
+     */
     public ResultSet getCheckingAccountData(int owner) {
         Statement statement;
         ResultSet resultSet = null;
@@ -423,6 +562,12 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Retrieves the savings account data of a client based on the owner ID.
+     *
+     * @param owner the owner ID
+     * @return a ResultSet containing the savings account data
+     */
     public ResultSet getSavingsAccountData(int owner) {
         Statement statement;
         ResultSet resultSet = null;
@@ -435,6 +580,12 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Retrieves the account data based on the account ID.
+     *
+     * @param id the account ID
+     * @return a ResultSet containing the account data
+     */
     public ResultSet getAccountById(int id) {
         Statement statement;
         ResultSet resultSet = null;
@@ -447,6 +598,14 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Verifies a card based on the provided card number, sequence number, and secret number.
+     *
+     * @param cardNumber the card number
+     * @param sequenceNumber the sequence number
+     * @param secretNumber the secret number
+     * @return the account number if the card is valid, null otherwise
+     */
     public String verifyCard(String cardNumber, String sequenceNumber, String secretNumber) {
         Statement statement;
         ResultSet resultSet;
@@ -464,7 +623,7 @@ public class DatabaseDriver {
 
     /**
      * Processes a payment transaction between two accounts.
-     * 
+     *
      * @param senderID   The ID of the sender's account
      * @param amount     The amount of money to be transferred
      * @param message    A message associated with the transaction
@@ -472,7 +631,7 @@ public class DatabaseDriver {
      * @param receiverID The ID of the receiver's account
      * @return True if the transaction was successful, false otherwise
      */
-    public boolean payment (int senderID, double amount, String message, String type, int receiverID) {
+    public boolean payment(int senderID, double amount, String message, String type, int receiverID) {
         PreparedStatement statement;
         try {
             statement = conn.prepareStatement("insert INTO 'Transaction' (Sender, Amount, date, message, transaction_type,Receiver) VALUES  (?, ?, ?, ?, ?, ?)");
@@ -514,7 +673,13 @@ public class DatabaseDriver {
         return true;
     }
 
-
+    /**
+     * Adds a new friend relationship between two clients.
+     *
+     * @param client the ID of the first client
+     * @param friend the ID of the second client (friend)
+     * @return true if the friend was added successfully, false otherwise
+     */
     public boolean addNewFriend(int client, int friend) {
         PreparedStatement statement;
         try {
@@ -531,6 +696,14 @@ public class DatabaseDriver {
         return true;
     }
 
+    /**
+     * Adds a shared space between two friends.
+     *
+     * @param client the ID of the first client
+     * @param friend the ID of the second client (friend)
+     * @param spaceId the ID of the shared space
+     * @return true if the shared space was added successfully, false otherwise
+     */
     public boolean addSharedSpace(int client, int friend, int spaceId) {
         Statement statement;
         try {
@@ -544,10 +717,15 @@ public class DatabaseDriver {
         return true;
     }
 
+    /**
+     * Retrieves the space (account) details based on the space ID.
+     *
+     * @param id the space ID
+     * @return a ResultSet containing the space details
+     */
     public ResultSet getSpaceByID(int id) {
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM 'Account' WHERE ID ='"+id+"';");
@@ -557,10 +735,15 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Retrieves all members of a shared space based on the shared space ID.
+     *
+     * @param id the shared space ID
+     * @return a ResultSet containing all members of the shared space
+     */
     public ResultSet getSharedSpaceMembersBySharedSpaceID(int id) {
         Statement statement;
         ResultSet resultSet = null;
-
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM 'Friends' WHERE SharedSpace ='"+id+"';");
@@ -570,6 +753,13 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+    /**
+     * Deletes a friendship between two clients based on their IDs.
+     *
+     * @param client the ID of the first client
+     * @param friend the ID of the second client (friend)
+     * @return true if the friendship was deleted successfully, false otherwise
+     */
     public boolean deleteFriendsByIDs(int client, int friend) {
         Statement statement;
         try {
@@ -582,6 +772,13 @@ public class DatabaseDriver {
         return true;
     }
 
+    /**
+     * Deletes a shared space between two clients based on their IDs.
+     *
+     * @param client the ID of the first client
+     * @param friend the ID of the second client (friend)
+     * @return true if the shared space was deleted successfully, false otherwise
+     */
     public boolean deleteSharedSpaceByIDs(int client, int friend) {
         Statement statement;
         try {

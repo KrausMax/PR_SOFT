@@ -1,7 +1,6 @@
 package com.example.bankappprototype.Controllers.Client;
 
 import com.example.bankappprototype.Models.Model;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -13,33 +12,40 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-
 import java.io.File;
 import java.net.URL;
-
 import java.util.Random;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class that allows the client to create a new space.
+ */
 public class CreateSpaceController implements Initializable {
-
 
     public Button create_space_btn;
     public TextField space_name_fld;
     public ImageView space_picture_imageview;
-    public Label created_successfully_btn;
+    public Label created_successfully_lbl;
     private File filePath;
 
-
+    /**
+     * Initializes the controller class.
+     *
+     * @param url             The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         create_space_btn.setOnAction(event -> createSpace());
     }
 
     /**
-     * This Method will allow the user to change the image on the screen
+     * Allows the user to select an image to be displayed for the space.
+     *
+     * @param event The action event triggered by the button click.
      */
     public void chooseImageButtonPushed(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image");
@@ -53,15 +59,14 @@ public class CreateSpaceController implements Initializable {
         }
     }
 
-
     /**
-     * This Method will create a Space for an existing user
+     * Creates a new space for the existing client.
+     * Displays a success or error message depending on the input validation.
      */
-
     private void createSpace() {
         String spaceName = space_name_fld.getText().trim();
         if (spaceName.isEmpty() || filePath == null) {
-            created_successfully_btn.setText("Please provide a space name and upload an image.");
+            created_successfully_lbl.setText("Please provide a space name and upload an image.");
             return;
         }
 
@@ -79,7 +84,6 @@ public class CreateSpaceController implements Initializable {
 
         // Show success message
         Model.getInstance().setSpaces(Model.getInstance().getClient().checkingAccountProperty().getValue().idProperty().getValue());
-        created_successfully_btn.setText("Space created successfully!");
+        created_successfully_lbl.setText("Space created successfully!");
     }
-
 }
