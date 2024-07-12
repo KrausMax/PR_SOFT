@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 public class AdminMenuController implements Initializable {
     public Button create_client_btn;
     public Button clients_btn;
-    public Button deposit_btn;
     public Button logout_btn;
 
     /**
@@ -35,7 +34,6 @@ public class AdminMenuController implements Initializable {
     private void addListeners() {
         create_client_btn.setOnAction(event -> onCreateClient());
         clients_btn.setOnAction(event -> onClients());
-        deposit_btn.setOnAction(event -> onDeposit());
         logout_btn.setOnAction(Event -> onLogout());
     }
 
@@ -51,13 +49,6 @@ public class AdminMenuController implements Initializable {
      */
     private void onClients() {
         Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CLIENTS);
-    }
-
-    /**
-     * Handles the deposit button action.
-     */
-    private void onDeposit() {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.DEPOSIT);
     }
 
     /**

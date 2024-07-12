@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="450.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.LoginController">
+<AnchorPane prefHeight="450.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.LoginController">
    <VBox layoutX="236.0" layoutY="14.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
       <Label id="choice-prompt-text" text="Account-Typ" />
       <ChoiceBox fx:id="acc_selector" prefWidth="90.0" styleClass="account_selector" />
@@ -21,11 +16,6 @@
       <PasswordField fx:id="password_fld" styleClass="input_field" />
       <Button fx:id="login_btn" mnemonicParsing="false" text="Login" />
       <Label fx:id="error_lbl" styleClass="error_lbl" />
-   </VBox>
-   <VBox layoutX="323.0" layoutY="356.0" prefHeight="80.0" prefWidth="275.0" styleClass="register_account" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="60.0">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Noch keinen Account?" />
-      <Label text="Kontaktieren sie uns!" />
-      <Button fx:id="register_btn" mnemonicParsing="false" text="Kontakformular" />
    </VBox>
    <VBox layoutX="9.0" layoutY="-1.0" prefHeight="459.0" prefWidth="220.0" AnchorPane.leftAnchor="0.0">
       <children>

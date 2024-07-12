@@ -15,10 +15,8 @@ import java.util.ResourceBundle;
 public class ClientMenuController implements Initializable {
     public Button dashboard_btn;
     public Button transaction_btn;
-    public Button accounts_btn;
     public Button profile_btn;
     public Button logout_btn;
-    public Button report_btn;
     public Button friends_btn;
     public Button create_space_btn;
     public Button bankomat_btn;
@@ -41,10 +39,8 @@ public class ClientMenuController implements Initializable {
     private void addListeners() {
         dashboard_btn.setOnAction(Event -> onDashboard());
         transaction_btn.setOnAction(Event -> onTransactions());
-        accounts_btn.setOnAction(Event -> onAccounts());
         profile_btn.setOnAction(Event -> onProfile());
         friends_btn.setOnAction(Event -> onFriends());
-        report_btn.setOnAction(Event -> onReport());
         create_space_btn.setOnAction(Event -> onCreateSpace());
         logout_btn.setOnAction(Event -> onLogout());
         bankomat_btn.setOnAction(Event -> onBankomat());
@@ -66,13 +62,6 @@ public class ClientMenuController implements Initializable {
     }
 
     /**
-     * Sets the selected menu item to accounts.
-     */
-    private void onAccounts() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.ACCOUNTS);
-    }
-
-    /**
      * Sets the selected menu item to profile.
      */
     private void onProfile() {
@@ -84,13 +73,6 @@ public class ClientMenuController implements Initializable {
      */
     private void onFriends() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.FRIENDS);
-    }
-
-    /**
-     * Sets the selected menu item to report.
-     */
-    private void onReport() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.REPORT);
     }
 
     /**

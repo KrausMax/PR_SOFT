@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/ClientMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.ClientMenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/ClientMenu.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankappprototype.Controllers.Client.ClientMenuController">
     <AnchorPane prefHeight="730.0" prefWidth="160.0" styleClass="left_container">
         <VBox prefHeight="80.0" prefWidth="160.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <FontAwesomeIconView glyphName="BANK" size="30" />
@@ -23,11 +21,6 @@
             <Button fx:id="transaction_btn" mnemonicParsing="false" prefWidth="140.0" text="Transaktionen">
                 <graphic>
                     <FontAwesomeIconView glyphName="HANDSHAKE_ALT" size="15" text="" />
-                </graphic>
-            </Button>
-            <Button fx:id="accounts_btn" mnemonicParsing="false" text="Deine Accounts">
-                <graphic>
-                    <FontAwesomeIconView glyphName="AT" size="20" />
                 </graphic>
             </Button>
          <Button fx:id="friends_btn" mnemonicParsing="false" text="Freunde">
@@ -61,15 +54,6 @@
                <FontAwesomeIconView size="20" />
             </graphic>
          </Button>
-        </VBox>
-        <VBox prefHeight="120.0" prefWidth="130.0" styleClass="report_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Suggestion/Bug?" />
-            <Label text="Use This to report any errors or suggestions" />
-            <Button fx:id="report_btn" mnemonicParsing="false" styleClass="report_container" text="Report">
-                <graphic>
-                    <FontAwesomeIconView glyphName="PLUS" />
-                </graphic>
-            </Button>
         </VBox>
     </AnchorPane>
 </VBox>

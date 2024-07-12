@@ -22,13 +22,10 @@ public class CreateClientController implements Initializable {
     public TextField emailAddress_fld;
     public CheckBox ch_acc_box;
     public TextField ch_amount_fld;
-    public CheckBox sv_acc_box;
-    public TextField sv_amount_fld;
     public Button create_client_btn;
     public Label error_lbl;
 
     private boolean createCheckingAccountFlag = false;
-    private boolean createSavingsAccountFlag = false;
 
     /**
      * Initializes the controller class.
@@ -44,11 +41,6 @@ public class CreateClientController implements Initializable {
                 createCheckingAccountFlag = true;
             }
         });
-        sv_acc_box.selectedProperty().addListener((observable, oldVal, newVal) -> {
-            if (newVal) {
-                createSavingsAccountFlag = true;
-            }
-        });
     }
 
     /**
@@ -58,11 +50,6 @@ public class CreateClientController implements Initializable {
         // Create Checking Account
         if (createCheckingAccountFlag) {
             createAccount("Checking");
-        }
-
-        // Create Savings Account
-        if (createSavingsAccountFlag) {
-            createAccount("Savings");
         }
 
         // Create Client
@@ -90,8 +77,6 @@ public class CreateClientController implements Initializable {
         // Create the Checking or Savings Account
         if (accountType.equals("Checking")) {
             Model.getInstance().getDatabaseDriver().createMainAccount(accountNumber, 10, balance);
-        } else {
-            Model.getInstance().getDatabaseDriver().createSpace(accountNumber, 2000, balance, "My Space", "\\IdeaProjects\\PR_SOFT\\BankAppPrototype\\src\\main\\resources\\Images\\pepe.png");
         }
     }
 
@@ -105,7 +90,5 @@ public class CreateClientController implements Initializable {
         emailAddress_fld.setText("");
         ch_acc_box.setSelected(false);
         ch_amount_fld.setText("");
-        sv_acc_box.setSelected(false);
-        sv_amount_fld.setText("");
     }
 }

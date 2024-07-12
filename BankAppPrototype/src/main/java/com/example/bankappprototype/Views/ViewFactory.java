@@ -7,7 +7,6 @@ import com.example.bankappprototype.Models.Model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -30,7 +29,6 @@ public class ViewFactory {
     private AnchorPane flowChartView;
     private AnchorPane createClientView;
     private AnchorPane clientsView;
-    private AnchorPane depositView;
     private AnchorPane friendsView;
     private AnchorPane reportView;
     private AnchorPane bankomatView;
@@ -335,22 +333,6 @@ public class ViewFactory {
             }
         }
         return clientsView;
-    }
-
-    /**
-     * Gets the deposit view.
-     *
-     * @return the deposit view
-     */
-    public AnchorPane getDepositView() {
-        if (depositView == null) {
-            try {
-                depositView = new FXMLLoader(getClass().getResource("/Fxml/Admin/Deposit.fxml")).load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return depositView;
     }
 
     /**
