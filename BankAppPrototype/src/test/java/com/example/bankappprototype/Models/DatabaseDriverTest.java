@@ -28,6 +28,9 @@ class DatabaseDriverTest {
     private Model model;
     private DatabaseDriver databaseDriver;
 
+    /**
+     * Setup Mock database for testing
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -35,6 +38,9 @@ class DatabaseDriverTest {
         databaseDriver.conn = connMock;
     }
 
+    /**
+     * Test getClientData with mockDB
+     */
     @Test
     void testGetClientData() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -46,6 +52,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM Client WHERE email='test@example.com' AND Password='password';");
     }
 
+    /**
+     * Test getAllTransactionsOfClient with mockDB
+     */
     @Test
     void testGetAllTransactionsOfClient() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -57,6 +66,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM 'Transaction' WHERE Sender ='1' or receiver ='1';");
     }
 
+    /**
+     * Test GetAllFriendsOfClient with mockDB
+     */
     @Test
     void testGetAllFriendsOfClient() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -68,6 +80,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM 'Friends' WHERE Client ='1' or FriendClient ='1';");
     }
 
+    /**
+     * Test GetAllSpaces with mockDB
+     */
     @Test
     void testGetAllSpaces() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -79,6 +94,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM 'Account' WHERE OWNER ='1' AND MAINACCOUNT = '0';");
     }
 
+    /**
+     * Test GetCards with mockDB
+     */
     @Test
     void testGetCards() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -94,6 +112,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM 'Card' WHERE ACCOUNT =" + account + ";");
     }
 
+    /**
+     * Test GetCard with mockDB
+     */
     @Test
     void testGetCard() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -105,6 +126,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT CardLimit, StatusOnline, StatusTerminal FROM Card WHERE CardNumber = 'cardNum';");
     }
 
+    /**
+     * Test UpdateCard with mockDB
+     */
     @Test
     void testUpdateCard() throws SQLException {
         try (MockedStatic<Model> modelMock = mockStatic(Model.class)) {
@@ -138,6 +162,9 @@ class DatabaseDriverTest {
         verify(pstmtMock, times(1)).setString(5, TransactionTypes.KARTE_LIMIT_AENDERUNG.toString());
     }
 
+    /**
+     * Test GetAccountId with mockDB
+     */
     @Test
     void testGetAccountId() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -150,6 +177,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("select ID from Account where AccountNumber ='iban';");
     }
 
+    /**
+     * Test IbanValid with mockDB
+     */
     @Test
     void testIbanValid() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -163,6 +193,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("select MainAccount from Account where AccountNumber ='iban';");
     }
 
+    /**
+     * Test GetAccountBalance with mockDB
+     */
     @Test
     void testGetAccountBalance() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -175,6 +208,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("select Balance from Account where AccountNumber ='iban';");
     }
 
+    /**
+     * Test GetAdminData with mockDB
+     */
     @Test
     void testGetAdminData() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -186,6 +222,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM Admin WHERE Username='username' AND Password='password';");
     }
 
+    /**
+     * Test CreateClient with mockDB
+     */
     @Test
     void testCreateClient() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -195,6 +234,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate("INSERT INTO Client(FirstName, LastName, email, Password, Date, image)VALUES ('John', 'Doe','john@example.com','password', '2023-07-01', 'C:\\Users\\User\\IdeaProjects\\PR_SOFT\\BankAppPrototype\\src\\main\\resources\\Images\\Max_Mustermann.png');");
     }
 
+    /**
+     * Test UpdateClient with mockDB
+     */
     @Test
     void testUpdateClient() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -204,6 +246,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate("UPDATE Client SET FirstName = 'John', LastName = 'Doe', Password = 'newpassword'WHERE email = 'john@example.com';");
     }
 
+    /**
+     * Test UpdateProfilePic with mockDB
+     */
     @Test
     void testUpdateProfilePic() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -213,6 +258,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate("UPDATE Client SET image = 'newpath/to/image.png' WHERE email = 'john@example.com';");
     }
 
+    /**
+     * Test CreateMainAccount with mockDB
+     */
     @Test
     void testCreateMainAccount() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -224,6 +272,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate("INSERT INTO Account(Owner, AccountNumber, TransactionLimit, Balance, MainAccount)VALUES ('2','1234567890','1000.0','500.0','1')");
     }
 
+    /**
+     * Test CreateSpace with mockDB
+     */
     @Test
     void testCreateSpace() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -233,6 +284,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate("INSERT INTO Account(Owner, AccountNumber, TransactionLimit, Balance, MainAccount, space_name, space_image)VALUES ('"+Model.getInstance().getClient().idProperty().getValue()+"','1234567890','1000.0','500.0','0','MySpace','space_image.png')");
     }
 
+    /**
+     * Test CreateCard with mockDB
+     */
     @Test
     void testCreateCard() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -244,6 +298,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate(anyString());
     }
 
+    /**
+     * Test GetAllClientsData with mockDB
+     */
     @Test
     void testGetAllClientsData() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -255,6 +312,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT  * FROM  Client;");
     }
 
+    /**
+     * Test GetLastClientsId with mockDB
+     */
     @Test
     void testGetLastClientsId() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -267,6 +327,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM sqlite_sequence WHERE name='Client';");
     }
 
+    /**
+     * Test GetClientEmailByAccountID with mockDB
+     */
     @Test
     void testGetClientEmailByAccountID() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -279,6 +342,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("select email from Client join Account on client.ID = Account.Owner where Account.ID =1;");
     }
 
+    /**
+     * Test GetClientEmailByID with mockDB
+     */
     @Test
     void testGetClientEmailByID() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -291,6 +357,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("select email from Client where ID =1;");
     }
 
+    /**
+     * Test GetClientIDByEMail with mockDB
+     */
     @Test
     void testGetClientIDByEMail() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -303,6 +372,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("select ID from Client where email ='john@example.com';");
     }
 
+    /**
+     * Test GetCheckingAccountData with mockDB
+     */
     @Test
     void testGetCheckingAccountData() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -314,6 +386,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM Account WHERE Owner='1' AND MainAccount=1;");
     }
 
+    /**
+     * Test GetSavingsAccountData with mockDB
+     */
     @Test
     void testGetSavingsAccountData() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -325,6 +400,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM Account WHERE Owner='1' AND MainAccount=0;");
     }
 
+    /**
+     * Test GetAccountById with mockDB
+     */
     @Test
     void testGetAccountById() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -336,6 +414,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM Account WHERE ID='1';");
     }
 
+    /**
+     * Test VerifyCard with mockDB
+     */
     @Test
     void testVerifyCard() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -349,6 +430,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("select Account from Card where Card.CardNumber='cardNumber' AND Card.SequenceNumber='sequenceNumber' AND card.SecretNumber='secretNumber';");
     }
 
+    /**
+     * Test Payment with mockDB
+     */
     @Test
     void testPayment() throws SQLException {
         when(connMock.prepareStatement(anyString())).thenReturn(pstmtMock);
@@ -361,6 +445,9 @@ class DatabaseDriverTest {
         verify(stmtMock, times(2)).executeUpdate(anyString());
     }
 
+    /**
+     * Test AddNewFriend with mockDB
+     */
     @Test
     void testAddNewFriend() throws SQLException {
         when(connMock.prepareStatement(anyString())).thenReturn(pstmtMock);
@@ -371,6 +458,9 @@ class DatabaseDriverTest {
         verify(pstmtMock).executeUpdate();
     }
 
+    /**
+     * Test AddSharedSpace with mockDB
+     */
     @Test
     void testAddSharedSpace() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -381,6 +471,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate("UPDATE Friends SET SharedSpace = '3' WHERE Client = '1' AND FriendClient = '2';");
     }
 
+    /**
+     * Test GetSpaceByID with mockDB
+     */
     @Test
     void testGetSpaceByID() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -392,6 +485,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM 'Account' WHERE ID ='1';");
     }
 
+    /**
+     * Test GetSharedSpaceMembersBySharedSpaceID with mockDB
+     */
     @Test
     void testGetSharedSpaceMembersBySharedSpaceID() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -403,6 +499,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeQuery("SELECT * FROM 'Friends' WHERE SharedSpace ='1';");
     }
 
+    /**
+     * Test DeleteFriendsByIDs with mockDB
+     */
     @Test
     void testDeleteFriendsByIDs() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
@@ -413,6 +512,9 @@ class DatabaseDriverTest {
         verify(stmtMock).executeUpdate("DELETE FROM Friends WHERE Client = 1 AND FriendClient = 2;");
     }
 
+    /**
+     * Test DeleteSharedSpaceByIDs with mockDB
+     */
     @Test
     void testDeleteSharedSpaceByIDs() throws SQLException {
         when(connMock.createStatement()).thenReturn(stmtMock);
